@@ -1,0 +1,177 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>FitnessAI — Apple Watch Active Session</title>
+  <style>
+    /*
+      Governing spine sections:
+      DESIGN.md — Brand & Style; Colors; Typography; Layout & Spacing; Components:
+      session-control, actual-set-row, recognition-state-chip, sync-state-indicator.
+      EXPERIENCE.md — Foundation; Information Architecture / Active Session; State Patterns;
+      Interaction Primitives; Trust, Provenance, and User Authority; UJ-1 steps 1–7.
+      Canonical state: formal set active. Active-set silence applies; no proactive prompt.
+      Spines win on conflict.
+    */
+    :root {
+      color-scheme: dark;
+      --surface-base: #000000;
+      --surface-raised: #1C1C1E;
+      --surface-muted: #2C2C2E;
+      --ink-primary: #FFFFFF;
+      --ink-secondary: #C7C7CC;
+      --border: #3A3A3C;
+      --action: #64A8E8;
+      --on-action: #07131F;
+      --success: #5CCB8A;
+      --warning: #F3C969;
+      --error: #FF8A80;
+      --pending: #E7D16C;
+      --r-sm: 8px;
+      --r-md: 12px;
+      --r-full: 9999px;
+      --s1: 4px;
+      --s2: 8px;
+      --s3: 12px;
+      --s4: 16px;
+      --s5: 24px;
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      min-height: 100vh;
+      display: grid;
+      place-items: center;
+      background: #202124;
+      color: var(--ink-primary);
+      font-family: -apple-system, BlinkMacSystemFont, "SF Pro Text", "PingFang SC", sans-serif;
+    }
+    .stage { padding: 36px; }
+    .watch {
+      position: relative;
+      width: 326px;
+      height: 396px;
+      padding: 12px;
+      border: 2px solid var(--border);
+      border-radius: 76px;
+      background: #111111;
+      box-shadow: 0 24px 56px rgba(0,0,0,.42);
+    }
+    .watch::after {
+      content: "";
+      position: absolute;
+      right: -16px;
+      top: 102px;
+      width: 12px;
+      height: 66px;
+      border-radius: 0 8px 8px 0;
+      background: var(--border);
+    }
+    .screen {
+      height: 100%;
+      border-radius: 64px;
+      background: var(--surface-base);
+      padding: 24px 20px 18px;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      gap: var(--s3);
+    }
+    .status, .row, .session-footer { display: flex; align-items: center; justify-content: space-between; gap: var(--s2); }
+    .time { font-size: 15px; font-weight: 500; }
+    .capture {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      min-height: 28px;
+      color: var(--success);
+      font-size: 13px;
+      font-weight: 500;
+    }
+    .capture::before { content: ""; width: 8px; height: 8px; border-radius: 50%; background: currentColor; }
+    .exercise { margin-top: 2px; }
+    .eyebrow { margin: 0 0 var(--s1); color: var(--ink-secondary); font-size: 13px; }
+    h1 { margin: 0; font-size: 24px; line-height: 1.2; font-weight: 500; }
+    .set-context { margin-top: 3px; color: var(--ink-secondary); font-size: 14px; }
+    .metrics { display: grid; grid-template-columns: 1fr 1fr; gap: var(--s2); }
+    .metric {
+      min-height: 84px;
+      padding: var(--s3);
+      border: 1px solid var(--border);
+      border-radius: var(--r-md);
+      background: var(--surface-raised);
+    }
+    .metric-label { color: var(--ink-secondary); font-size: 12px; }
+    .metric-value { margin-top: var(--s1); font-size: 30px; line-height: 1; font-weight: 500; font-variant-numeric: tabular-nums; }
+    .metric-unit { margin-left: 3px; color: var(--ink-secondary); font-size: 13px; }
+    .truth {
+      display: flex;
+      align-items: flex-start;
+      gap: var(--s2);
+      min-height: 48px;
+      padding: var(--s2) var(--s3);
+      border-radius: var(--r-md);
+      background: var(--surface-muted);
+      font-size: 13px;
+    }
+    .truth-mark { color: var(--success); font-weight: 500; }
+    .truth strong { display: block; font-weight: 500; }
+    .truth small { display: block; margin-top: 2px; color: var(--ink-secondary); font-size: 11px; }
+    .session-footer { margin-top: auto; }
+    .quiet { color: var(--ink-secondary); font-size: 12px; }
+    .finish {
+      min-width: 88px;
+      min-height: 44px;
+      border: 0;
+      border-radius: var(--r-full);
+      background: var(--action);
+      color: var(--on-action);
+      font: inherit;
+      font-weight: 500;
+    }
+    @media (max-width: 390px) {
+      .stage { padding: 12px; transform: scale(.9); }
+    }
+  </style>
+</head>
+<body>
+  <main class="stage" aria-label="Apple Watch 正式组安静采集示意">
+    <section class="watch" aria-label="Apple Watch 设备框">
+      <div class="screen">
+        <header class="status">
+          <span class="time">10:42</span>
+          <span class="capture" aria-label="正在采集">正在采集</span>
+        </header>
+
+        <section class="exercise" aria-labelledby="exercise-title">
+          <p class="eyebrow">今天的计划</p>
+          <h1 id="exercise-title">杠铃卧推</h1>
+          <div class="set-context">第 2 / 4 组 · 正式组</div>
+        </section>
+
+        <section class="metrics" aria-label="当前 Actual Set">
+          <div class="metric">
+            <div class="metric-label">次数</div>
+            <div><span class="metric-value">6</span><span class="metric-unit">次</span></div>
+          </div>
+          <div class="metric">
+            <div class="metric-label">Actual Load</div>
+            <div><span class="metric-value">60</span><span class="metric-unit">kg</span></div>
+          </div>
+        </section>
+
+        <div class="truth" role="status" aria-label="上一组已保存在这块 Watch，云端同步不影响当前记录">
+          <span class="truth-mark" aria-hidden="true">✓</span>
+          <span><strong>上一组已保存在这块 Watch</strong><small>云端同步不影响当前记录</small></span>
+        </div>
+
+        <footer class="session-footer">
+          <span class="quiet">正式组中保持安静</span>
+          <button class="finish" type="button">结束</button>
+        </footer>
+      </div>
+    </section>
+  </main>
+</body>
+</html>

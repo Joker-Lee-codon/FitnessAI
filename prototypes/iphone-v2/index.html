@@ -1,0 +1,235 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="color-scheme" content="light dark" />
+    <title>FitnessAI — iPhone 训练账本</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <main class="prototype-shell">
+      <section class="phone" aria-label="FitnessAI iPhone 原型">
+        <div class="status-bar" aria-hidden="true">
+          <span>9:41</span>
+          <span class="status-icons">● ◒ ▰</span>
+        </div>
+
+        <div class="app-viewport">
+          <section class="screen is-active" data-screen="today" aria-labelledby="today-title">
+            <header class="screen-header home-header">
+              <div>
+                <p class="date-line">9月7日，星期一</p>
+                <h1 id="today-title">今天</h1>
+              </div>
+              <button class="icon-button" type="button" aria-label="打开设置" data-open="settings">
+                <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 8.2a3.8 3.8 0 1 0 0 7.6 3.8 3.8 0 0 0 0-7.6Zm8 3.8-2.1-1.2.1-2.4-2.1-1.2-2 1.3L12 7l-1.9 1.3-2-1.3L6 8.4l.1 2.4L4 12l2.1 1.2-.1 2.4L8.1 17l2-1.3L12 17l1.9-1.3 2 1.3 2.1-1.4-.1-2.4L20 12Z"/></svg>
+              </button>
+            </header>
+
+            <div class="sync-line" role="status">
+              <span class="sync-mark" aria-hidden="true"></span>
+              已同步到 Apple Watch · 8:56
+            </div>
+
+            <article class="today-plan" aria-labelledby="plan-title">
+              <div class="plan-heading">
+                <div>
+                  <h2 id="plan-title">胸背 A</h2>
+                  <p>约 58 分钟 · 11 个正式组</p>
+                </div>
+                <button class="text-button" type="button" data-open="plan">查看计划</button>
+              </div>
+
+              <div class="training-rail">
+                <article class="rail-item rail-item-current">
+                  <span class="rail-tick tick-progress" aria-label="已完成三组，计划四组"></span>
+                  <div class="rail-content">
+                    <div class="exercise-title-row">
+                      <h3>杠铃卧推</h3>
+                      <span class="set-count"><strong>3</strong> / 4 组</span>
+                    </div>
+                    <p>60 kg · 目标 RPE 8</p>
+                    <div class="set-dashes" aria-hidden="true"><i class="done"></i><i class="done"></i><i class="done"></i><i></i></div>
+                  </div>
+                </article>
+                <article class="rail-item">
+                  <span class="rail-tick tick-planned" aria-label="计划四组"></span>
+                  <div class="rail-content">
+                    <div class="exercise-title-row">
+                      <h3>俯身杠铃划船</h3>
+                      <span class="set-count">4 组</span>
+                    </div>
+                    <p>40 kg · 8–10 次</p>
+                  </div>
+                </article>
+                <article class="rail-item">
+                  <span class="rail-tick tick-planned" aria-label="计划三组"></span>
+                  <div class="rail-content">
+                    <div class="exercise-title-row">
+                      <h3>上斜哑铃卧推</h3>
+                      <span class="set-count">3 组</span>
+                    </div>
+                    <p>每侧 20 kg · 10 次</p>
+                  </div>
+                </article>
+              </div>
+
+              <button class="primary-button watch-button" type="button" id="start-watch">
+                <span class="watch-glyph" aria-hidden="true">◉</span>
+                在 Watch 上继续
+              </button>
+              <p class="button-note" id="watch-note">训练数据会先保存在这块 Watch 上</p>
+            </article>
+
+            <button class="review-callout" type="button" data-open="review">
+              <span class="callout-mark" aria-hidden="true">3</span>
+              <span><strong>昨日训练已到达</strong><small>有 1 项负重待补全，其他数据已保留</small></span>
+              <span aria-hidden="true">›</span>
+            </button>
+
+            <section class="week-strip" aria-labelledby="week-title">
+              <div class="section-title-row">
+                <h2 id="week-title">本周训练</h2>
+                <button class="text-button" type="button" data-nav="history">查看历史</button>
+              </div>
+              <div class="week-days" aria-label="本周训练日">
+                <span><small>一</small><b class="trained">1</b></span>
+                <span><small>二</small><b>2</b></span>
+                <span><small>三</small><b class="trained">3</b></span>
+                <span><small>四</small><b>4</b></span>
+                <span><small>五</small><b class="trained">5</b></span>
+                <span class="today"><small>六</small><b>6</b></span>
+                <span><small>日</small><b>7</b></span>
+              </div>
+              <p class="week-summary"><strong>3 次训练</strong><span>胸、背、腿均有实际训练组</span></p>
+            </section>
+          </section>
+
+          <section class="screen" data-screen="history" aria-labelledby="history-title">
+            <header class="screen-header">
+              <div><p class="date-line">真实完成记录</p><h1 id="history-title">训练历史</h1></div>
+              <button class="icon-button" type="button" aria-label="筛选训练历史"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 6h16M7 12h10m-7 6h4"/></svg></button>
+            </header>
+            <div class="month-selector">
+              <button type="button" aria-label="上个月">‹</button><strong>2026 年 9 月</strong><button type="button" aria-label="下个月">›</button>
+            </div>
+            <div class="history-list">
+              <article class="history-day">
+                <div class="history-date"><strong>06</strong><span>周六</span></div>
+                <button class="history-session needs-review" type="button" data-open="review">
+                  <span class="history-rail" aria-hidden="true"></span>
+                  <span class="history-copy"><strong>胸背自由训练</strong><small>58 分钟 · 12 个实际训练组</small><em>待补全 1 项负重</em></span><span aria-hidden="true">›</span>
+                </button>
+              </article>
+              <article class="history-day">
+                <div class="history-date"><strong>03</strong><span>周三</span></div>
+                <button class="history-session" type="button" data-open="review-complete">
+                  <span class="history-rail" aria-hidden="true"></span>
+                  <span class="history-copy"><strong>腿部 A</strong><small>66 分钟 · 14 个实际训练组</small><em class="confirmed">完整 · 已同步</em></span><span aria-hidden="true">›</span>
+                </button>
+              </article>
+              <article class="history-day">
+                <div class="history-date"><strong>01</strong><span>周一</span></div>
+                <button class="history-session" type="button" data-open="review-complete">
+                  <span class="history-rail" aria-hidden="true"></span>
+                  <span class="history-copy"><strong>推拉 A</strong><small>54 分钟 · 11 个实际训练组</small><em class="confirmed">完整 · 已同步</em></span><span aria-hidden="true">›</span>
+                </button>
+              </article>
+            </div>
+          </section>
+
+          <section class="screen" data-screen="analysis" aria-labelledby="analysis-title">
+            <header class="screen-header">
+              <div><p class="date-line">只计算有效实际训练组</p><h1 id="analysis-title">分析</h1></div>
+              <button class="period-button" type="button">近 8 周⌄</button>
+            </header>
+            <section class="evidence-hero" aria-labelledby="evidence-title">
+              <p id="evidence-title">主练动作 · 杠铃卧推</p>
+              <div class="change-line"><strong>60</strong><span>kg<br><b>工作重量</b></span><em>较 8 周前 +7.5 kg</em></div>
+              <div class="load-chart" aria-label="杠铃卧推八周工作重量从52.5千克上升到60千克">
+                <span style="--h:26%"><i>52.5</i></span><span style="--h:33%"></span><span style="--h:42%"></span><span style="--h:42%"></span><span style="--h:58%"><i>55</i></span><span style="--h:70%"></span><span style="--h:82%"></span><span class="latest" style="--h:100%"><i>60</i></span>
+              </div>
+              <div class="chart-axis"><span>7月13日</span><span>9月7日</span></div>
+            </section>
+            <section class="analysis-section">
+              <h2>这 8 周发生了什么</h2>
+              <div class="evidence-row"><span class="evidence-symbol">↗</span><span><strong>工作重量稳步提高</strong><small>相近次数下，从 52.5 kg 提高到 60 kg</small></span></div>
+              <div class="evidence-row"><span class="evidence-symbol">≋</span><span><strong>训练频率稳定</strong><small>每周 2–3 次，无连续两周缺失</small></span></div>
+              <div class="evidence-row"><span class="evidence-symbol pending-symbol">!</span><span><strong>本周数据尚未完整</strong><small>1 项负重未补全，暂不计入容量</small></span></div>
+            </section>
+            <section class="body-balance">
+              <div class="section-title-row"><h2>身体部位覆盖</h2><button class="text-button" type="button">近 4 周</button></div>
+              <div class="balance-row"><span>胸</span><i><b style="width:82%"></b></i><em>22 组</em></div>
+              <div class="balance-row"><span>背</span><i><b style="width:73%"></b></i><em>19 组</em></div>
+              <div class="balance-row"><span>腿</span><i><b style="width:64%"></b></i><em>16 组</em></div>
+              <div class="balance-row"><span>肩</span><i><b style="width:38%"></b></i><em>9 组</em></div>
+            </section>
+          </section>
+
+          <section class="screen detail-screen" data-screen="review" aria-labelledby="review-title">
+            <header class="detail-header">
+              <button class="back-button" type="button" data-back aria-label="返回">‹</button>
+              <div><h1 id="review-title">训练复核</h1><p>9月6日 · 胸背自由训练</p></div>
+              <button class="more-button" type="button" aria-label="更多操作">•••</button>
+            </header>
+            <div class="review-status pending" role="status"><span>待补全 1 项</span><p>已识别的动作、次数、时间与其他负重均已保留。</p></div>
+            <section class="review-exercise">
+              <header><div><h2>杠铃卧推</h2><p>4 个实际训练组</p></div><button class="text-button" type="button">纠正动作</button></header>
+              <div class="actual-set-row"><span class="set-tick confirmed-tick">1</span><span><b>8</b><small>次</small></span><span><b>60</b><small>kg</small></span><em>用户确认</em></div>
+              <div class="actual-set-row"><span class="set-tick captured-tick">2</span><span><b>8</b><small>次</small></span><span><b>60</b><small>kg</small></span><em>Watch 捕获</em></div>
+              <div class="actual-set-row unresolved" id="unresolved-set"><span class="set-tick pending-tick">3</span><span><b>7</b><small>次</small></span><span class="missing-load"><b id="load-value">—</b><small>kg</small></span><em id="load-state">补充负重</em></div>
+              <div class="load-choices" id="load-choices" aria-label="补充第三组负重">
+                <p>第三组实际用了多少负重？</p>
+                <div><button type="button" data-load="60">60</button><button type="button" data-load="62.5">62.5</button><button type="button" data-load="other">其他</button></div>
+                <small>负重不会由 Watch 自动推测</small>
+              </div>
+              <div class="actual-set-row"><span class="set-tick corrected-tick">4</span><span><b>6</b><small>次</small></span><span><b>60</b><small>kg</small></span><em>已纠正</em></div>
+            </section>
+            <section class="review-exercise compact">
+              <header><div><h2>俯身杠铃划船</h2><p>4 个实际训练组</p></div><button class="text-button" type="button">展开</button></header>
+              <p class="compact-facts"><strong>10、10、9、8 次</strong><span>40 kg · 完整</span></p>
+            </section>
+            <div class="review-save-bar"><button class="primary-button" type="button" id="save-review" disabled>补全后保存</button><p id="save-note">记录仍保存在本机，可稍后继续</p></div>
+          </section>
+
+          <section class="screen detail-screen" data-screen="plan" aria-labelledby="plan-detail-title">
+            <header class="detail-header"><button class="back-button" type="button" data-back aria-label="返回">‹</button><div><h1 id="plan-detail-title">胸背 A</h1><p>训练计划 · 第 2 周</p></div><button class="text-button" type="button">编辑</button></header>
+            <div class="plan-summary"><strong>11</strong><span>正式组</span><strong>3</strong><span>个动作</span><strong>58</strong><span>分钟</span></div>
+            <div class="training-rail plan-detail-rail">
+              <article class="rail-item"><span class="rail-tick tick-planned"></span><div class="rail-content"><h2>杠铃卧推</h2><p>4 × 8 · 60 kg · 目标 RPE 8</p><small>第一组沿用计划负重；之后沿用上一组实际负重</small></div></article>
+              <article class="rail-item"><span class="rail-tick tick-planned"></span><div class="rail-content"><h2>俯身杠铃划船</h2><p>4 × 8–10 · 40 kg</p><button class="inline-action" type="button">器械不可用时查看替代动作</button></div></article>
+              <article class="rail-item"><span class="rail-tick tick-planned"></span><div class="rail-content"><h2>上斜哑铃卧推</h2><p>3 × 10 · 每侧 20 kg</p><small>此动作的负重按每侧记录</small></div></article>
+            </div>
+            <div class="review-save-bar"><button class="primary-button" type="button">发送到 Apple Watch</button><p>计划不会因实际训练结果自动修改</p></div>
+          </section>
+
+          <section class="screen detail-screen" data-screen="settings" aria-labelledby="settings-title">
+            <header class="detail-header"><button class="back-button" type="button" data-back aria-label="返回">‹</button><div><h1 id="settings-title">账号与隐私</h1><p>本地优先，状态可见</p></div></header>
+            <section class="settings-group"><h2>设备与同步</h2><button type="button"><span><strong>Apple Watch</strong><small>已同步 · 8:56</small></span><em>›</em></button><button type="button"><span><strong>同步与恢复</strong><small>没有待处理问题</small></span><em>›</em></button></section>
+            <section class="settings-group"><h2>你的数据</h2><button type="button"><span><strong>导出训练数据</strong><small>结构化记录，不包含原始心率与 IMU</small></span><em>›</em></button><button type="button"><span><strong>权限</strong><small>按功能分别管理</small></span><em>›</em></button><button type="button" class="danger-row"><span><strong>删除数据</strong><small>逐份说明本机、云端与离线设备状态</small></span><em>›</em></button></section>
+          </section>
+        </div>
+
+        <nav class="tab-bar" aria-label="主导航">
+          <button class="is-selected" type="button" data-nav="today"><span class="tab-icon">⌂</span><span>今天</span></button>
+          <button type="button" data-nav="history"><span class="tab-icon">▤</span><span>历史</span></button>
+          <button type="button" data-nav="analysis"><span class="tab-icon">⌁</span><span>分析</span></button>
+        </nav>
+        <div class="home-indicator" aria-hidden="true"></div>
+      </section>
+
+      <aside class="prototype-notes" aria-label="原型说明">
+        <p>FitnessAI · iPhone 概念原型</p>
+        <h2>训练账本</h2>
+        <p>从底部导航切换“今天 / 历史 / 分析”。打开昨日训练并补充第三组负重，可体验“保留事实—解决缺口—本地保存”的核心闭环。</p>
+        <ul>
+          <li><span class="legend planned"></span>计划训练组</li>
+          <li><span class="legend actual"></span>已记录实际训练组</li>
+          <li><span class="legend unresolved-legend"></span>待补全事实</li>
+        </ul>
+      </aside>
+    </main>
+    <script src="app.js"></script>
+  </body>
+</html>

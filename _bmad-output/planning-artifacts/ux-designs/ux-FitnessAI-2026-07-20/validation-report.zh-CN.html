@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<title>UX 设计验证：FitnessAI</title>
+<style>
+  :root { --bg:#fafaf9; --surface:#fff; --border:#e7e5e4; --text:#1c1917; --muted:#78716c; --verdict-strong:#16a34a; --verdict-adequate:#65a30d; --verdict-thin:#d97706; --verdict-broken:#dc2626; --sev-low:#64748b; --sev-medium:#ca8a04; --sev-high:#ea580c; --sev-critical:#dc2626; }
+  * { box-sizing:border-box; } html,body { margin:0; padding:0; }
+  body { font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Inter,system-ui,sans-serif; background:var(--bg); color:var(--text); line-height:1.6; font-size:15px; }
+  .container { max-width:960px; margin:0 auto; padding:32px 24px 64px; }
+  header.report-header { display:flex; align-items:flex-start; justify-content:space-between; gap:24px; padding-bottom:16px; border-bottom:1px solid var(--border); margin-bottom:24px; }
+  .title h1 { margin:0; font-size:22px; font-weight:600; letter-spacing:-.01em; }
+  .title .subtitle { color:var(--muted); font-size:13px; margin-top:4px; font-family:ui-monospace,"SF Mono",Menlo,monospace; }
+  .synthesis { background:var(--surface); border:1px solid var(--border); border-left:3px solid var(--muted); border-radius:8px; padding:18px 22px; margin-bottom:24px; font-size:15.5px; }
+  .synthesis p { margin:0 0 10px; } .synthesis p:last-child { margin-bottom:0; }
+  .dimension-summary { display:grid; grid-template-columns:repeat(auto-fit,minmax(180px,1fr)); gap:10px; margin-bottom:24px; }
+  .dim-card { background:var(--surface); border:1px solid var(--border); border-radius:8px; padding:12px 14px; }
+  .dim-card .dim-name { font-size:13px; color:var(--muted); margin-bottom:6px; } .dim-card .dim-verdict { font-size:14px; font-weight:600; }
+  section.dimension,section.reviewer-section { margin-bottom:14px; }
+  section.dimension details,section.reviewer-section details { background:var(--surface); border:1px solid var(--border); border-radius:8px; overflow:hidden; }
+  section summary { padding:14px 20px; cursor:pointer; user-select:none; list-style:none; display:flex; align-items:center; gap:12px; }
+  section summary::-webkit-details-marker { display:none; } section summary::before { content:"▸"; color:var(--muted); transition:transform .15s ease; } section details[open] summary::before { transform:rotate(90deg); }
+  section summary h2 { display:inline; margin:0; font-size:16px; font-weight:600; letter-spacing:-.005em; flex:1; }
+  .verdict-pill { font-size:11px; padding:3px 10px; border-radius:999px; font-weight:600; text-transform:uppercase; letter-spacing:.04em; color:#fff; }
+  .verdict-strong { background:var(--verdict-strong); } .verdict-adequate { background:var(--verdict-adequate); } .verdict-thin { background:var(--verdict-thin); } .verdict-broken { background:var(--verdict-broken); }
+  .dim-body { padding:4px 20px 18px; } .dim-judgment { color:var(--text); font-size:14.5px; } .dim-judgment p { margin:0 0 10px; }
+  .findings-list { padding:0 20px 4px; } article.finding { padding:14px 0; border-top:1px solid var(--border); } article.finding:first-child { border-top:none; }
+  article.finding header { display:flex; align-items:center; gap:10px; flex-wrap:wrap; margin-bottom:6px; }
+  .badge { font-size:10.5px; padding:3px 8px; border-radius:4px; font-weight:600; text-transform:uppercase; letter-spacing:.04em; line-height:1.4; }
+  .badge-sev-low { background:rgba(100,116,139,.12); color:var(--sev-low); } .badge-sev-medium { background:rgba(202,138,4,.14); color:var(--sev-medium); } .badge-sev-high { background:rgba(234,88,12,.14); color:var(--sev-high); }
+  .finding-title { margin:0; font-size:15px; font-weight:500; flex:1; min-width:200px; } .finding-location { font-family:ui-monospace,"SF Mono",Menlo,monospace; font-size:12.5px; color:var(--muted); }
+  .finding-note,.finding-fix { margin-top:6px; font-size:14px; } .finding-fix strong { color:var(--muted); font-weight:500; }
+  .reviewer-source { font-size:12px; color:var(--muted); font-family:ui-monospace,"SF Mono",Menlo,monospace; }
+  .mechanical { background:var(--surface); border:1px solid var(--border); border-radius:8px; padding:16px 20px; margin-top:24px; font-size:14px; }
+  .mechanical h3 { margin:0 0 10px; font-size:14px; font-weight:600; color:var(--muted); text-transform:uppercase; letter-spacing:.04em; } .mechanical ul { margin:0; padding-left:20px; }
+  footer.report-footer { margin-top:40px; padding-top:16px; border-top:1px solid var(--border); font-size:12px; color:var(--muted); font-family:ui-monospace,"SF Mono",Menlo,monospace; }
+</style>
+</head>
+<body><div class="container">
+<header class="report-header"><div class="title"><h1>FitnessAI — UX 设计验证报告</h1><div class="subtitle">DESIGN.md + EXPERIENCE.md · ux-FitnessAI-2026-07-20</div></div></header>
+<div class="synthesis"><p>这对 spine 作为进行中的快速路径契约为 <strong>adequate，但尚不可定稿</strong>。流程、组件、状态和双语结构覆盖较强；token 继承、active-session 行为、无障碍验收和破坏性生命周期事实仍需明确规则。</p><p>未发现 critical 缺陷。三个视角在交叉去重前共报告 13 个 high、12 个 medium、4 个 low。最高风险涉及 rest-safe 交互、HealthKit 状态真实性、删除范围、账号隔离、dark-mode 生成及原生/自定义继承。</p></div>
+<div class="dimension-summary">
+  <div class="dim-card"><div class="dim-name">Flow coverage</div><div class="dim-verdict" style="color:var(--verdict-adequate)">adequate</div></div>
+  <div class="dim-card"><div class="dim-name">Token completeness</div><div class="dim-verdict" style="color:var(--verdict-thin)">thin</div></div>
+  <div class="dim-card"><div class="dim-name">Component coverage</div><div class="dim-verdict" style="color:var(--verdict-strong)">strong</div></div>
+  <div class="dim-card"><div class="dim-name">State coverage</div><div class="dim-verdict" style="color:var(--verdict-strong)">strong</div></div>
+  <div class="dim-card"><div class="dim-name">Visual reference coverage</div><div class="dim-verdict" style="color:var(--verdict-strong)">strong</div></div>
+  <div class="dim-card"><div class="dim-name">Bloat &amp; overspecification</div><div class="dim-verdict" style="color:var(--verdict-adequate)">adequate</div></div>
+  <div class="dim-card"><div class="dim-name">Inheritance discipline</div><div class="dim-verdict" style="color:var(--verdict-thin)">thin</div></div>
+  <div class="dim-card"><div class="dim-name">Shape fit</div><div class="dim-verdict" style="color:var(--verdict-strong)">strong</div></div>
+</div>
+<section class="dimension"><details open><summary><h2>1. Flow coverage</h2><span class="verdict-pill verdict-adequate">adequate</span></summary><div class="dim-body"><div class="dim-judgment"><p>UJ-1–UJ-5、Flow 6–9 和 FR-001–FR-070 均可追溯，但若干训练中和生命周期决策仍未闭合。</p></div></div><div class="findings-list">
+  <article class="finding"><header><span class="badge badge-sev-high">high</span><h3 class="finding-title">Active-session 行为尚未形成单一可实施契约</h3><span class="finding-location">R-H1</span></header><div class="finding-note">纠正职责、rest-safe 时机、提醒阈值和负重语义仍未解决。</div><div class="finding-fix"><strong>修复：</strong>为每条规则定阶段或作出决定，并同步更新流程、组件和状态。</div></article>
+  <article class="finding"><header><span class="badge badge-sev-high">high</span><h3 class="finding-title">HealthKit 副本/删除行为无法闭合 Flow 9</h3><span class="finding-location">R-H2</span></header><div class="finding-fix"><strong>修复：</strong>定义 detachment/deletion 范围、provenance、选择、完成、失败和重试。</div></article>
+  <article class="finding"><header><span class="badge badge-sev-medium">medium</span><h3 class="finding-title">Primary MVP 验证人群未声明</h3><span class="finding-location">R-M1</span></header><div class="finding-fix"><strong>修复：</strong>命名 primary protagonist，同时保留更广泛准入。</div></article>
+  <article class="finding"><header><span class="badge badge-sev-medium">medium</span><h3 class="finding-title">Post-MVP plan proposal cadence 未解决</h3><span class="finding-location">R-M2</span></header><div class="finding-fix"><strong>修复：</strong>在 proposal 优先级定义前保持 UJ-4 门控。</div></article>
+</div></details></section>
+<section class="dimension"><details open><summary><h2>2. Token completeness</h2><span class="verdict-pill verdict-thin">thin</span></summary><div class="dim-body"><div class="dim-judgment"><p>36 个引用全部解析、颜色均为 hex，但机器可读 appearance 行为不完整。</p></div></div><div class="findings-list">
+  <article class="finding"><header><span class="badge badge-sev-high">high</span><h3 class="finding-title">组件 token 仅定义 light mode</h3><span class="finding-location">R-H3</span></header><div class="finding-fix"><strong>修复：</strong>添加机器可读的 dark appearance 属性。</div></article>
+  <article class="finding"><header><span class="badge badge-sev-medium">medium</span><h3 class="finding-title">Load-bearing 假设仍未验证</h3><span class="finding-location">R-M3</span></header><div class="finding-fix"><strong>修复：</strong>实机验证或继承原生默认值。</div></article>
+</div></details></section>
+<section class="dimension"><details><summary><h2>3. Component coverage</h2><span class="verdict-pill verdict-strong">strong</span></summary><div class="dim-body"><div class="dim-judgment"><p>11 个组件在两份 spine 和两种语言中完全一致。</p></div></div></details></section>
+<section class="dimension"><details><summary><h2>4. State coverage</h2><span class="verdict-pill verdict-strong">strong</span></summary><div class="dim-body"><div class="dim-judgment"><p>每个适用 IA surface 都包含加载、空、离线、权限、错误、恢复或冲突状态。</p></div></div></details></section>
+<section class="dimension"><details><summary><h2>5. Visual reference coverage</h2><span class="verdict-pill verdict-strong">strong</span></summary><div class="dim-body"><div class="dim-judgment"><p>没有工件或孤立引用；所有 surface 均有意保持 spine-only。</p></div></div></details></section>
+<section class="dimension"><details><summary><h2>6. Bloat &amp; overspecification</h2><span class="verdict-pill verdict-adequate">adequate</span></summary><div class="findings-list"><article class="finding"><header><span class="badge badge-sev-low">low</span><h3 class="finding-title">信任不变量在多个章节重复</h3><span class="finding-location">R-L1</span></header><div class="finding-fix"><strong>修复：</strong>润色时保留一条规范陈述，其他位置使用交叉引用。</div></article></div></details></section>
+<section class="dimension"><details open><summary><h2>7. Inheritance discipline</h2><span class="verdict-pill verdict-thin">thin</span></summary><div class="findings-list">
+  <article class="finding"><header><span class="badge badge-sev-high">high</span><h3 class="finding-title">原生继承与自定义几何冲突</h3><span class="finding-location">R-H4</span></header><div class="finding-fix"><strong>修复：</strong>将每个组件归为 native-as-is、native-with-delta 或 fully custom。</div></article>
+  <article class="finding"><header><span class="badge badge-sev-medium">medium</span><h3 class="finding-title">缺少 canonical 双语术语表</h3><span class="finding-location">R-M4</span></header><div class="finding-fix"><strong>修复：</strong>添加 English↔Chinese 状态和 provenance 术语表。</div></article>
+</div></details></section>
+<section class="dimension"><details><summary><h2>8. Shape fit</h2><span class="verdict-pill verdict-strong">strong</span></summary><div class="dim-body"><div class="dim-judgment"><p>DESIGN canonical 顺序及 EXPERIENCE 必需/触发章节均已存在。</p></div></div></details></section>
+<section class="reviewer-section"><details open><summary><h2>Accessibility &amp; Exertion Context</h2><span class="reviewer-source">review-accessibility.md</span></summary><div class="dim-body"><div class="dim-judgment"><p>需要修订：0 critical · 4 high · 5 medium · 2 low。</p></div></div><div class="findings-list">
+  <article class="finding"><header><span class="badge badge-sev-high">high</span><h3 class="finding-title">`resting` 不是安全交互契约</h3><span class="finding-location">A-H1</span></header><div class="finding-fix"><strong>修复：</strong>定义 `restSafeForInteraction`、Later、延后和正式组零提示场景。</div></article>
+  <article class="finding"><header><span class="badge badge-sev-high">high</span><h3 class="finding-title">Digital Crown 是未经验证的依赖</h3><span class="finding-location">A-H2</span></header><div class="finding-fix"><strong>修复：</strong>让 Crown 可选，并要求 touch/accessibility-adjustable 等价路径。</div></article>
+  <article class="finding"><header><span class="badge badge-sev-high">high</span><h3 class="finding-title">目标尺寸和间距不可测量</h3><span class="finding-location">A-H3</span></header><div class="finding-fix"><strong>修复：</strong>默认 44 × 44 pt，并定义例外、间距及 RPE 控件行为。</div></article>
+  <article class="finding"><header><span class="badge badge-sev-high">high</span><h3 class="finding-title">采集故障缺少 announcement/focus 优先级</h3><span class="finding-location">A-H4</span></header><div class="finding-fix"><strong>修复：</strong>添加事件优先级矩阵和恢复焦点顺序。</div></article>
+  <article class="finding"><header><span class="badge badge-sev-medium">medium</span><h3 class="finding-title">Dynamic Type 验收未定义</h3><span class="finding-location">A-M1</span></header><div class="finding-fix"><strong>修复：</strong>定义放大、重排、设备和不裁切标准。</div></article>
+  <article class="finding"><header><span class="badge badge-sev-medium">medium</span><h3 class="finding-title">VoiceOver 组件语义不完整</h3><span class="finding-location">A-M2</span></header><div class="finding-fix"><strong>修复：</strong>定义分组、sheet focus、focus return、actions 和 update throttling。</div></article>
+  <article class="finding"><header><span class="badge badge-sev-medium">medium</span><h3 class="finding-title">权限 fallback 缺少无障碍旅程</h3><span class="finding-location">A-M3</span></header><div class="finding-fix"><strong>修复：</strong>定义目的文案、返回焦点、状态宣告、fallback 和 Settings 路由。</div></article>
+  <article class="finding"><header><span class="badge badge-sev-medium">medium</span><h3 class="finding-title">关键中文微文案缺少清单</h3><span class="finding-location">A-M4</span></header><div class="finding-fix"><strong>修复：</strong>添加视觉/朗读标签、后果和 primary next action。</div></article>
+  <article class="finding"><header><span class="badge badge-sev-medium">medium</span><h3 class="finding-title">无障碍 floor 未映射到发布证据</h3><span class="finding-location">A-M5</span></header><div class="finding-fix"><strong>修复：</strong>添加逐 surface/state 验收矩阵。</div></article>
+  <article class="finding"><header><span class="badge badge-sev-low">low</span><h3 class="finding-title">自定义控件状态不完整</h3><span class="finding-location">A-L1</span></header><div class="finding-fix"><strong>修复：</strong>继承原生状态或记录所有自定义状态。</div></article>
+  <article class="finding"><header><span class="badge badge-sev-low">low</span><h3 class="finding-title">Haptic 词汇仍未完成</h3><span class="finding-location">A-L2</span></header><div class="finding-fix"><strong>修复：</strong>映射事件、控制、等价线索、防重复和验证。</div></article>
+</div></details></section>
+<section class="reviewer-section"><details open><summary><h2>Trust, Privacy &amp; Safety</h2><span class="reviewer-source">review-trust-privacy-safety.md</span></summary><div class="dim-body"><div class="dim-judgment"><p>需要修改：0 critical · 5 high · 3 medium · 1 low。</p></div></div><div class="findings-list">
+  <article class="finding"><header><span class="badge badge-sev-high">high</span><h3 class="finding-title">HealthKit read denial 不可观察</h3><span class="finding-location">TPS-01</span></header><div class="finding-fix"><strong>修复：</strong>拆分 capability 状态族，并为读取使用数据可用性状态。</div></article>
+  <article class="finding"><header><span class="badge badge-sev-high">high</span><h3 class="finding-title">删除完成缺少逐副本范围</h3><span class="finding-location">TPS-02</span></header><div class="finding-fix"><strong>修复：</strong>枚举本地、同步、个性化、研究、离线、备份和法律例外范围。</div></article>
+  <article class="finding"><header><span class="badge badge-sev-high">high</span><h3 class="finding-title">保留的本地数据未与另一账号隔离</h3><span class="finding-location">TPS-03</span></header><div class="finding-fix"><strong>修复：</strong>将加密和队列绑定到原账号；其他账号下不可见。</div></article>
+  <article class="finding"><header><span class="badge badge-sev-high">high</span><h3 class="finding-title">删除合并了多个事实边界</h3><span class="finding-location">TPS-04</span></header><div class="finding-fix"><strong>修复：</strong>区分 local commit、cloud tombstone、known/offline device、retention 和 retry。</div></article>
+  <article class="finding"><header><span class="badge badge-sev-high">high</span><h3 class="finding-title">Forgotten-Finish 缺少双信号发布门</h3><span class="finding-location">TPS-05</span></header><div class="finding-fix"><strong>修复：</strong>要求双信号；缺失/不可靠时抑制，physical-device gate 通过前关闭。</div></article>
+  <article class="finding"><header><span class="badge badge-sev-medium">medium</span><h3 class="finding-title">Research-consent withdrawal 生命周期不完整</h3><span class="finding-location">TPS-06</span></header><div class="finding-fix"><strong>修复：</strong>定义未来采集停止、本地/服务器数据、删除限制和普通记录连续性。</div></article>
+  <article class="finding"><header><span class="badge badge-sev-medium">medium</span><h3 class="finding-title">Export 清单和排除项缺失</h3><span class="finding-location">TPS-07</span></header><div class="finding-fix"><strong>修复：</strong>命名 format、records、revisions、provenance、account metadata 和 exclusions。</div></article>
+  <article class="finding"><header><span class="badge badge-sev-medium">medium</span><h3 class="finding-title">训练中权限撤销缺少有序降级</h3><span class="finding-location">TPS-08</span></header><div class="finding-fix"><strong>修复：</strong>保留事实、停止受影响 stream、abstain 依赖 inference、保留手动记录并安全延后解释。</div></article>
+  <article class="finding"><header><span class="badge badge-sev-low">low</span><h3 class="finding-title">最高风险复合状态缺少 canonical 中文优先文案</h3><span class="finding-location">TPS-09</span></header><div class="finding-fix"><strong>修复：</strong>添加 RPE provenance、abstention、HealthKit no-accessible-data、partial deletion、research withdrawal 和 retained raw data 文案。</div></article>
+</div></details></section>
+<div class="synthesis"><p><strong>评审后处置：</strong>聚焦复验确认没有残留 High blocker。11 个 High finding 已解决；R-H1 和 TPS-05 被安全门控，因为未批准的 load semantics 与 Forgotten-Finish 在明确的实机/发布门通过前保持不可用。原始计数为审计保留。</p></div>
+<div class="mechanical"><h3>机械检查</h3><ul><li>四份 spine frontmatter 均可解析并保持 in-progress。</li><li>五个来源有效；39 个 token 引用有效；11 个组件名和 9 个 flow heading 跨语言一致。</li><li>不存在 mockup、wireframe、import 或孤立视觉引用。</li></ul></div>
+<footer class="report-footer"><span>Rubric：.agents/skills/bmad-ux/references/validate.md</span><br><span>生成时间：2026-07-20T11:21:07+08:00</span></footer>
+</div></body></html>

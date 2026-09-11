@@ -1,0 +1,13 @@
+<!doctype html><html lang="zh-CN"><head><meta charset="utf-8"><meta name="viewport" content="width=2200"><title>FitnessAI 钛衡 · 状态系统</title><link rel="stylesheet" href="titanium.css"></head><body>
+<main class="board"><header class="board-head"><div><div class="eyebrow">FITNESSAI · TITANIUM MEASURE · STATE GRAMMAR</div><h1>事实、来源、确认与持久边界</h1><p>每个状态同时使用符号、字面文字、结构和对比。颜色只提供冗余；本机保存、等待同步和已同步始终分离。</p></div><div class="palette"><i></i><i></i><i></i><i></i><i></i></div></header>
+<section class="state-board-grid">
+  <article class="state-card pending"><div class="state-symbol" style="color:#ffc857">?</div><h3>动作不确定</h3><p>“这是杠铃卧推吗？”<br>次数、负重、组序号和时间均已保留。</p><footer>确认 · 更改 · 稍后处理</footer></article>
+  <article class="state-card ok"><div class="state-symbol" style="color:#80d6a3">✓</div><h3>用户已确认</h3><p>第 1 组 · RPE 8<br>来源：用户确认的实际 RPE。</p><footer>事实行 + 来源保持关联</footer></article>
+  <article class="state-card correction"><div class="state-symbol" style="color:#a9b4ff">↗</div><h3>已纠正</h3><p>杠铃卧推第 4 组<br>次数：8 → 7 · 其他字段未改变。</p><footer>旧值与修订历史可审计</footer></article>
+  <article class="state-card pending"><div class="state-symbol" style="color:#ffc857">◷</div><h3>等待同步</h3><p>已存于本 Watch。<br>3 个结构化事件等待账号同步。</p><footer>本机成功不会被云失败撤销</footer></article>
+  <article class="state-card pending"><div class="state-symbol" style="color:#ffc857">↻</div><h3>修订冲突</h3><p>Watch 与 iPhone 修订均已保留。<br>依赖 Analysis 暂时标为待更新。</p><footer>在 iPhone 比较并明确选择</footer></article>
+  <article class="state-card bad"><div class="state-symbol" style="color:#ff8a83">!</div><h3>本机保存失败</h3><p>本次新增内容尚未安全保存。<br>此前已保存的训练数据仍在。</p><footer>查看恢复 · 保留编辑草稿</footer></article>
+  <article class="state-card pending"><div class="state-symbol" style="color:#ffc857">/</div><h3>仅支持手动记录</h3><p>辅助重量语义尚未批准。<br>次数与时间已保留，负重待补全。</p><footer>在 iPhone 打开精确字段</footer></article>
+  <article class="state-card ok"><div class="state-symbol" style="color:#80d6a3">↻</div><h3>恢复 78%</h3><p>训练计划与 31/40 个训练场次已恢复。<br>本机训练记录可以继续。</p><footer>生命周期范围 + 剩余例外</footer></article>
+</section>
+</main></body></html>

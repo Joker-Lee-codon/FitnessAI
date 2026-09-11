@@ -1,0 +1,1277 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="referrer" content="no-referrer">
+<meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'unsafe-inline' 'unsafe-eval' 'wasm-unsafe-eval' blob: data: https://cdnjs.cloudflare.com https://cdn.jsdelivr.net https://esm.sh https://fonts.bunny.net https://fonts.googleapis.com https://fonts.gstatic.com https://unpkg.com; style-src 'unsafe-inline' blob: data: https://cdnjs.cloudflare.com https://cdn.jsdelivr.net https://esm.sh https://fonts.bunny.net https://fonts.googleapis.com https://fonts.gstatic.com https://unpkg.com; img-src blob: data: https://cdnjs.cloudflare.com https://cdn.jsdelivr.net https://esm.sh https://fonts.bunny.net https://fonts.googleapis.com https://fonts.gstatic.com https://unpkg.com; font-src blob: data: https://cdnjs.cloudflare.com https://cdn.jsdelivr.net https://esm.sh https://fonts.bunny.net https://fonts.googleapis.com https://fonts.gstatic.com https://unpkg.com; media-src blob: data: https://cdnjs.cloudflare.com https://cdn.jsdelivr.net https://esm.sh https://fonts.bunny.net https://fonts.googleapis.com https://fonts.gstatic.com https://unpkg.com; worker-src blob:; connect-src blob: data:; frame-src 'self'; object-src 'none'; base-uri 'none'; form-action 'none'">
+<title>Fitnessai Watch Pages V4</title>
+<style>:root{color-scheme:light dark;background:light-dark(rgb(255 255 255), rgb(24 24 24))}html,body{margin:0}body{box-sizing:border-box;padding:1rem;background:inherit}iframe{display:block;width:100%;max-width:736px;height:calc(100vh - 2rem);margin:0 auto;border:0}</style>
+</head>
+<body>
+<iframe sandbox="allow-scripts" referrerpolicy="no-referrer" title="Fitnessai Watch Pages V4" srcdoc="&lt;!doctype html&gt;
+&lt;html lang=&quot;en&quot;&gt;
+&lt;head&gt;
+&lt;meta charset=&quot;utf-8&quot;&gt;
+&lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1&quot;&gt;
+&lt;meta name=&quot;referrer&quot; content=&quot;no-referrer&quot;&gt;
+&lt;meta http-equiv=&quot;Content-Security-Policy&quot; content=&quot;default-src &#x27;none&#x27;; script-src &#x27;unsafe-inline&#x27; &#x27;unsafe-eval&#x27; &#x27;wasm-unsafe-eval&#x27; blob: data: https://cdnjs.cloudflare.com https://cdn.jsdelivr.net https://esm.sh https://fonts.bunny.net https://fonts.googleapis.com https://fonts.gstatic.com https://unpkg.com; style-src &#x27;unsafe-inline&#x27; blob: data: https://cdnjs.cloudflare.com https://cdn.jsdelivr.net https://esm.sh https://fonts.bunny.net https://fonts.googleapis.com https://fonts.gstatic.com https://unpkg.com; img-src blob: data: https://cdnjs.cloudflare.com https://cdn.jsdelivr.net https://esm.sh https://fonts.bunny.net https://fonts.googleapis.com https://fonts.gstatic.com https://unpkg.com; font-src blob: data: https://cdnjs.cloudflare.com https://cdn.jsdelivr.net https://esm.sh https://fonts.bunny.net https://fonts.googleapis.com https://fonts.gstatic.com https://unpkg.com; media-src blob: data: https://cdnjs.cloudflare.com https://cdn.jsdelivr.net https://esm.sh https://fonts.bunny.net https://fonts.googleapis.com https://fonts.gstatic.com https://unpkg.com; worker-src blob:; connect-src blob: data:; frame-src &#x27;none&#x27;; object-src &#x27;none&#x27;; base-uri &#x27;none&#x27;; form-action &#x27;none&#x27;&quot;&gt;
+&lt;title&gt;Fitnessai Watch Pages V4&lt;/title&gt;
+&lt;style&gt;:root {
+  color-scheme: light dark;
+  background-color: var(--background) !important;
+
+  /* Agent-facing contract; keep in sync with SKILL.md. */
+  --background: light-dark(rgb(255 255 255), rgb(24 24 24));
+  --foreground: light-dark(rgb(26 28 31), rgb(255 255 255));
+  --card: color-mix(in oklab, var(--foreground) 5%, transparent);
+  --card-foreground: var(--foreground);
+  --popover: light-dark(rgb(255 255 255), rgb(45 45 45));
+  --popover-foreground: var(--foreground);
+  --primary: light-dark(rgb(51 156 255), rgb(131 195 255));
+  --primary-foreground: light-dark(rgb(255 255 255), rgb(13 13 13));
+  --secondary: light-dark(rgb(255 255 255 / 96%), rgb(54 54 54 / 96%));
+  --secondary-foreground: var(--foreground);
+  --muted: color-mix(in srgb, var(--foreground) 10%, transparent);
+  --muted-foreground: light-dark(
+    rgb(26 28 31 / 49.4%),
+    rgb(255 255 255 / 49.8%)
+  );
+  --accent: light-dark(rgb(229 242 255), rgb(13 39 63));
+  --accent-foreground: var(--primary);
+  --destructive: light-dark(rgb(226 85 7), rgb(255 133 73));
+  --border: light-dark(rgb(26 28 31 / 8%), rgb(255 255 255 / 8.2%));
+  --input: light-dark(
+    rgb(26 28 31 / 11.8%),
+    color-mix(in oklab, rgb(0 0 0) 10%, transparent)
+  );
+  --ring: light-dark(rgb(51 156 255), rgb(131 195 255 / 76%));
+  --font-size-base: 14px;
+  --viz-series-1: var(--primary);
+  --viz-series-2: light-dark(rgb(243 136 59), rgb(245 154 86));
+  --viz-series-3: light-dark(rgb(93 201 119), rgb(116 213 139));
+  --viz-series-4: light-dark(rgb(235 119 177), rgb(240 143 192));
+  --viz-series-5: light-dark(rgb(155 121 236), rgb(170 145 239));
+  --viz-series-6: light-dark(rgb(58 185 177), rgb(90 203 194));
+
+  /* Internal implementation variables; not part of the agent contract. */
+  --font-sans: -apple-system, system-ui, &quot;Segoe UI&quot;, sans-serif;
+  --font-mono:
+    ui-monospace, SFMono-Regular, &quot;SF Mono&quot;, Menlo, Consolas, &quot;Liberation Mono&quot;,
+    monospace;
+  --font-size-normal: max(11px, var(--font-size-base));
+  --font-size-tooltip: calc(var(--font-size-base) - 1px);
+  --font-size-small: max(11px, calc(var(--font-size-base) - 2px));
+  --font-size-h1: calc(var(--font-size-normal) * 1.7142857143);
+  --font-size-h2: calc(var(--font-size-normal) * 1.4285714286);
+  --font-size-h3: calc(var(--font-size-normal) * 1.2857142857);
+  --font-weight-normal: 430;
+  --font-weight-medium: 500;
+  --line-height-normal: calc(var(--font-size-normal) * 1.5);
+  --line-height-tooltip: calc(var(--font-size-tooltip) * 1.4285714286);
+  --line-height-small: calc(var(--font-size-small) + 4px);
+  --radius: 12.5px;
+  --radius-sm: calc(var(--radius) * 0.6);
+  --radius-md: calc(var(--radius) * 0.8);
+  --radius-lg: var(--radius);
+  --radius-2xl: calc(var(--radius) * 1.6);
+  --radius-full: 9999px;
+  --shadow-sm: 0 1px 2px -1px rgb(0 0 0 / 8%);
+  --checkmark-image: url(&quot;data:image/svg+xml,%3Csvg xmlns=&#x27;http://www.w3.org/2000/svg&#x27; viewBox=&#x27;0 0 17 17&#x27;%3E%3Cpath d=&#x27;M12.8961 3.64101C13.1297 3.41418 13.4984 3.37523 13.7779 3.56581C14.0571 3.75635 14.1554 4.11331 14.0299 4.41347L13.9615 4.53847L7.71151 13.7045C7.59411 13.8767 7.4063 13.9877 7.19881 14.0072C6.99136 14.0267 6.78564 13.9533 6.63826 13.806L2.88826 10.056L2.79842 9.9457C2.6192 9.67407 2.64927 9.30496 2.88826 9.06581C3.12738 8.82669 3.49647 8.79676 3.76815 8.97597L3.8785 9.06581L7.03084 12.2182L12.8053 3.74941L12.8961 3.64101Z&#x27;/%3E%3C/svg%3E&quot;);
+
+  /* Legacy aliases; not part of the current agent contract. */
+  --viz-bg: transparent;
+  --viz-panel: var(--card);
+  --viz-border: var(--border);
+  --viz-text: var(--foreground);
+  --viz-muted: var(--muted-foreground);
+  --viz-accent: var(--primary);
+  --viz-accent-text: var(--primary-foreground);
+  --viz-accent-bg: var(--accent);
+  --viz-font-size: var(--font-size-base);
+  --viz-warning: var(--destructive);
+  --color-background-primary: var(--background);
+  --color-text-primary: var(--foreground);
+  --color-border-secondary: var(--border);
+}
+
+:root[data-theme=&quot;light&quot;] {
+  color-scheme: light;
+}
+
+:root[data-theme=&quot;dark&quot;] {
+  color-scheme: dark;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html &gt; body {
+  margin: 0;
+  padding: 5px;
+  color: var(--foreground);
+  background: transparent !important;
+  font-family: var(--font-sans);
+  font-size: var(--font-size-normal);
+  font-weight: var(--font-weight-normal);
+  line-height: var(--line-height-normal);
+}
+
+a {
+  color: color-mix(in srgb, var(--viz-accent) 80%, var(--viz-text) 20%);
+  cursor: pointer;
+  font-weight: var(--viz-font-weight-medium);
+  text-decoration: none;
+  text-underline-offset: 2px;
+}
+
+a:is(:hover, :focus-visible) {
+  text-decoration-line: underline;
+  text-decoration-style: dashed;
+  text-decoration-thickness: 0.5px;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p {
+  margin-block: 0;
+}
+
+h1 {
+  font-size: var(--font-size-h1);
+  font-weight: var(--font-weight-medium);
+  line-height: 1.25;
+}
+
+h2 {
+  font-size: var(--font-size-h2);
+  font-weight: var(--font-weight-medium);
+  line-height: 1.25;
+}
+
+h3,
+h4,
+h5,
+h6 {
+  font-size: var(--font-size-h3);
+  font-weight: var(--font-weight-medium);
+  line-height: 1.3;
+}
+
+b,
+strong,
+th {
+  font-weight: var(--font-weight-medium);
+}
+
+code:not(pre code) {
+  display: inline;
+  padding: 1px 6px;
+  border-radius: var(--radius-sm);
+  corner-shape: superellipse(1.5);
+  background: var(--muted);
+  font-family: var(--font-mono);
+  font-size: 0.92em;
+  overflow-wrap: anywhere;
+  -webkit-box-decoration-break: clone;
+  box-decoration-break: clone;
+  word-break: break-word;
+}
+
+.table-responsive {
+  width: 100%;
+  overflow-x: auto;
+  scrollbar-width: thin;
+}
+
+.table {
+  width: 100%;
+  border-collapse: collapse;
+  color: var(--foreground);
+  font: inherit;
+  text-align: start;
+}
+
+.table :is(th, td) {
+  padding-block: 10px;
+  padding-inline: 0 24px;
+  overflow-wrap: anywhere;
+  border-bottom: 1px solid var(--border);
+  text-align: start;
+  vertical-align: top;
+}
+
+.table-responsive &gt; .table :is(th, td) {
+  overflow-wrap: break-word;
+}
+
+.table :is(th, td):last-child {
+  padding-inline-end: 0;
+}
+
+.table :is(caption, thead th) {
+  font-weight: 600;
+}
+
+.table thead th {
+  padding-block: 8px;
+  border-bottom-color: color-mix(in srgb, var(--foreground) 16%, transparent);
+}
+
+.table tbody tr:last-child :is(th, td) {
+  border-bottom: 0;
+}
+
+.table.table-sm :is(th, td) {
+  padding-block: 6px;
+}
+
+.table.table-sm :is(th, td):not(:last-child) {
+  padding-inline-end: 16px;
+}
+
+.table :is(.text-end, [align=&quot;right&quot;]) {
+  text-align: end;
+  font-variant-numeric: tabular-nums;
+}
+
+.table :is(.text-center, [align=&quot;center&quot;]) {
+  text-align: center;
+}
+
+.table .text-nowrap {
+  white-space: nowrap;
+}
+
+#widget {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  width: 100%;
+  padding: 0;
+  background: transparent !important;
+}
+
+.card {
+  min-width: 0;
+  padding: 12px;
+  overflow: hidden;
+  overflow-wrap: break-word;
+  border-radius: var(--radius-2xl);
+  corner-shape: superellipse(1.5);
+  color: var(--card-foreground);
+  background: var(--card);
+}
+
+#widget &gt; :not(.card) {
+  width: 100% !important;
+  max-width: none !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  border: 0 !important;
+  border-radius: 0 !important;
+  background: transparent !important;
+  box-shadow: none !important;
+}
+
+.tooltip {
+  position: fixed;
+  z-index: 50;
+  top: 0;
+  left: 0;
+  width: max-content;
+  max-width: min(
+    20rem,
+    var(--tooltip-available-width, calc(100vw - 10px)),
+    calc(100vw - 10px)
+  );
+  max-height: min(
+    var(--tooltip-available-height, calc(100vh - 10px)),
+    calc(100vh - 10px)
+  );
+  padding: 4px 8px;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  corner-shape: superellipse(1.5);
+  color: var(--popover-foreground);
+  background: var(--popover);
+  box-shadow: none;
+  font-size: var(--font-size-tooltip);
+  line-height: var(--line-height-tooltip);
+  overflow-wrap: break-word;
+  white-space: normal;
+  pointer-events: none;
+  user-select: none;
+}
+
+.viz-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(max(180px, 24%), 1fr));
+  gap: 10px;
+}
+
+.viz-stat {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.viz-stat-value {
+  font-size: var(--font-size-h2);
+  font-weight: var(--font-weight-medium);
+  line-height: 1.25;
+}
+
+.viz-row {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 10px;
+}
+
+.viz-badge {
+  padding: 3px 8px;
+  border-radius: var(--radius-full);
+  color: var(--accent-foreground);
+  background: var(--accent);
+  font-weight: var(--font-weight-medium);
+}
+
+small,
+.text-small,
+.viz-badge {
+  font-size: var(--font-size-small);
+  line-height: var(--line-height-small);
+}
+
+.text-muted {
+  color: var(--muted-foreground);
+}
+
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+.viz-controls {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 8px;
+}
+
+.viz-controls &gt; .form-label {
+  display: grid;
+  min-width: min(100%, 260px);
+  flex: 1 1 280px;
+  grid-template-columns: minmax(0, 1fr) auto;
+  align-items: baseline;
+  gap: 2px 12px;
+  margin-bottom: 0;
+}
+
+.viz-controls &gt; .form-label &gt; :is(.form-control, .form-range, .form-select) {
+  grid-column: 1 / -1;
+}
+
+.btn,
+.form-check-input,
+.form-control,
+.form-range,
+.form-select {
+  font: inherit;
+}
+
+.btn {
+  appearance: button;
+  display: inline-flex;
+  inline-size: fit-content;
+  max-inline-size: 100%;
+  min-height: 28px;
+  align-items: center;
+  justify-content: center;
+  gap: 4px;
+  margin: 0;
+  padding: 0 8px;
+  -webkit-app-region: no-drag;
+  border: 1px solid var(--input);
+  border-radius: var(--radius-lg);
+  corner-shape: superellipse(1.5);
+  color: var(--secondary-foreground);
+  background: var(--secondary);
+  cursor: var(--cursor-interaction, pointer);
+  text-align: center;
+  text-decoration: none;
+  white-space: nowrap;
+  user-select: none;
+  -webkit-font-smoothing: antialiased;
+}
+
+.btn:is(.btn-block, .viz-tile) {
+  inline-size: 100%;
+}
+
+.btn.viz-tile {
+  min-width: 0;
+  overflow-wrap: anywhere;
+  white-space: normal;
+}
+
+a.btn {
+  cursor: pointer;
+  text-decoration: none;
+}
+
+.btn:not(:disabled):hover {
+  background: color-mix(in srgb, var(--foreground) 6%, var(--secondary));
+}
+
+.btn-primary {
+  border-color: transparent;
+  color: var(--primary-foreground);
+  background: var(--foreground);
+  background-clip: padding-box;
+}
+
+.btn-primary .text-muted {
+  color: color-mix(in srgb, var(--primary-foreground) 50%, transparent);
+}
+
+.btn-primary:not(:disabled):hover {
+  background: color-mix(in srgb, var(--foreground) 80%, transparent);
+  background-clip: padding-box;
+}
+
+.btn-ghost {
+  border-color: transparent;
+  color: var(--muted-foreground);
+  background: transparent;
+}
+
+.btn-ghost:not(:disabled):hover {
+  color: var(--foreground);
+  background: color-mix(in srgb, var(--foreground) 6%, var(--secondary));
+}
+
+.btn:disabled {
+  cursor: not-allowed;
+  opacity: 0.4;
+}
+
+[data-lucide] {
+  stroke-width: 1.6;
+}
+
+.form-label {
+  display: block;
+  margin-bottom: 6px;
+  color: var(--foreground);
+}
+
+.form-control {
+  display: block;
+  width: 100%;
+  min-height: 28px;
+  padding: 0 8px;
+  outline: none;
+  border: 1px solid var(--input);
+  border-radius: var(--radius-lg);
+  corner-shape: superellipse(1.5);
+  color: var(--foreground);
+  background: var(--secondary);
+}
+
+.form-control::placeholder {
+  color: var(--muted-foreground);
+}
+
+.form-control[type=&quot;file&quot;] {
+  padding: 0;
+  overflow: hidden;
+  cursor: var(--cursor-interaction, pointer);
+}
+
+.form-control[type=&quot;file&quot;]::file-selector-button {
+  min-height: 26px;
+  margin-right: 8px;
+  padding: 0 8px;
+  border: 0;
+  border-right: 1px solid var(--input);
+  color: var(--secondary-foreground);
+  background: var(--secondary);
+  cursor: inherit;
+  font: inherit;
+}
+
+.form-control[type=&quot;file&quot;]:not(:disabled):hover::file-selector-button {
+  background: color-mix(in srgb, var(--foreground) 6%, var(--secondary));
+}
+
+.form-control-color[type=&quot;color&quot;] {
+  width: 40px;
+  height: 28px;
+  padding: 3px;
+  cursor: var(--cursor-interaction, pointer);
+}
+
+.form-control-color[type=&quot;color&quot;]::-webkit-color-swatch-wrapper {
+  padding: 0;
+}
+
+.form-control-color[type=&quot;color&quot;]::-webkit-color-swatch {
+  border: 0;
+  border-radius: calc(var(--radius-lg) - 4px);
+  corner-shape: superellipse(1.5);
+}
+
+textarea.form-control {
+  height: auto;
+  min-height: 72px;
+  padding: 8px 10px;
+  resize: vertical;
+}
+
+.form-control:focus-visible {
+  border-color: var(--ring);
+  box-shadow: inset 0 0 0 1px var(--ring);
+}
+
+.form-control:disabled,
+.form-select:disabled {
+  cursor: not-allowed;
+  opacity: 0.4;
+}
+
+.form-select {
+  appearance: none;
+  display: block;
+  width: 100%;
+  min-height: 28px;
+  margin: 0;
+  padding: 0 32px 0 8px;
+  outline: none;
+  border: 1px solid var(--input);
+  border-radius: var(--radius-lg);
+  corner-shape: superellipse(1.5);
+  color: var(--foreground);
+  background-color: var(--secondary);
+  background-image:
+    linear-gradient(45deg, transparent 50%, var(--muted-foreground) 50%),
+    linear-gradient(135deg, var(--muted-foreground) 50%, transparent 50%);
+  background-position:
+    calc(100% - 14px) 50%,
+    calc(100% - 10px) 50%;
+  background-repeat: no-repeat;
+  background-size: 4px 4px;
+  cursor: var(--cursor-interaction, default);
+}
+
+.form-select:not(:disabled):hover {
+  background-color: color-mix(in srgb, var(--foreground) 6%, var(--secondary));
+}
+
+.form-select:focus-visible {
+  border-color: var(--ring);
+  box-shadow: inset 0 0 0 1px var(--ring);
+}
+
+.form-check {
+  display: flex;
+  min-height: 20px;
+  align-items: center;
+  gap: 6px;
+}
+
+.form-check-input {
+  appearance: none;
+  width: 14px;
+  height: 14px;
+  flex: 0 0 auto;
+  margin: 0;
+  border: 1px solid var(--input);
+  color: var(--primary-foreground);
+  background-color: transparent;
+  cursor: var(--cursor-interaction, default);
+  transition:
+    background-color 150ms,
+    border-color 150ms,
+    box-shadow 150ms;
+}
+
+.form-check:not(.form-switch) .form-check-input[type=&quot;checkbox&quot;] {
+  border-color: var(--input);
+  border-radius: var(--radius-sm);
+  corner-shape: superellipse(1.5);
+  background-color: var(--secondary);
+  box-shadow: var(--shadow-sm);
+}
+
+.form-check:not(.form-switch)
+  .form-check-input:not(:disabled):not(:checked):hover {
+  background-color: var(--card);
+}
+
+.form-check:not(.form-switch) .form-check-input[type=&quot;checkbox&quot;]:checked {
+  border-color: var(--primary);
+  background-color: var(--primary);
+}
+
+.form-check:not(.form-switch)
+  .form-check-input[type=&quot;checkbox&quot;]:checked::before {
+  display: block;
+  width: 100%;
+  height: 100%;
+  background: var(--primary-foreground);
+  content: &quot;&quot;;
+  mask: var(--checkmark-image) center / 12px 12px no-repeat;
+}
+
+.form-check-input[type=&quot;radio&quot;] {
+  width: 14px;
+  height: 14px;
+  border-radius: var(--radius-full);
+}
+
+.form-check-input[type=&quot;radio&quot;]:checked {
+  border: 2px solid var(--primary);
+  background:
+    radial-gradient(circle, var(--primary-foreground) 0 2.5px, transparent 3px),
+    var(--primary);
+}
+
+.form-check:not(.form-switch) .form-check-input:focus-visible {
+  outline: 2px solid var(--ring);
+  outline-offset: 2px;
+}
+
+.form-check:not(.form-switch) .form-check-input:disabled {
+  cursor: not-allowed;
+  pointer-events: none;
+}
+
+.form-check:not(.form-switch) .form-check-input:disabled + .form-check-label {
+  cursor: not-allowed;
+}
+
+.form-switch .form-check-input:disabled,
+.form-switch .form-check-input:disabled + .form-check-label {
+  cursor: not-allowed;
+  opacity: 0.6;
+}
+
+.form-check-label {
+  color: var(--foreground);
+  cursor: var(--cursor-interaction, default);
+}
+
+.form-switch .form-check-input {
+  position: relative;
+  width: 32px;
+  height: 20px;
+  border: 0;
+  border-radius: var(--radius-full);
+  background: var(--muted);
+  box-shadow: none;
+  transition: background-color 200ms cubic-bezier(0, 0, 0.2, 1);
+}
+
+.form-switch .form-check-input::before {
+  position: absolute;
+  top: 50%;
+  left: 0;
+  width: 16px;
+  height: 16px;
+  box-sizing: border-box;
+  border: 1px solid light-dark(var(--primary-foreground), var(--foreground));
+  border-radius: var(--radius-full);
+  background: light-dark(var(--primary-foreground), var(--foreground));
+  box-shadow: var(--shadow-sm);
+  content: &quot;&quot;;
+  transform: translate(2px, -50%);
+  transition: transform 200ms cubic-bezier(0, 0, 0.2, 1);
+}
+
+.form-switch .form-check-input:checked {
+  background: var(--primary);
+}
+
+.form-switch .form-check-input:checked::before {
+  transform: translate(14px, -50%);
+}
+
+.form-switch .form-check-input:focus-visible {
+  box-shadow: 0 0 0 2px var(--ring);
+}
+
+.form-range {
+  appearance: none;
+  display: block;
+  width: 100%;
+  height: 28px;
+  flex: 1;
+  margin: 0;
+  padding: 0;
+  outline: none;
+  border: 0;
+  accent-color: var(--primary);
+  background: linear-gradient(
+      color-mix(in srgb, var(--foreground) 7%, transparent),
+      color-mix(in srgb, var(--foreground) 7%, transparent)
+    )
+    center / 100% 2px no-repeat;
+}
+
+.form-range::-webkit-slider-runnable-track {
+  height: 28px;
+  background: transparent;
+}
+
+.form-range::-webkit-slider-thumb {
+  appearance: none;
+  width: 20px;
+  height: 20px;
+  margin-top: 4px;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-full);
+  background: light-dark(var(--primary-foreground), var(--foreground));
+}
+
+.form-range:focus-visible::-webkit-slider-thumb {
+  border-color: var(--ring);
+  box-shadow: inset 0 0 0 1px var(--ring);
+}
+
+.form-range::-moz-range-track {
+  height: 28px;
+  background: transparent;
+}
+
+.form-range::-moz-range-thumb {
+  width: 20px;
+  height: 20px;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-full);
+  background: light-dark(var(--primary-foreground), var(--foreground));
+}
+
+.form-range:focus-visible::-moz-range-thumb {
+  border-color: var(--ring);
+  box-shadow: inset 0 0 0 1px var(--ring);
+}
+
+.form-range:disabled {
+  cursor: not-allowed;
+  opacity: 0.4;
+}
+
+.btn:not(.btn-primary, .viz-tile):is(
+    [aria-pressed=&quot;true&quot;],
+    [aria-selected=&quot;true&quot;],
+    .is-selected
+  ) {
+  border-color: var(--primary);
+  color: var(--primary-foreground);
+  background: var(--primary);
+}
+
+.btn.viz-tile:is([aria-pressed=&quot;true&quot;], [aria-selected=&quot;true&quot;], .is-selected) {
+  border-color: var(--primary);
+  box-shadow: inset 0 0 0 1px var(--primary);
+}
+
+.btn:focus-visible {
+  outline: 2px solid var(--ring);
+  outline-offset: 2px;
+}
+
+svg {
+  display: block;
+  max-width: 100%;
+  height: auto;
+}
+
+#widget &gt; svg {
+  width: 100%;
+}
+
+.text-warning,
+.text-destructive {
+  color: var(--destructive);
+}
+
+html&gt;body{padding:0}&lt;/style&gt;
+&lt;/head&gt;
+&lt;body&gt;
+&lt;div id=&quot;fitnessai-watch-pages-v4-20260720&quot;&gt;
+  &lt;style&gt;
+    #fitnessai-watch-pages-v4-20260720 { color: var(--foreground); display: grid; gap: 16px; }
+    #fitnessai-watch-pages-v4-20260720 .page-tabs { display: flex; flex-wrap: wrap; gap: 8px; }
+    #fitnessai-watch-pages-v4-20260720 .stage { display: grid; grid-template-columns: minmax(0, 1fr) minmax(270px, 325px) minmax(0, 1fr); align-items: center; gap: 20px; }
+    #fitnessai-watch-pages-v4-20260720 .page-meta,
+    #fitnessai-watch-pages-v4-20260720 .page-note { display: grid; gap: 7px; }
+    #fitnessai-watch-pages-v4-20260720 .page-kicker,
+    #fitnessai-watch-pages-v4-20260720 .page-note,
+    #fitnessai-watch-pages-v4-20260720 .muted { color: var(--muted-foreground); }
+    #fitnessai-watch-pages-v4-20260720 .watch-shell { background: var(--foreground); border: 1px solid var(--border); border-radius: 48px; padding: 10px; box-shadow: 0 14px 32px color-mix(in srgb, var(--foreground) 18%, transparent); }
+    #fitnessai-watch-pages-v4-20260720 .watch-screen { background: var(--background); color: var(--foreground); border-radius: 39px; min-height: 410px; padding: 18px 15px; display: flex; flex-direction: column; gap: 11px; position: relative; }
+    #fitnessai-watch-pages-v4-20260720 .screen-top,
+    #fitnessai-watch-pages-v4-20260720 .fact-row,
+    #fitnessai-watch-pages-v4-20260720 .value-row { display: flex; align-items: center; justify-content: space-between; gap: 8px; }
+    #fitnessai-watch-pages-v4-20260720 .screen-top h3,
+    #fitnessai-watch-pages-v4-20260720 .fact-row h3,
+    #fitnessai-watch-pages-v4-20260720 .value-row h3 { margin: 0; }
+    #fitnessai-watch-pages-v4-20260720 .screen-main { display: grid; gap: 8px; align-content: start; flex: 1; }
+    #fitnessai-watch-pages-v4-20260720 .plan-list { display: grid; gap: 0; align-content: start; }
+    #fitnessai-watch-pages-v4-20260720 .plan-item { display: grid; gap: 2px; padding: 6px 0; border-bottom: 1px solid var(--border); }
+    #fitnessai-watch-pages-v4-20260720 .plan-item h3 { margin: 0; }
+    #fitnessai-watch-pages-v4-20260720 .fact-row,
+    #fitnessai-watch-pages-v4-20260720 .stack-item { padding: 7px 0; border-bottom: 1px solid var(--border); }
+    #fitnessai-watch-pages-v4-20260720 .stack-item { display: grid; gap: 3px; }
+    #fitnessai-watch-pages-v4-20260720 .stack-item h3 { margin: 0; }
+    #fitnessai-watch-pages-v4-20260720 .fact-row:last-child,
+    #fitnessai-watch-pages-v4-20260720 .stack-item:last-child,
+    #fitnessai-watch-pages-v4-20260720 .plan-item:last-child { border-bottom: 0; }
+    #fitnessai-watch-pages-v4-20260720 .large-primary { min-height: 54px; }
+    #fitnessai-watch-pages-v4-20260720 .free-entry { display: grid; place-items: center; align-content: center; gap: 24px; flex: 1; text-align: center; }
+    #fitnessai-watch-pages-v4-20260720 .free-entry h2 { margin: 0; }
+    #fitnessai-watch-pages-v4-20260720 .free-start-button { width: 134px; height: 134px; border: 0; border-radius: 50%; background: var(--primary); color: var(--primary-foreground); display: grid; place-items: center; cursor: pointer; font: inherit; }
+    #fitnessai-watch-pages-v4-20260720 .free-start-label { font-size: calc(var(--font-size-base) * 1.25); font-weight: 500; }
+    #fitnessai-watch-pages-v4-20260720 .session-layout,
+    #fitnessai-watch-pages-v4-20260720 .finish-layout { display: grid; gap: 8px; align-content: start; }
+    #fitnessai-watch-pages-v4-20260720 .effort-row { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 6px; }
+    #fitnessai-watch-pages-v4-20260720 .effort-row .btn { width: 100%; }
+    #fitnessai-watch-pages-v4-20260720 .rest-layout { display: grid; align-content: start; justify-items: stretch; gap: 14px; padding-top: 28px; }
+    #fitnessai-watch-pages-v4-20260720 .timer-visual { width: 174px; height: 174px; display: grid; place-items: center; position: relative; justify-self: center; }
+    #fitnessai-watch-pages-v4-20260720 .timer-visual svg { width: 174px; height: 174px; transform: rotate(-90deg); }
+    #fitnessai-watch-pages-v4-20260720 .timer-visual h1 { position: absolute; margin: 0; }
+    #fitnessai-watch-pages-v4-20260720 .rest-track { fill: none; stroke: var(--primary); stroke-width: 9; opacity: .48; }
+    #fitnessai-watch-pages-v4-20260720 .rest-progress { fill: none; stroke: var(--viz-series-2); stroke-width: 9; stroke-linecap: round; }
+    #fitnessai-watch-pages-v4-20260720 .rest-guidance { display: grid; gap: 3px; text-align: center; }
+    #fitnessai-watch-pages-v4-20260720 .rest-guidance h3 { margin: 0; }
+    #fitnessai-watch-pages-v4-20260720 .exercise-figure { margin: 0; min-height: 105px; display: grid; place-items: center; color: var(--muted-foreground); }
+    #fitnessai-watch-pages-v4-20260720 .exercise-figure svg { width: 150px; max-width: 70%; height: auto; }
+    #fitnessai-watch-pages-v4-20260720 .exercise-name { text-align: center; display: grid; gap: 4px; }
+    #fitnessai-watch-pages-v4-20260720 .exercise-name h3 { margin: 0; }
+    #fitnessai-watch-pages-v4-20260720 .button-stack { display: grid; gap: 8px; }
+    #fitnessai-watch-pages-v4-20260720 .watch-dialog { position: absolute; inset: 72px 14px auto; z-index: 2; display: grid; gap: 12px; }
+    #fitnessai-watch-pages-v4-20260720 [hidden] { display: none; }
+    @media (max-width: 620px) {
+      #fitnessai-watch-pages-v4-20260720 .stage { grid-template-columns: 1fr; }
+      #fitnessai-watch-pages-v4-20260720 .page-meta,
+      #fitnessai-watch-pages-v4-20260720 .page-note { text-align: center; }
+      #fitnessai-watch-pages-v4-20260720 .watch-shell { width: min(100%, 305px); justify-self: center; }
+    }
+  &lt;/style&gt;
+
+  &lt;nav class=&quot;page-tabs&quot; aria-label=&quot;Apple Watch 主要页面&quot;&gt;
+    &lt;button class=&quot;btn&quot; type=&quot;button&quot; data-page=&quot;0&quot; aria-pressed=&quot;true&quot;&gt;W1A 计划训练&lt;/button&gt;
+    &lt;button class=&quot;btn&quot; type=&quot;button&quot; data-page=&quot;1&quot; aria-pressed=&quot;false&quot;&gt;W1B 自由训练&lt;/button&gt;
+    &lt;button class=&quot;btn&quot; type=&quot;button&quot; data-page=&quot;2&quot; aria-pressed=&quot;false&quot;&gt;W2A 计划正式组&lt;/button&gt;
+    &lt;button class=&quot;btn&quot; type=&quot;button&quot; data-page=&quot;3&quot; aria-pressed=&quot;false&quot;&gt;W2B 自由正式组&lt;/button&gt;
+    &lt;button class=&quot;btn&quot; type=&quot;button&quot; data-page=&quot;4&quot; aria-pressed=&quot;false&quot;&gt;W3A 普通休息&lt;/button&gt;
+    &lt;button class=&quot;btn&quot; type=&quot;button&quot; data-page=&quot;5&quot; aria-pressed=&quot;false&quot;&gt;W3B 动作确认&lt;/button&gt;
+    &lt;button class=&quot;btn&quot; type=&quot;button&quot; data-page=&quot;6&quot; aria-pressed=&quot;false&quot;&gt;W4 中断恢复&lt;/button&gt;
+    &lt;button class=&quot;btn&quot; type=&quot;button&quot; data-page=&quot;7&quot; aria-pressed=&quot;false&quot;&gt;W5 结束回顾&lt;/button&gt;
+  &lt;/nav&gt;
+
+  &lt;section class=&quot;stage&quot; aria-live=&quot;polite&quot;&gt;
+    &lt;div class=&quot;page-meta&quot;&gt;
+      &lt;span class=&quot;page-kicker text-small&quot; id=&quot;watch-v4-index&quot;&gt;页面 W1A · 有预定计划&lt;/span&gt;
+      &lt;h3 id=&quot;watch-v4-name&quot;&gt;Planned Workout Entry&lt;/h3&gt;
+      &lt;span id=&quot;watch-v4-purpose&quot;&gt;计划训练入口&lt;/span&gt;
+    &lt;/div&gt;
+    &lt;div class=&quot;watch-shell&quot; aria-label=&quot;Apple Watch 页面预览&quot;&gt;
+      &lt;div class=&quot;watch-screen&quot; id=&quot;watch-v4-screen&quot;&gt;&lt;/div&gt;
+    &lt;/div&gt;
+    &lt;div class=&quot;page-note&quot;&gt;
+      &lt;span class=&quot;text-small&quot;&gt;页面职责&lt;/span&gt;
+      &lt;span id=&quot;watch-v4-job&quot;&gt;紧凑展示计划动作，并保留清晰的大尺寸主操作。&lt;/span&gt;
+    &lt;/div&gt;
+  &lt;/section&gt;
+
+  &lt;script&gt;
+    (() =&gt; {
+      const root = document.getElementById(&#x27;fitnessai-watch-pages-v4-20260720&#x27;);
+      const pages = [
+        {
+          index: &#x27;页面 W1A · 有预定计划&#x27;, name: &#x27;Planned Workout Entry&#x27;, purpose: &#x27;计划训练入口&#x27;,
+          job: &#x27;紧凑展示计划动作，并保留清晰的大尺寸主操作。&#x27;,
+          html: &#x27;&lt;div class=&quot;screen-top&quot;&gt;&lt;h3&gt;胸与三头强化&lt;/h3&gt;&lt;h3&gt;10:18&lt;/h3&gt;&lt;/div&gt;&lt;div class=&quot;screen-main&quot;&gt;&lt;div class=&quot;plan-list&quot;&gt;&lt;div class=&quot;plan-item&quot;&gt;&lt;h3&gt;杠铃卧推&lt;/h3&gt;&lt;span class=&quot;muted&quot;&gt;4 组 × 8 次&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;plan-item&quot;&gt;&lt;h3&gt;上斜哑铃卧推&lt;/h3&gt;&lt;span class=&quot;muted&quot;&gt;3 组 × 10 次&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;plan-item&quot;&gt;&lt;h3&gt;绳索下压&lt;/h3&gt;&lt;span class=&quot;muted&quot;&gt;3 组 × 12 次&lt;/span&gt;&lt;/div&gt;&lt;/div&gt;&lt;/div&gt;&lt;button class=&quot;btn btn-primary btn-block large-primary&quot; type=&quot;button&quot;&gt;开始训练&lt;/button&gt;&#x27;
+        },
+        {
+          index: &#x27;页面 W1B · 无预定计划&#x27;, name: &#x27;Free Workout Entry&#x27;, purpose: &#x27;自由训练入口&#x27;,
+          job: &#x27;居中的自由训练入口进一步放大操作文字。&#x27;,
+          html: &#x27;&lt;div class=&quot;free-entry&quot;&gt;&lt;h2&gt;自由训练&lt;/h2&gt;&lt;button class=&quot;free-start-button&quot; type=&quot;button&quot;&gt;&lt;span class=&quot;free-start-label&quot;&gt;开始训练&lt;/span&gt;&lt;/button&gt;&lt;/div&gt;&#x27;
+        },
+        {
+          index: &#x27;页面 W2A · 计划训练&#x27;, name: &#x27;Planned Active Session&#x27;, purpose: &#x27;计划正式组记录&#x27;,
+          job: &#x27;记录按钮紧接体感选项，避免中部出现无意义的大块留白。&#x27;,
+          html: &#x27;&lt;div class=&quot;screen-top&quot;&gt;&lt;h3&gt;杠铃卧推&lt;/h3&gt;&lt;h3&gt;2 / 4&lt;/h3&gt;&lt;/div&gt;&lt;div class=&quot;session-layout&quot;&gt;&lt;div class=&quot;value-row&quot;&gt;&lt;h3 data-weight-value&gt;80&lt;/h3&gt;&lt;button class=&quot;btn btn-ghost&quot; type=&quot;button&quot; data-unit-toggle&gt;kg&lt;/button&gt;&lt;/div&gt;&lt;div class=&quot;fact-row&quot;&gt;&lt;h3&gt;8&lt;/h3&gt;&lt;h3&gt;次数&lt;/h3&gt;&lt;/div&gt;&lt;div class=&quot;stack-item&quot;&gt;&lt;span class=&quot;muted&quot;&gt;下一组&lt;/span&gt;&lt;h3 data-related-set data-kg=&quot;82.5 kg × 8 次&quot; data-lb=&quot;181.9 lb × 8 次&quot;&gt;82.5 kg × 8 次&lt;/h3&gt;&lt;/div&gt;&lt;div class=&quot;value-row&quot;&gt;&lt;h3&gt;本组感受&lt;/h3&gt;&lt;button class=&quot;btn btn-ghost&quot; type=&quot;button&quot; data-effort-toggle&gt;使用 RPE&lt;/button&gt;&lt;/div&gt;&lt;div class=&quot;effort-row&quot;&gt;&lt;button class=&quot;btn&quot; type=&quot;button&quot; data-effort=&quot;0&quot; aria-pressed=&quot;false&quot;&gt;简单&lt;/button&gt;&lt;button class=&quot;btn&quot; type=&quot;button&quot; data-effort=&quot;1&quot; aria-pressed=&quot;false&quot;&gt;正常&lt;/button&gt;&lt;button class=&quot;btn&quot; type=&quot;button&quot; data-effort=&quot;2&quot; aria-pressed=&quot;false&quot;&gt;困难&lt;/button&gt;&lt;/div&gt;&lt;button class=&quot;btn btn-primary btn-block large-primary&quot; type=&quot;button&quot;&gt;记录本组&lt;/button&gt;&lt;/div&gt;&#x27;
+        },
+        {
+          index: &#x27;页面 W2B · 推荐方案&#x27;, name: &#x27;Free Active Session&#x27;, purpose: &#x27;自由训练正式组&#x27;,
+          job: &#x27;自由训练沿用紧凑节奏，不显示计划组数，只显示上一组参考。&#x27;,
+          html: &#x27;&lt;div class=&quot;screen-top&quot;&gt;&lt;h3&gt;杠铃卧推&lt;/h3&gt;&lt;/div&gt;&lt;div class=&quot;session-layout&quot;&gt;&lt;div class=&quot;value-row&quot;&gt;&lt;h3 data-weight-value&gt;80&lt;/h3&gt;&lt;button class=&quot;btn btn-ghost&quot; type=&quot;button&quot; data-unit-toggle&gt;kg&lt;/button&gt;&lt;/div&gt;&lt;div class=&quot;fact-row&quot;&gt;&lt;h3&gt;8&lt;/h3&gt;&lt;h3&gt;次数&lt;/h3&gt;&lt;/div&gt;&lt;div class=&quot;stack-item&quot;&gt;&lt;span class=&quot;muted&quot;&gt;上一组&lt;/span&gt;&lt;h3 data-related-set data-kg=&quot;77.5 kg × 8 次&quot; data-lb=&quot;170.9 lb × 8 次&quot;&gt;77.5 kg × 8 次&lt;/h3&gt;&lt;/div&gt;&lt;div class=&quot;value-row&quot;&gt;&lt;h3&gt;本组感受&lt;/h3&gt;&lt;button class=&quot;btn btn-ghost&quot; type=&quot;button&quot; data-effort-toggle&gt;使用 RPE&lt;/button&gt;&lt;/div&gt;&lt;div class=&quot;effort-row&quot;&gt;&lt;button class=&quot;btn&quot; type=&quot;button&quot; data-effort=&quot;0&quot; aria-pressed=&quot;false&quot;&gt;简单&lt;/button&gt;&lt;button class=&quot;btn&quot; type=&quot;button&quot; data-effort=&quot;1&quot; aria-pressed=&quot;false&quot;&gt;正常&lt;/button&gt;&lt;button class=&quot;btn&quot; type=&quot;button&quot; data-effort=&quot;2&quot; aria-pressed=&quot;false&quot;&gt;困难&lt;/button&gt;&lt;/div&gt;&lt;button class=&quot;btn btn-primary btn-block large-primary&quot; type=&quot;button&quot;&gt;记录本组&lt;/button&gt;&lt;/div&gt;&#x27;
+        },
+        {
+          index: &#x27;页面 W3A · 无需确认&#x27;, name: &#x27;Rest Timer&#x27;, purpose: &#x27;普通组间休息&#x27;,
+          job: &#x27;中心时间持续增加；外圈进度每分钟完成并重新开始。&#x27;,
+          html: &#x27;&lt;div class=&quot;rest-layout&quot;&gt;&lt;div class=&quot;timer-visual&quot; role=&quot;timer&quot; aria-label=&quot;已休息 54 秒&quot;&gt;&lt;svg viewBox=&quot;0 0 174 174&quot; aria-hidden=&quot;true&quot;&gt;&lt;circle class=&quot;rest-track&quot; cx=&quot;87&quot; cy=&quot;87&quot; r=&quot;70&quot;&gt;&lt;/circle&gt;&lt;circle class=&quot;rest-progress&quot; data-rest-progress cx=&quot;87&quot; cy=&quot;87&quot; r=&quot;70&quot;&gt;&lt;/circle&gt;&lt;/svg&gt;&lt;h1 data-rest-time&gt;00:54&lt;/h1&gt;&lt;/div&gt;&lt;div class=&quot;rest-guidance&quot;&gt;&lt;span class=&quot;muted&quot;&gt;下一组&lt;/span&gt;&lt;h3&gt;82.5 kg × 8 次&lt;/h3&gt;&lt;/div&gt;&lt;button class=&quot;btn btn-primary btn-block large-primary&quot; type=&quot;button&quot;&gt;结束休息&lt;/button&gt;&lt;/div&gt;&#x27;
+        },
+        {
+          index: &#x27;页面 W3B · 需要确认&#x27;, name: &#x27;Rest Confirmation&#x27;, purpose: &#x27;休息中的动作确认&#x27;,
+          job: &#x27;选择其他后转到手机选择；手机只把选中的动作图片传回 Watch。&#x27;,
+          html: &#x27;&lt;div class=&quot;screen-top&quot;&gt;&lt;h3&gt;休息&lt;/h3&gt;&lt;h3&gt;00:54&lt;/h3&gt;&lt;/div&gt;&lt;div class=&quot;screen-main&quot;&gt;&lt;figure class=&quot;exercise-figure&quot; aria-label=&quot;杠铃卧推动作示意图&quot;&gt;&lt;svg viewBox=&quot;0 0 180 100&quot; role=&quot;img&quot; aria-label=&quot;杠铃卧推动作示意&quot;&gt;&lt;g fill=&quot;none&quot; stroke=&quot;currentColor&quot; stroke-width=&quot;5&quot; stroke-linecap=&quot;round&quot; stroke-linejoin=&quot;round&quot;&gt;&lt;path d=&quot;M20 23h140M36 15v16M144 15v16M65 23v18M115 23v18M51 69h85M63 69v17M124 69v17M74 61l20-20 22 20M91 42l-20 8M96 42l23 8&quot;/&gt;&lt;circle cx=&quot;68&quot; cy=&quot;56&quot; r=&quot;7&quot;/&gt;&lt;/g&gt;&lt;/svg&gt;&lt;/figure&gt;&lt;div class=&quot;exercise-name&quot;&gt;&lt;h3&gt;杠铃卧推&lt;/h3&gt;&lt;h3&gt;80 kg · 8 次&lt;/h3&gt;&lt;/div&gt;&lt;/div&gt;&lt;div class=&quot;button-stack&quot;&gt;&lt;button class=&quot;btn btn-primary btn-block&quot; type=&quot;button&quot;&gt;确认动作&lt;/button&gt;&lt;button class=&quot;btn btn-block&quot; type=&quot;button&quot; data-choose-other&gt;选择其他&lt;/button&gt;&lt;button class=&quot;btn btn-ghost btn-block&quot; type=&quot;button&quot;&gt;稍后处理&lt;/button&gt;&lt;/div&gt;&lt;div class=&quot;card watch-dialog&quot; data-phone-dialog hidden&gt;&lt;h3&gt;请在手机上选择正确动作&lt;/h3&gt;&lt;span&gt;选择后，动作名称和图片会传回手表。&lt;/span&gt;&lt;button class=&quot;btn btn-primary btn-block&quot; type=&quot;button&quot; data-close-dialog&gt;知道了&lt;/button&gt;&lt;/div&gt;&#x27;
+        },
+        {
+          index: &#x27;页面 W4 · 仅异常中断后&#x27;, name: &#x27;Watch Recovery&#x27;, purpose: &#x27;训练中断恢复&#x27;,
+          job: &#x27;仅在训练未结束、但 Watch 会话意外中断并重新进入时出现。&#x27;,
+          html: &#x27;&lt;div class=&quot;screen-top&quot;&gt;&lt;h3&gt;恢复训练&lt;/h3&gt;&lt;h3&gt;10:46&lt;/h3&gt;&lt;/div&gt;&lt;div class=&quot;screen-main&quot;&gt;&lt;div&gt;&lt;h3&gt;胸与三头强化&lt;/h3&gt;&lt;span class=&quot;muted&quot;&gt;检测到一段未结束的训练&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;fact-row&quot;&gt;&lt;h3&gt;已训练&lt;/h3&gt;&lt;h3&gt;22 分钟&lt;/h3&gt;&lt;/div&gt;&lt;div class=&quot;fact-row&quot;&gt;&lt;h3&gt;已记录&lt;/h3&gt;&lt;h3&gt;7 组&lt;/h3&gt;&lt;/div&gt;&lt;div class=&quot;stack-item&quot;&gt;&lt;span class=&quot;muted&quot;&gt;最后记录&lt;/span&gt;&lt;h3&gt;杠铃卧推 · 80 kg × 8&lt;/h3&gt;&lt;/div&gt;&lt;/div&gt;&lt;div class=&quot;button-stack&quot;&gt;&lt;button class=&quot;btn btn-primary btn-block&quot; type=&quot;button&quot;&gt;继续训练&lt;/button&gt;&lt;button class=&quot;btn btn-block&quot; type=&quot;button&quot;&gt;结束并标记未完成&lt;/button&gt;&lt;button class=&quot;btn btn-ghost btn-block text-destructive&quot; type=&quot;button&quot;&gt;丢弃训练…&lt;/button&gt;&lt;/div&gt;&#x27;
+        },
+        {
+          index: &#x27;页面 W5 · 训练结束后&#x27;, name: &#x27;Watch Finish Review&#x27;, purpose: &#x27;训练结束回顾&#x27;,
+          job: &#x27;正文和结束操作形成连续信息组，不再用大块留白分隔。&#x27;,
+          html: &#x27;&lt;div class=&quot;screen-top&quot;&gt;&lt;h2&gt;训练完成&lt;/h2&gt;&lt;i data-lucide=&quot;check-circle&quot; aria-hidden=&quot;true&quot;&gt;&lt;/i&gt;&lt;/div&gt;&lt;div class=&quot;finish-layout&quot;&gt;&lt;div class=&quot;stack-item&quot;&gt;&lt;span class=&quot;muted&quot;&gt;训练计划&lt;/span&gt;&lt;h3&gt;胸与三头强化&lt;/h3&gt;&lt;/div&gt;&lt;div class=&quot;fact-row&quot;&gt;&lt;h3&gt;训练时间&lt;/h3&gt;&lt;h3&gt;48:12&lt;/h3&gt;&lt;/div&gt;&lt;div class=&quot;fact-row&quot;&gt;&lt;h3&gt;训练量&lt;/h3&gt;&lt;h3&gt;5,840 kg&lt;/h3&gt;&lt;/div&gt;&lt;div class=&quot;fact-row&quot;&gt;&lt;h3&gt;完成情况&lt;/h3&gt;&lt;h3&gt;6 动作 · 18 组&lt;/h3&gt;&lt;/div&gt;&lt;button class=&quot;btn btn-primary btn-block large-primary&quot; type=&quot;button&quot;&gt;结束训练&lt;/button&gt;&lt;/div&gt;&#x27;
+        }
+      ];
+      const screen = root.querySelector(&#x27;#watch-v4-screen&#x27;);
+      const index = root.querySelector(&#x27;#watch-v4-index&#x27;);
+      const name = root.querySelector(&#x27;#watch-v4-name&#x27;);
+      const purpose = root.querySelector(&#x27;#watch-v4-purpose&#x27;);
+      const job = root.querySelector(&#x27;#watch-v4-job&#x27;);
+      const pageButtons = Array.from(root.querySelectorAll(&#x27;[data-page]&#x27;));
+      const circumference = 2 * Math.PI * 70;
+      let unit = &#x27;kg&#x27;;
+      let rpeMode = false;
+      let restSeconds = 54;
+      let restTimerId;
+
+      function enhanceIcons() {
+        if (window.lucide) window.lucide.createIcons({ attrs: { width: 16, height: 16 } });
+      }
+
+      function updateRestTimer() {
+        const time = screen.querySelector(&#x27;[data-rest-time]&#x27;);
+        const progress = screen.querySelector(&#x27;[data-rest-progress]&#x27;);
+        const timer = screen.querySelector(&#x27;[role=&quot;timer&quot;]&#x27;);
+        if (!time || !progress || !timer) return;
+        const minutes = String(Math.floor(restSeconds / 60)).padStart(2, &#x27;0&#x27;);
+        const seconds = String(restSeconds % 60).padStart(2, &#x27;0&#x27;);
+        const cycleSecond = restSeconds &gt; 0 &amp;&amp; restSeconds % 60 === 0 ? 60 : restSeconds % 60;
+        time.textContent = `${minutes}:${seconds}`;
+        progress.style.strokeDasharray = String(circumference);
+        progress.style.strokeDashoffset = String(circumference * (1 - cycleSecond / 60));
+        timer.setAttribute(&#x27;aria-label&#x27;, `已休息 ${restSeconds} 秒`);
+      }
+
+      function startRestTimer() {
+        updateRestTimer();
+        restTimerId = window.setInterval(() =&gt; {
+          restSeconds += 1;
+          updateRestTimer();
+        }, 1000);
+      }
+
+      function render(pageIndex) {
+        if (restTimerId) window.clearInterval(restTimerId);
+        const page = pages[pageIndex];
+        index.textContent = page.index;
+        name.textContent = page.name;
+        purpose.textContent = page.purpose;
+        job.textContent = page.job;
+        screen.innerHTML = page.html;
+        pageButtons.forEach((button, buttonIndex) =&gt; button.setAttribute(&#x27;aria-pressed&#x27;, String(buttonIndex === pageIndex)));
+        unit = &#x27;kg&#x27;;
+        rpeMode = false;
+        restSeconds = 54;
+        enhanceIcons();
+        if (pageIndex === 4) startRestTimer();
+      }
+
+      pageButtons.forEach((button) =&gt; button.addEventListener(&#x27;click&#x27;, () =&gt; render(Number(button.dataset.page))));
+
+      screen.addEventListener(&#x27;click&#x27;, (event) =&gt; {
+        const unitButton = event.target.closest(&#x27;[data-unit-toggle]&#x27;);
+        if (unitButton) {
+          unit = unit === &#x27;kg&#x27; ? &#x27;lb&#x27; : &#x27;kg&#x27;;
+          const weight = screen.querySelector(&#x27;[data-weight-value]&#x27;);
+          const relatedSet = screen.querySelector(&#x27;[data-related-set]&#x27;);
+          weight.textContent = unit === &#x27;kg&#x27; ? &#x27;80&#x27; : &#x27;176.4&#x27;;
+          relatedSet.textContent = unit === &#x27;kg&#x27; ? relatedSet.dataset.kg : relatedSet.dataset.lb;
+          unitButton.textContent = unit;
+        }
+        const effortToggle = event.target.closest(&#x27;[data-effort-toggle]&#x27;);
+        if (effortToggle) {
+          rpeMode = !rpeMode;
+          const labels = rpeMode ? [&#x27;RPE ≤ 6&#x27;, &#x27;RPE 7–8&#x27;, &#x27;RPE 9–10&#x27;] : [&#x27;简单&#x27;, &#x27;正常&#x27;, &#x27;困难&#x27;];
+          Array.from(screen.querySelectorAll(&#x27;[data-effort]&#x27;)).forEach((button, buttonIndex) =&gt; button.textContent = labels[buttonIndex]);
+          effortToggle.textContent = rpeMode ? &#x27;使用描述&#x27; : &#x27;使用 RPE&#x27;;
+        }
+        const effortButton = event.target.closest(&#x27;[data-effort]&#x27;);
+        if (effortButton) Array.from(screen.querySelectorAll(&#x27;[data-effort]&#x27;)).forEach((button) =&gt; button.setAttribute(&#x27;aria-pressed&#x27;, String(button === effortButton)));
+        const chooseOther = event.target.closest(&#x27;[data-choose-other]&#x27;);
+        if (chooseOther) screen.querySelector(&#x27;[data-phone-dialog]&#x27;).hidden = false;
+        const closeDialog = event.target.closest(&#x27;[data-close-dialog]&#x27;);
+        if (closeDialog) screen.querySelector(&#x27;[data-phone-dialog]&#x27;).hidden = true;
+      });
+
+      render(0);
+    })();
+  &lt;/script&gt;
+&lt;/div&gt;
+
+&lt;script src=&quot;https://unpkg.com/@floating-ui/core@1.7.3/dist/floating-ui.core.umd.min.js&quot;&gt;&lt;/script&gt;
+&lt;script src=&quot;https://unpkg.com/@floating-ui/dom@1.7.4/dist/floating-ui.dom.umd.min.js&quot;&gt;&lt;/script&gt;
+&lt;script&gt;
+(() =&gt; {
+  if (window.FloatingUIDOM == null) {
+    return;
+  }
+  const { autoUpdate, computePosition, flip, offset, shift, size } =
+    window.FloatingUIDOM;
+  const tooltipPlacements = new Set([&quot;top&quot;, &quot;right&quot;, &quot;bottom&quot;, &quot;left&quot;]);
+  const tooltipId = `codex-visualization-tooltip-${
+    window.crypto?.randomUUID?.() ?? Date.now().toString(36)
+  }`;
+  const tooltipGap = 5;
+  const hoverDelay = 700;
+  const skipDelay = 300;
+  let activeTrigger = null;
+  let pendingTrigger = null;
+  let tooltip = null;
+  let openTimeout = null;
+  let autoUpdateCleanup = null;
+  let positionRequest = 0;
+  let skipDelayUntil = 0;
+
+  const getTrigger = (target) =&gt;
+    target?.nodeType === Node.ELEMENT_NODE
+      ? target.closest(&quot;[data-tooltip]&quot;)
+      : null;
+  const containsTarget = (trigger, target) =&gt;
+    target?.nodeType != null &amp;&amp; trigger.contains(target);
+  const getContent = (trigger) =&gt;
+    trigger.getAttribute(&quot;data-tooltip&quot;)?.trim() ?? &quot;&quot;;
+  const getPlacement = (trigger) =&gt; {
+    const placement = trigger.getAttribute(&quot;data-tooltip-placement&quot;);
+    return tooltipPlacements.has(placement) ? placement : &quot;top&quot;;
+  };
+  const getTooltip = () =&gt; {
+    if (tooltip == null) {
+      tooltip = document.createElement(&quot;div&quot;);
+      tooltip.id = tooltipId;
+      tooltip.className = &quot;tooltip&quot;;
+      tooltip.setAttribute(&quot;role&quot;, &quot;tooltip&quot;);
+    }
+    return tooltip;
+  };
+  const setDescribedBy = (trigger, described) =&gt; {
+    const ids = new Set(
+      (trigger.getAttribute(&quot;aria-describedby&quot;) ?? &quot;&quot;)
+        .split(/\s+/)
+        .filter(Boolean),
+    );
+    if (described) {
+      ids.add(tooltipId);
+    } else {
+      ids.delete(tooltipId);
+    }
+    if (ids.size === 0) {
+      trigger.removeAttribute(&quot;aria-describedby&quot;);
+    } else {
+      trigger.setAttribute(&quot;aria-describedby&quot;, [...ids].join(&quot; &quot;));
+    }
+  };
+  const clearOpenTimeout = () =&gt; {
+    if (openTimeout != null) {
+      window.clearTimeout(openTimeout);
+      openTimeout = null;
+    }
+    pendingTrigger = null;
+  };
+  const closeTooltip = (activateSkipDelay = true) =&gt; {
+    clearOpenTimeout();
+    positionRequest += 1;
+    autoUpdateCleanup?.();
+    autoUpdateCleanup = null;
+    if (activeTrigger == null) {
+      return;
+    }
+    setDescribedBy(activeTrigger, false);
+    activeTrigger = null;
+    tooltip?.remove();
+    if (activateSkipDelay) {
+      skipDelayUntil = Date.now() + skipDelay;
+    }
+  };
+  const updatePosition = (trigger, floating) =&gt; {
+    const request = ++positionRequest;
+    void computePosition(trigger, floating, {
+      middleware: [
+        offset(tooltipGap),
+        flip({ padding: tooltipGap }),
+        shift({ padding: tooltipGap }),
+        size({
+          padding: tooltipGap,
+          apply({ availableHeight, availableWidth, elements }) {
+            elements.floating.style.setProperty(
+              &quot;--tooltip-available-width&quot;,
+              `${Math.max(0, availableWidth)}px`,
+            );
+            elements.floating.style.setProperty(
+              &quot;--tooltip-available-height&quot;,
+              `${Math.max(0, availableHeight)}px`,
+            );
+          },
+        }),
+      ],
+      placement: getPlacement(trigger),
+      strategy: &quot;fixed&quot;,
+    })
+      .then(({ x, y }) =&gt; {
+        if (activeTrigger !== trigger || request !== positionRequest) {
+          return;
+        }
+        const scale = window.devicePixelRatio || 1;
+        floating.style.transform = `translate(${Math.round(x * scale) / scale}px, ${Math.round(y * scale) / scale}px)`;
+        floating.style.visibility = &quot;visible&quot;;
+      })
+      .catch(() =&gt; {
+        if (activeTrigger === trigger &amp;&amp; request === positionRequest) {
+          closeTooltip(false);
+        }
+      });
+  };
+  const openTooltip = (trigger) =&gt; {
+    const content = getContent(trigger);
+    if (!trigger.isConnected || content.length === 0) {
+      return;
+    }
+    clearOpenTimeout();
+    if (activeTrigger === trigger) {
+      return;
+    }
+    closeTooltip();
+    const floating = getTooltip();
+    floating.textContent = content;
+    floating.style.visibility = &quot;hidden&quot;;
+    floating.style.transform = &quot;translate(0, 0)&quot;;
+    document.body.appendChild(floating);
+    activeTrigger = trigger;
+    setDescribedBy(trigger, true);
+    autoUpdateCleanup = autoUpdate(trigger, floating, () =&gt; {
+      updatePosition(trigger, floating);
+    });
+  };
+  const requestOpen = (trigger, immediate = false) =&gt; {
+    if (
+      getContent(trigger).length === 0 ||
+      activeTrigger === trigger ||
+      pendingTrigger === trigger
+    ) {
+      return;
+    }
+    clearOpenTimeout();
+    pendingTrigger = trigger;
+    const delay =
+      immediate || activeTrigger != null || Date.now() &lt; skipDelayUntil
+        ? 0
+        : hoverDelay;
+    if (delay === 0) {
+      openTooltip(trigger);
+      return;
+    }
+    openTimeout = window.setTimeout(() =&gt; {
+      openTimeout = null;
+      pendingTrigger = null;
+      openTooltip(trigger);
+    }, delay);
+  };
+  const handlePointerOpen = (event) =&gt; {
+    if (event.pointerType === &quot;touch&quot;) {
+      return;
+    }
+    const trigger = getTrigger(event.target);
+    if (trigger == null || containsTarget(trigger, event.relatedTarget)) {
+      return;
+    }
+    requestOpen(trigger);
+  };
+  const handleLeave = (event) =&gt; {
+    const trigger = getTrigger(event.target);
+    if (trigger == null || containsTarget(trigger, event.relatedTarget)) {
+      return;
+    }
+    if (activeTrigger === trigger || pendingTrigger === trigger) {
+      closeTooltip();
+    }
+  };
+  const handleFocusIn = (event) =&gt; {
+    const trigger = getTrigger(event.target);
+    if (trigger?.matches(&quot;:focus-visible&quot;)) {
+      requestOpen(trigger, true);
+    }
+  };
+  const handleKeyDown = (event) =&gt; {
+    if (event.key === &quot;Escape&quot;) {
+      closeTooltip();
+    }
+  };
+  const handleContextMenu = (event) =&gt; {
+    const trigger = getTrigger(event.target);
+    if (activeTrigger === trigger || pendingTrigger === trigger) {
+      closeTooltip();
+    }
+  };
+  const destroy = () =&gt; {
+    closeTooltip(false);
+    document.removeEventListener(&quot;pointerover&quot;, handlePointerOpen);
+    document.removeEventListener(&quot;pointerout&quot;, handleLeave);
+    document.removeEventListener(&quot;focusin&quot;, handleFocusIn);
+    document.removeEventListener(&quot;focusout&quot;, handleLeave);
+    document.removeEventListener(&quot;keydown&quot;, handleKeyDown);
+    document.removeEventListener(&quot;contextmenu&quot;, handleContextMenu);
+    tooltip = null;
+  };
+
+  document.addEventListener(&quot;pointerover&quot;, handlePointerOpen);
+  document.addEventListener(&quot;pointerout&quot;, handleLeave);
+  document.addEventListener(&quot;focusin&quot;, handleFocusIn);
+  document.addEventListener(&quot;focusout&quot;, handleLeave);
+  document.addEventListener(&quot;keydown&quot;, handleKeyDown);
+  document.addEventListener(&quot;contextmenu&quot;, handleContextMenu);
+  window.addEventListener(&quot;pagehide&quot;, destroy, { once: true });
+})();
+&lt;/script&gt;
+&lt;script id=&quot;codex-visualization-lucide&quot; async src=&quot;https://unpkg.com/lucide@1.17.0/dist/umd/lucide.js&quot;&gt;&lt;/script&gt;
+&lt;script&gt;
+(() =&gt; {
+  const initialize = () =&gt; {
+    globalThis.lucide?.createIcons({ attrs: { width: 16, height: 16 } });
+  };
+  if (globalThis.lucide != null) {
+    initialize();
+    return;
+  }
+  document
+    .getElementById(&quot;codex-visualization-lucide&quot;)
+    ?.addEventListener(&quot;load&quot;, initialize, { once: true });
+})();
+&lt;/script&gt;
+
+&lt;/body&gt;
+&lt;/html&gt;
+"></iframe>
+</body>
+</html>

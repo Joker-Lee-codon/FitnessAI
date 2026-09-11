@@ -1,0 +1,69 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1800" height="1800" viewBox="0 0 1800 1800" role="img" aria-labelledby="title desc">
+  <title id="title">FitnessAI Direction C — Native Breath</title>
+  <desc id="desc">Apple Watch Active Session and iPhone Today and Plans in a restrained Apple-native direction.</desc>
+  <defs>
+    <filter id="shadow" x="-30%" y="-30%" width="160%" height="160%"><feDropShadow dx="0" dy="24" stdDeviation="30" flood-color="#24342D" flood-opacity=".14"/></filter>
+    <style>.sf{font-family:-apple-system,BlinkMacSystemFont,'PingFang SC','Helvetica Neue',sans-serif}.mono{font-variant-numeric:tabular-nums}.ink{fill:#17201C}.muted{fill:#66716B}.jade{fill:#176B4A}.tiny{font-size:16px}.small{font-size:20px}.body{font-size:24px}.heading{font-size:44px;font-weight:720}.display{font-size:96px;font-weight:720}</style>
+  </defs>
+  <rect width="1800" height="1800" fill="#F2F4F0"/>
+  <text x="82" y="78" class="sf jade tiny" letter-spacing="3">FITNESSAI · ND-01 · DIRECTION C</text>
+  <text x="82" y="142" class="sf ink" font-size="58" font-weight="720">原生呼吸 <tspan class="muted" font-size="24" font-weight="500">NATIVE BREATH</tspan></text>
+  <text x="82" y="188" class="sf muted body">一个大事实，一条安静证据，一个操作。清楚本身就是品牌。</text>
+  <line x1="82" y1="228" x2="1718" y2="228" stroke="#D2D8D3" stroke-width="2"/>
+
+  <text x="232" y="284" class="sf muted tiny" letter-spacing="3">APPLE WATCH · ACTIVE SESSION</text>
+  <g filter="url(#shadow)">
+    <rect x="168" y="316" width="440" height="530" rx="116" fill="#1A1D1B"/>
+    <rect x="188" y="336" width="400" height="490" rx="96" fill="#F8FAF7"/>
+    <text x="226" y="404" class="sf muted tiny">计划训练 · 第 3 / 4 组</text>
+    <text x="226" y="458" class="sf ink heading">杠铃卧推</text>
+    <text x="388" y="588" class="sf ink display mono" text-anchor="middle">80<tspan font-size="27" font-weight="650"> kg</tspan></text>
+    <text x="388" y="635" class="sf muted" font-size="30" text-anchor="middle">8 次</text>
+    <g transform="translate(315 674)"><circle cx="0" cy="0" r="7" fill="#176B4A"/><circle cx="48" cy="0" r="7" fill="#176B4A"/><circle cx="96" cy="0" r="7" fill="#176B4A"/><circle cx="144" cy="0" r="7" fill="none" stroke="#9AA59F" stroke-width="3"/></g>
+    <text x="388" y="720" class="sf muted tiny" text-anchor="middle">已保存到本机 · 负重来自上一组</text>
+    <rect x="226" y="752" width="324" height="58" rx="18" fill="#176B4A"/>
+    <text x="388" y="789" class="sf" font-size="21" font-weight="700" fill="#FFF" text-anchor="middle">完成本组</text>
+  </g>
+
+  <text x="866" y="284" class="sf muted tiny" letter-spacing="3">IPHONE · TODAY &amp; PLANS</text>
+  <g filter="url(#shadow)">
+    <rect x="802" y="306" width="530" height="752" rx="78" fill="#202522"/>
+    <rect x="822" y="326" width="490" height="712" rx="60" fill="#F8FAF7"/>
+    <rect x="978" y="338" width="178" height="30" rx="15" fill="#202522"/>
+    <text x="864" y="418" class="sf ink" font-size="50" font-weight="720">今天</text>
+    <text x="864" y="452" class="sf muted small">7 月 21 日 · 周二</text>
+    <rect x="852" y="488" width="430" height="238" rx="28" fill="#FFFFFF" stroke="#E0E5E1" stroke-width="2"/>
+    <text x="884" y="536" class="sf muted tiny">今日训练</text>
+    <text x="884" y="580" class="sf ink heading">上肢力量</text>
+    <text x="884" y="615" class="sf muted small">5 个动作 · 18 组 · 约 68 分钟</text>
+    <text x="884" y="652" class="sf jade tiny">Watch 已就绪 · 计划已缓存</text>
+    <rect x="884" y="672" width="366" height="54" rx="16" fill="#176B4A"/>
+    <text x="1067" y="706" class="sf" font-size="20" font-weight="700" fill="#FFF" text-anchor="middle">在 Watch 上开始</text>
+    <text x="864" y="778" class="sf ink" font-size="24" font-weight="680">训练顺序</text>
+    <line x1="864" y1="800" x2="1270" y2="800" stroke="#DDE2DE" stroke-width="2"/>
+    <text x="864" y="840" class="sf jade small" font-weight="650">01</text><text x="914" y="840" class="sf ink small" font-weight="650">杠铃卧推</text><text x="1270" y="840" class="sf muted tiny" text-anchor="end">4 × 8 · 80 kg</text>
+    <line x1="914" y1="858" x2="1270" y2="858" stroke="#E5E9E6"/>
+    <text x="864" y="896" class="sf muted small" font-weight="650">02</text><text x="914" y="896" class="sf ink small" font-weight="650">上斜哑铃卧推</text><text x="1270" y="896" class="sf muted tiny" text-anchor="end">3 × 10 · 26 kg</text>
+    <line x1="914" y1="914" x2="1270" y2="914" stroke="#E5E9E6"/>
+    <text x="864" y="952" class="sf muted small" font-weight="650">03</text><text x="914" y="952" class="sf ink small" font-weight="650">坐姿推肩</text><text x="1270" y="952" class="sf muted tiny" text-anchor="end">3 × 8 · 42.5 kg</text>
+    <line x1="850" y1="982" x2="1284" y2="982" stroke="#D7DDD8" stroke-width="2"/>
+    <text x="900" y="1018" class="sf jade tiny" text-anchor="middle">今天</text><text x="1067" y="1018" class="sf muted tiny" text-anchor="middle">历史</text><text x="1232" y="1018" class="sf muted tiny" text-anchor="middle">分析</text>
+  </g>
+
+  <g transform="translate(1424 360)">
+    <text class="sf muted tiny" letter-spacing="3">STRUCTURAL IDEA</text>
+    <text y="58" class="sf ink heading">呼吸比例</text>
+    <text y="98" class="sf muted small">事实 → 证据 → 操作</text>
+    <line y1="142" x2="286" y2="142" stroke="#D2D8D3" stroke-width="2"/>
+    <text y="196" class="sf jade tiny" letter-spacing="3">POSTURE</text>
+    <text y="234" class="sf ink small" font-weight="650">平静 · 高级 · 原生</text>
+    <text y="276" class="sf muted tiny">云白 / 石墨 / 深玉</text>
+    <text y="306" class="sf muted tiny">没有视觉隐喻需要学习</text>
+    <line y1="350" x2="286" y2="350" stroke="#D2D8D3" stroke-width="2"/>
+    <text y="404" class="sf muted tiny" letter-spacing="3">GUARDRAIL</text>
+    <text y="442" class="sf ink small" font-weight="650">克制不等于未完成</text>
+    <text y="482" class="sf muted tiny">留白必须建立阅读节奏，</text>
+    <text y="512" class="sf muted tiny">信任语义保持完整可读。</text>
+  </g>
+  <text x="82" y="1090" class="sf muted tiny">Representative preview only · Native behavior, Dynamic Type, accessibility and state contracts remain authoritative.</text>
+</svg>

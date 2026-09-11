@@ -1,0 +1,119 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1800" height="1800" viewBox="0 0 1800 1800" role="img" aria-labelledby="title desc">
+  <title id="title">FitnessAI ND-03 Watch Core Batch</title>
+  <desc id="desc">Five Apple Watch MVP surfaces: Workout Entry, Active Session, Rest Resolution, Watch Finish Review, and Watch Recovery.</desc>
+  <defs>
+    <filter id="shadow" x="-30%" y="-30%" width="160%" height="160%"><feDropShadow dx="0" dy="22" stdDeviation="24" flood-color="#000" flood-opacity=".42"/></filter>
+    <style>.sf{font-family:-apple-system,BlinkMacSystemFont,'PingFang SC','Helvetica Neue',sans-serif}.rounded{font-family:ui-rounded,-apple-system,BlinkMacSystemFont,'PingFang SC',sans-serif}.paper{fill:#F5F1E8}.muted{fill:#B8B4AC}.red{fill:#FF5B3F}.peri{fill:#A7AEFF}.durable{fill:#64C79B}.pending{fill:#F3BD4F}.error{fill:#FF7773}.tiny{font-size:13px}.small{font-size:17px}.body{font-size:21px}.heading{font-size:32px;font-weight:760}</style>
+  </defs>
+  <rect width="1800" height="1800" fill="#0B0B0D"/>
+  <text x="82" y="78" class="sf red" font-size="16" letter-spacing="3">FITNESSAI · ND-03 · BATCH 1</text>
+  <text x="82" y="142" class="rounded paper" font-size="58" font-weight="820">Apple Watch 核心训练链</text>
+  <text x="82" y="188" class="sf muted" font-size="23">Workout Entry → Active Session → Rest Resolution → Watch Finish Review → Watch Recovery</text>
+  <line x1="82" y1="228" x2="1718" y2="228" stroke="#3B3B43" stroke-width="2"/>
+
+  <!-- Top row labels -->
+  <text x="160" y="282" class="sf muted tiny" letter-spacing="2">01 · WORKOUT ENTRY</text>
+  <text x="655" y="282" class="sf muted tiny" letter-spacing="2">02 · ACTIVE SESSION · LOCKED</text>
+  <text x="1150" y="282" class="sf muted tiny" letter-spacing="2">03 · REST RESOLUTION</text>
+
+  <!-- 01 Workout Entry -->
+  <g filter="url(#shadow)">
+    <rect x="130" y="310" width="360" height="430" rx="96" fill="#454545"/>
+    <rect x="146" y="326" width="328" height="398" rx="80" fill="#0B0B0D"/>
+    <text x="176" y="378" class="sf muted tiny">7 月 21 日 · 计划训练</text>
+    <text x="176" y="428" class="rounded paper heading">上肢力量</text>
+    <text x="176" y="458" class="sf muted small">5 个动作 · 18 组 · 约 68 分钟</text>
+    <line x1="176" y1="490" x2="444" y2="490" stroke="#3B3B43" stroke-width="2"/>
+    <text x="176" y="526" class="sf durable tiny">✓ 可离线记录</text>
+    <text x="176" y="556" class="sf muted tiny">计划已缓存到本机</text>
+    <text x="176" y="594" class="sf paper small" font-weight="650">01 杠铃卧推　4 × 8</text>
+    <text x="176" y="624" class="sf paper small" font-weight="650">02 上斜哑铃卧推　3 × 10</text>
+    <rect x="176" y="654" width="268" height="52" rx="18" fill="#FF5B3F"/>
+    <text x="310" y="687" class="sf" font-size="18" font-weight="760" fill="#170604" text-anchor="middle">开始训练  →</text>
+  </g>
+
+  <!-- 02 Active Session -->
+  <g filter="url(#shadow)">
+    <rect x="625" y="310" width="360" height="430" rx="96" fill="#454545"/>
+    <rect x="641" y="326" width="328" height="398" rx="80" fill="#0B0B0D"/>
+    <text x="670" y="378" class="sf paper tiny">杠铃卧推 · 第 3 / 4 组</text>
+    <text x="655" y="542" class="rounded" font-size="148" font-weight="850" fill="#1E1E24">80</text>
+    <text x="684" y="520" class="rounded paper" font-size="86" font-weight="820">80<tspan font-size="22" fill="#FF5B3F"> kg</tspan></text>
+    <text x="688" y="566" class="sf peri" font-size="28" font-weight="700">8 次</text>
+    <line x1="883" y1="414" x2="883" y2="570" stroke="#6A6870" stroke-width="4"/>
+    <circle cx="883" cy="436" r="7" fill="#FF5B3F"/><circle cx="883" cy="478" r="7" fill="#FF5B3F"/><circle cx="883" cy="520" r="7" fill="#FF5B3F"/><circle cx="883" cy="562" r="7" fill="#0B0B0D" stroke="#B8B4AC" stroke-width="3"/>
+    <text x="684" y="606" class="sf muted tiny">✓ 已保存到本机 · 上一组负重</text>
+    <rect x="670" y="646" width="270" height="58" rx="18" fill="#FF5B3F"/>
+    <text x="805" y="683" class="sf" font-size="18" font-weight="760" fill="#170604" text-anchor="middle">完成本组  →</text>
+  </g>
+
+  <!-- 03 Rest Resolution -->
+  <g filter="url(#shadow)">
+    <rect x="1120" y="310" width="360" height="430" rx="96" fill="#454545"/>
+    <rect x="1136" y="326" width="328" height="398" rx="80" fill="#0B0B0D"/>
+    <text x="1166" y="374" class="sf durable tiny">安全休息 · 01:18</text>
+    <text x="1166" y="408" class="sf pending tiny">△ 动作待确认</text>
+    <text x="1166" y="454" class="rounded paper" font-size="27" font-weight="760">这是杠铃卧推吗？</text>
+    <line x1="1166" y1="480" x2="1434" y2="480" stroke="#3B3B43" stroke-width="2"/>
+    <text x="1166" y="518" class="sf muted tiny">已保留本组事实</text>
+    <text x="1166" y="550" class="sf paper small" font-weight="650">8 次 · 80 kg · 第 3 组</text>
+    <rect x="1166" y="582" width="268" height="52" rx="18" fill="#FF5B3F"/>
+    <text x="1300" y="615" class="sf" font-size="17" font-weight="760" fill="#170604" text-anchor="middle">确认杠铃卧推</text>
+    <text x="1166" y="666" class="sf peri small">更改动作　›</text>
+    <text x="1434" y="694" class="sf muted tiny" text-anchor="end">稍后处理</text>
+  </g>
+
+  <!-- Bottom row labels -->
+  <text x="320" y="820" class="sf muted tiny" letter-spacing="2">04 · WATCH FINISH REVIEW</text>
+  <text x="1030" y="820" class="sf muted tiny" letter-spacing="2">05 · WATCH RECOVERY</text>
+
+  <!-- 04 Finish Review -->
+  <g filter="url(#shadow)">
+    <rect x="290" y="850" width="420" height="500" rx="108" fill="#454545"/>
+    <rect x="308" y="868" width="384" height="464" rx="90" fill="#0B0B0D"/>
+    <text x="340" y="922" class="sf muted tiny">手动结束 · 64:12</text>
+    <text x="340" y="970" class="rounded paper" font-size="34" font-weight="780">结束训练？</text>
+    <line x1="340" y1="1000" x2="660" y2="1000" stroke="#3B3B43" stroke-width="2"/>
+    <text x="340" y="1050" class="rounded paper" font-size="48" font-weight="820">17<tspan font-size="16" class="muted"> / 18 组</tspan></text>
+    <text x="340" y="1090" class="sf pending small">1 项待补全</text>
+    <text x="340" y="1126" class="sf muted tiny">胸 · 肩 · 三头　已保存到本机</text>
+    <text x="340" y="1156" class="sf pending tiny">云同步等待中</text>
+    <rect x="340" y="1192" width="320" height="58" rx="18" fill="#FF5B3F"/>
+    <text x="500" y="1229" class="sf" font-size="18" font-weight="760" fill="#170604" text-anchor="middle">确认并结束  →</text>
+    <text x="500" y="1288" class="sf peri small" text-anchor="middle">继续训练</text>
+  </g>
+
+  <!-- 05 Recovery -->
+  <g filter="url(#shadow)">
+    <rect x="960" y="850" width="420" height="500" rx="108" fill="#454545"/>
+    <rect x="978" y="868" width="384" height="464" rx="90" fill="#0B0B0D"/>
+    <text x="1010" y="922" class="sf durable tiny">训练恢复 · 本机记录</text>
+    <text x="1010" y="970" class="rounded paper" font-size="30" font-weight="780">找到未结束的训练</text>
+    <text x="1010" y="1010" class="sf muted small">上肢力量 · 42 分钟</text>
+    <line x1="1010" y1="1040" x2="1330" y2="1040" stroke="#3B3B43" stroke-width="2"/>
+    <text x="1010" y="1080" class="sf muted tiny">最近持久化边界</text>
+    <text x="1010" y="1116" class="sf paper small" font-weight="650">杠铃卧推 · 第 3 组</text>
+    <text x="1010" y="1146" class="sf paper small">8 次 · 80 kg</text>
+    <text x="1010" y="1178" class="sf pending tiny">1 个片段待确认 · 未重复创建</text>
+    <rect x="1010" y="1208" width="320" height="58" rx="18" fill="#FF5B3F"/>
+    <text x="1170" y="1245" class="sf" font-size="18" font-weight="760" fill="#170604" text-anchor="middle">继续训练  →</text>
+    <text x="1010" y="1296" class="sf peri small">以待补全结束</text>
+    <text x="1330" y="1296" class="sf error tiny" text-anchor="end">丢弃…</text>
+  </g>
+
+  <g transform="translate(1460 864)">
+    <text class="sf muted tiny" letter-spacing="2">BATCH INVARIANTS</text>
+    <text y="48" class="sf paper small" font-weight="650">一屏一个主要任务</text>
+    <text y="82" class="sf paper small" font-weight="650">本机提交 ≠ 云同步</text>
+    <text y="116" class="sf paper small" font-weight="650">安全休息才主动询问</text>
+    <text y="150" class="sf paper small" font-weight="650">手动 Finish 拥有权威</text>
+    <text y="184" class="sf paper small" font-weight="650">恢复不猜测、不重复</text>
+    <line y1="226" x2="258" y2="226" stroke="#3B3B43" stroke-width="2"/>
+    <text y="270" class="sf durable tiny">ACTIVE ACCEPTED</text>
+    <text y="304" class="sf muted tiny">Active Session 保持锁定。</text>
+    <text y="348" class="sf pending tiny">AWAITING ACCEPTANCE</text>
+    <text y="382" class="sf muted tiny">其余四屏与完整 Watch core</text>
+    <text y="410" class="sf muted tiny">批次等待用户 checkpoint。</text>
+  </g>
+  <text x="82" y="1450" class="sf muted tiny">ND-03 Watch core candidate · Frozen Kinetic Type tokens 1.0.0 · Awaiting batch acceptance.</text>
+</svg>

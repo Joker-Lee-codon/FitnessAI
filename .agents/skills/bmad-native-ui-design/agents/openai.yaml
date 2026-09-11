@@ -1,0 +1,4 @@
+interface:
+  display_name: "BMAD Native UI Design"
+  short_description: "为 iPhone 与 Apple Watch 生成可交付的原生 UI 设计"
+  default_prompt: "Use $bmad-native-ui-design help to inspect progress and recommend the next native UI design step."

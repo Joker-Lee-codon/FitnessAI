@@ -1,0 +1,183 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>FitnessAI — Apple Watch Rest Resolution</title>
+  <style>
+    /*
+      Governing spine sections:
+      DESIGN.md — Colors; Layout & Spacing; Components: actual-set-row,
+      recognition-state-chip, quick-correction-sheet, support-boundary-notice.
+      EXPERIENCE.md — Rest-Safe Interaction Contract; Component Patterns; State Patterns;
+      Interaction Primitives; UJ-3 steps 2–4; Flow 8. Canonical state: restSafeForInteraction,
+      first Actual Set Exercise uncertain, reps/load retained, Later available.
+      Spines win on conflict.
+    */
+    :root {
+      color-scheme: dark;
+      --surface-base: #000000;
+      --surface-raised: #1C1C1E;
+      --surface-muted: #2C2C2E;
+      --ink-primary: #FFFFFF;
+      --ink-secondary: #C7C7CC;
+      --border: #3A3A3C;
+      --action: #64A8E8;
+      --on-action: #07131F;
+      --success: #5CCB8A;
+      --warning: #F3C969;
+      --error: #FF8A80;
+      --pending: #E7D16C;
+      --r-sm: 8px;
+      --r-md: 12px;
+      --r-lg: 16px;
+      --r-full: 9999px;
+      --s1: 4px;
+      --s2: 8px;
+      --s3: 12px;
+      --s4: 16px;
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      min-height: 100vh;
+      display: grid;
+      place-items: center;
+      background: #202124;
+      color: var(--ink-primary);
+      font-family: -apple-system, BlinkMacSystemFont, "SF Pro Text", "PingFang SC", sans-serif;
+    }
+    .stage { padding: 32px; }
+    .watch {
+      position: relative;
+      width: 340px;
+      height: 450px;
+      padding: 12px;
+      border: 2px solid var(--border);
+      border-radius: 80px;
+      background: #111111;
+      box-shadow: 0 24px 56px rgba(0,0,0,.42);
+    }
+    .watch::after {
+      content: "";
+      position: absolute;
+      right: -16px;
+      top: 112px;
+      width: 12px;
+      height: 66px;
+      border-radius: 0 8px 8px 0;
+      background: var(--border);
+    }
+    .screen {
+      height: 100%;
+      border-radius: 68px;
+      background: var(--surface-base);
+      padding: 22px 18px 18px;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      gap: var(--s2);
+    }
+    .status { display: flex; justify-content: space-between; align-items: center; gap: var(--s2); }
+    .time { font-size: 14px; font-weight: 500; }
+    .safe {
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+      color: var(--success);
+      font-size: 12px;
+      font-weight: 500;
+    }
+    .safe::before { content: ""; width: 7px; height: 7px; border-radius: 50%; background: currentColor; }
+    .rest { color: var(--ink-secondary); font-size: 12px; }
+    .rest strong { color: var(--ink-primary); font-size: 18px; font-weight: 500; font-variant-numeric: tabular-nums; }
+    .pending-row {
+      padding: var(--s3);
+      border: 1px solid var(--warning);
+      border-radius: var(--r-md);
+      background: var(--surface-raised);
+    }
+    .pending-head { display: flex; align-items: center; justify-content: space-between; gap: var(--s2); }
+    .pending-title { margin: 0; font-size: 17px; font-weight: 500; }
+    .chip {
+      display: inline-flex;
+      align-items: center;
+      min-height: 28px;
+      padding: 4px 9px;
+      border-radius: var(--r-full);
+      background: var(--surface-muted);
+      color: var(--pending);
+      font-size: 11px;
+      font-weight: 500;
+    }
+    .facts { margin-top: var(--s2); display: flex; gap: var(--s3); font-size: 15px; }
+    .facts strong { font-weight: 500; font-variant-numeric: tabular-nums; }
+    .provenance { margin-top: 6px; color: var(--ink-secondary); font-size: 11px; line-height: 1.35; }
+    .sheet {
+      margin-top: 2px;
+      padding: var(--s3);
+      border-radius: var(--r-lg);
+      background: var(--surface-raised);
+    }
+    .sheet h1 { margin: 0; font-size: 18px; line-height: 1.25; font-weight: 500; }
+    .sheet p { margin: 4px 0 10px; color: var(--ink-secondary); font-size: 12px; }
+    .choice {
+      width: 100%;
+      min-height: 44px;
+      border-radius: var(--r-full);
+      border: 1px solid var(--border);
+      background: transparent;
+      color: var(--ink-primary);
+      font: inherit;
+      font-size: 14px;
+      font-weight: 500;
+    }
+    .choice.primary { border: 0; background: var(--action); color: var(--on-action); }
+    .actions { display: grid; gap: var(--s2); }
+    .later {
+      min-height: 44px;
+      border: 0;
+      background: transparent;
+      color: var(--action);
+      font: inherit;
+      font-size: 14px;
+      font-weight: 500;
+    }
+    @media (max-width: 390px) {
+      .stage { padding: 8px; transform: scale(.88); }
+    }
+  </style>
+</head>
+<body>
+  <main class="stage" aria-label="Apple Watch 组间安全纠正示意">
+    <section class="watch" aria-label="Apple Watch 设备框">
+      <div class="screen">
+        <header class="status">
+          <span class="time">10:48</span>
+          <span class="safe" aria-label="当前为组间安全处理窗口">组间可处理</span>
+        </header>
+        <div class="rest">休息 <strong>01:12</strong></div>
+
+        <section class="pending-row" aria-label="第 1 组动作待确认，次数和负重已保留">
+          <div class="pending-head">
+            <h2 class="pending-title">第 1 组</h2>
+            <span class="chip">待确认 · pending</span>
+          </div>
+          <div class="facts"><span><strong>12</strong> 次</span><span><strong>8</strong> kg</span></div>
+          <div class="provenance">来自 Watch 自动识别：动作不确定<br>次数、Actual Load 与时间已保留</div>
+        </section>
+
+        <section class="sheet" aria-labelledby="correction-title">
+          <h1 id="correction-title">刚才是哑铃侧平举吗？</h1>
+          <p>只纠正动作，不会改动已保留字段。</p>
+          <div class="actions">
+            <button class="choice primary" type="button">确认：哑铃侧平举</button>
+            <button class="choice" type="button">选择其他动作</button>
+          </div>
+          <button class="later" type="button">稍后处理</button>
+        </section>
+      </div>
+    </section>
+  </main>
+</body>
+</html>

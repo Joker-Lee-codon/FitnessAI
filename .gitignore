@@ -1,0 +1,48 @@
+# macOS metadata
+.DS_Store
+.AppleDouble
+.LSOverride
+._*
+
+# Local environment and package caches
+/.npm-cache/
+/.uv-cache/
+/.uv-python/
+condaenv.*.requirements.txt
+.venv/
+venv/
+.env
+.env.*
+!.env.example
+*.pem
+*.key
+*.p8
+*.p12
+*.mobileprovision
+
+# Python generated files
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+htmlcov/
+.coverage
+
+# Xcode and Swift generated files
+/DerivedData/
+/build/
+.build/
+.swiftpm/
+xcuserdata/
+*.xcuserstate
+*.xccheckout
+*.xcscmblueprint
+*.xcresult
+*.xcarchive
+/.artifacts/
+
+# Editor-local files
+.idea/
+*.swp
+*.swo

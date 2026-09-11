@@ -1,0 +1,167 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://fitnessai.local/schemas/vivo-watch-gt2-session-1.0.0.json",
+  "title": "FitnessAI Raw IMU Session Manifest",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema_version",
+    "session_id",
+    "created_at_utc",
+    "device",
+    "timebase",
+    "streams",
+    "quality_gates",
+    "known_gaps",
+    "chunks"
+  ],
+  "properties": {
+    "schema_version": { "const": "1.0.0" },
+    "session_id": {
+      "type": "string",
+      "pattern": "^[A-Za-z0-9][A-Za-z0-9._-]{7,127}$"
+    },
+    "created_at_utc": { "type": "string", "format": "date-time" },
+    "device": { "$ref": "#/$defs/device" },
+    "timebase": { "$ref": "#/$defs/timebase" },
+    "streams": {
+      "type": "array",
+      "minItems": 2,
+      "uniqueItems": true,
+      "items": { "$ref": "#/$defs/stream" }
+    },
+    "quality_gates": { "$ref": "#/$defs/qualityGates" },
+    "known_gaps": {
+      "type": "array",
+      "items": { "$ref": "#/$defs/knownGap" }
+    },
+    "chunks": {
+      "type": "array",
+      "minItems": 1,
+      "items": { "$ref": "#/$defs/chunk" }
+    }
+  },
+  "$defs": {
+    "device": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "vendor",
+        "watch_model",
+        "watch_hardware",
+        "watch_os",
+        "watch_os_version",
+        "watch_firmware",
+        "watch_app_version",
+        "phone_model",
+        "phone_os",
+        "phone_os_version",
+        "phone_app_version",
+        "blueos_studio_version",
+        "blueos_sdk_version"
+      ],
+      "properties": {
+        "vendor": { "const": "vivo" },
+        "watch_model": { "type": "string", "minLength": 1 },
+        "watch_hardware": { "type": "string", "minLength": 1 },
+        "watch_os": { "const": "BlueOS" },
+        "watch_os_version": { "type": "string", "minLength": 1 },
+        "watch_firmware": { "type": "string", "minLength": 1 },
+        "watch_app_version": { "type": "string", "minLength": 1 },
+        "phone_model": { "type": "string", "minLength": 1 },
+        "phone_os": { "type": "string", "minLength": 1 },
+        "phone_os_version": { "type": "string", "minLength": 1 },
+        "phone_app_version": { "type": "string", "minLength": 1 },
+        "blueos_studio_version": { "type": "string", "minLength": 1 },
+        "blueos_sdk_version": { "type": "string", "minLength": 1 }
+      }
+    },
+    "timebase": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["sensor_clock", "timestamp_unit", "wall_clock_anchor_utc"],
+      "properties": {
+        "sensor_clock": { "type": "string", "minLength": 1 },
+        "timestamp_unit": { "const": "ns" },
+        "wall_clock_anchor_utc": { "type": "string", "format": "date-time" }
+      }
+    },
+    "stream": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["name", "unit"],
+      "properties": {
+        "name": { "enum": ["acc", "gyro"] },
+        "unit": { "type": "string", "minLength": 1 },
+        "requested_rate_hz": { "type": ["number", "null"], "exclusiveMinimum": 0 }
+      }
+    },
+    "qualityGates": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "required_streams",
+        "min_median_rate_hz",
+        "max_unexplained_gap_ns",
+        "min_retained_ratio"
+      ],
+      "properties": {
+        "required_streams": {
+          "type": "array",
+          "const": ["acc", "gyro"]
+        },
+        "min_median_rate_hz": { "type": "number", "minimum": 20 },
+        "max_unexplained_gap_ns": { "type": "integer", "minimum": 1 },
+        "min_retained_ratio": { "type": "number", "minimum": 0.95, "maximum": 1 }
+      }
+    },
+    "knownGap": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["stream", "start_ts_ns", "end_ts_ns", "reason"],
+      "properties": {
+        "stream": { "enum": ["acc", "gyro"] },
+        "start_ts_ns": { "type": "integer", "minimum": 0 },
+        "end_ts_ns": { "type": "integer", "minimum": 0 },
+        "reason": { "type": "string", "minLength": 1 }
+      }
+    },
+    "chunk": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "chunk_index",
+        "file",
+        "byte_count",
+        "sha256",
+        "sample_count",
+        "first_sensor_ts_ns",
+        "last_sensor_ts_ns"
+      ],
+      "properties": {
+        "chunk_index": { "type": "integer", "minimum": 0 },
+        "file": { "type": "string", "pattern": "^[A-Za-z0-9._/-]+$" },
+        "byte_count": { "type": "integer", "minimum": 1 },
+        "sha256": { "type": "string", "pattern": "^[a-f0-9]{64}$" },
+        "sample_count": { "type": "integer", "minimum": 1 },
+        "first_sensor_ts_ns": { "type": "integer", "minimum": 0 },
+        "last_sensor_ts_ns": { "type": "integer", "minimum": 0 }
+      }
+    },
+    "sample": {
+      "description": "One UTF-8 JSON object per NDJSON line in a chunk.",
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["stream", "seq", "sensor_ts_ns", "x", "y", "z", "unit"],
+      "properties": {
+        "stream": { "enum": ["acc", "gyro"] },
+        "seq": { "type": "integer", "minimum": 0 },
+        "sensor_ts_ns": { "type": "integer", "minimum": 0 },
+        "x": { "type": "number" },
+        "y": { "type": "number" },
+        "z": { "type": "number" },
+        "unit": { "type": "string", "minLength": 1 }
+      }
+    }
+  }
+}

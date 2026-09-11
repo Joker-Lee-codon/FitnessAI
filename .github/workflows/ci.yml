@@ -1,0 +1,66 @@
+name: Required Checks
+
+on:
+  pull_request:
+  push:
+    branches: [main]
+
+permissions:
+  contents: read
+
+env:
+  DEVELOPER_DIR: /Applications/Xcode_26.6.app/Contents/Developer
+
+defaults:
+  run:
+    shell: zsh {0}
+
+jobs:
+  compile:
+    name: compile
+    runs-on: macos-26
+    steps:
+      - uses: actions/checkout@v4
+      - run: scripts/ci/run-check.sh compile
+  domain:
+    name: domain
+    runs-on: macos-26
+    steps:
+      - uses: actions/checkout@v4
+      - run: scripts/ci/run-check.sh domain
+  schema:
+    name: schema
+    runs-on: macos-26
+    steps:
+      - uses: actions/checkout@v4
+      - run: scripts/ci/run-check.sh schema
+  safety:
+    name: safety
+    runs-on: macos-26
+    steps:
+      - uses: actions/checkout@v4
+      - run: scripts/ci/run-check.sh safety
+  persistence:
+    name: persistence
+    runs-on: macos-26
+    steps:
+      - uses: actions/checkout@v4
+      - run: scripts/ci/run-check.sh persistence
+  sync:
+    name: sync
+    runs-on: macos-26
+    steps:
+      - uses: actions/checkout@v4
+      - run: scripts/ci/run-check.sh sync
+  ai-contract:
+    name: ai-contract
+    runs-on: macos-26
+    steps:
+      - uses: actions/checkout@v4
+      - run: scripts/ci/run-check.sh ai-contract
+  secret:
+    name: secret
+    runs-on: macos-26
+    steps:
+      - uses: actions/checkout@v4
+      - run: scripts/ci/run-check.sh secret

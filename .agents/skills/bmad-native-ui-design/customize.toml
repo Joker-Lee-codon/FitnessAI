@@ -1,0 +1,29 @@
+# DO NOT EDIT -- defaults for bmad-native-ui-design.
+# Team overrides: {project-root}/_bmad/custom/bmad-native-ui-design.toml
+# User overrides: {project-root}/_bmad/custom/bmad-native-ui-design.user.toml
+
+[workflow]
+output_path = "{planning_artifacts}/native-ui-designs"
+run_folder_pattern = "native-ui-{project_name}-{date}"
+
+representative_surfaces = [
+  "Apple Watch: Active Session",
+  "iPhone: Today & Plans or Analysis",
+]
+
+mvp_batches = [
+  "Watch core: Workout Entry, Active Session, Rest Resolution, Watch Finish Review, Watch Recovery",
+  "iPhone review: Today & Plans, Session Review, Training History",
+  "iPhone planning and analysis: Training Plans, Analysis, Exercise Catalog",
+  "System: Sync & Recovery, Account & Privacy, required exceptional states",
+]
+
+required_documents = [
+  "design-direction.md",
+  "native-ui-spec.md",
+  "architecture-handoff.md",
+]
+
+uiux_skill_path = "{project-root}/.agents/skills/ui-ux-pro-max"
+optional_polish_skills = ["impeccable"]
+

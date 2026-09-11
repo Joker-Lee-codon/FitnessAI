@@ -1,0 +1,29 @@
+started_at=2026-07-19T16:08:30Z
+PASS: BMAD Python 3.11 arm64 and uv 0.11.29
+PASS: Node/npm/npx are arm64 and available before and after BMAD activation
+......
+----------------------------------------------------------------------
+Ran 6 tests in 0.006s
+
+OK
+
+PASS: pip check and six Python POC tests
+PASS: BMAD config JSON and required language fields
+PASS: iOS 26.5 (23F77) and watchOS 26.5 (23T570) runtimes are available
+PASS: Windows paths/caches are absent and Git remains uninitialized
+PASS: no PE or x86_64-only Mach-O artifacts
+PASS: secret and signing-file ignore coverage
+PASS docs/development-setup.md <-> docs/development-setup.zh-CN.md
+PASS _bmad-output/implementation-artifacts/spec-migrate-windows-development-environment-to-macos.md <-> _bmad-output/implementation-artifacts/spec-migrate-windows-development-environment-to-macos.zh-CN.md
+PASS _bmad-output/implementation-artifacts/macos-migration-evidence.md <-> _bmad-output/implementation-artifacts/macos-migration-evidence.zh-CN.md
+PASS _bmad-output/implementation-artifacts/review-blind-hunter-macos-migration.md <-> _bmad-output/implementation-artifacts/review-blind-hunter-macos-migration.zh-CN.md
+PASS _bmad-output/implementation-artifacts/review-edge-case-hunter-macos-migration.md <-> _bmad-output/implementation-artifacts/review-edge-case-hunter-macos-migration.zh-CN.md
+PASS _bmad-output/planning-artifacts/prds/prd-FitnessAI-2026-07-19/addendum.md <-> _bmad-output/planning-artifacts/prds/prd-FitnessAI-2026-07-19/addendum.zh-CN.md
+PASS poc/vivo-watch-gt2/docs/device-baseline.md <-> poc/vivo-watch-gt2/docs/device-baseline.zh-CN.md
+PASS poc/vivo-watch-gt2/docs/onboarding.md <-> poc/vivo-watch-gt2/docs/onboarding.zh-CN.md
+
+PASS: machine-verifiable bilingual structure
+PASS: all macOS migration checks completed
+exit_code=0
+conda_update_idempotency=PASS
+conda_update_idempotency_detail=second update produced no Conda or pip drift

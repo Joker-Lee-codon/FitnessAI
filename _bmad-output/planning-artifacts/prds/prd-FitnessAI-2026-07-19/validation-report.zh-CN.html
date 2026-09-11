@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<title>PRD 验证：FitnessAI</title>
+<style>
+  :root { --bg:#fafaf9; --surface:#fff; --border:#e7e5e4; --text:#1c1917; --muted:#78716c; --strong:#16a34a; --adequate:#65a30d; --thin:#d97706; --broken:#dc2626; }
+  * { box-sizing:border-box; } html,body { margin:0; padding:0; }
+  body { font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","PingFang SC",system-ui,sans-serif; background:var(--bg); color:var(--text); line-height:1.7; font-size:15px; }
+  .container { max-width:960px; margin:0 auto; padding:32px 24px 64px; }
+  .report-header { display:flex; justify-content:space-between; gap:24px; padding-bottom:16px; border-bottom:1px solid var(--border); margin-bottom:24px; }
+  h1 { margin:0; font-size:22px; } .subtitle,.reviewer-source,footer { color:var(--muted); font:12px ui-monospace,"SF Mono",Menlo,monospace; }
+  .grade { padding:10px 18px; border-radius:8px; color:#fff; background:var(--strong); font-weight:600; white-space:nowrap; }
+  .synthesis,.mechanical,details { background:var(--surface); border:1px solid var(--border); border-radius:8px; }
+  .synthesis { border-left:3px solid var(--strong); padding:18px 22px; margin-bottom:24px; }
+  .synthesis p { margin:0 0 10px; } .synthesis p:last-child { margin:0; }
+  .dimension-summary { display:grid; grid-template-columns:repeat(auto-fit,minmax(180px,1fr)); gap:10px; margin-bottom:24px; }
+  .dim-card { background:var(--surface); border:1px solid var(--border); border-radius:8px; padding:12px 14px; }
+  .dim-name { color:var(--muted); font-size:13px; } .dim-verdict { color:var(--strong); font-weight:600; }
+  section { margin-bottom:14px; } summary { padding:14px 20px; cursor:pointer; display:flex; align-items:center; gap:12px; }
+  summary h2 { margin:0; font-size:16px; flex:1; } .verdict-pill { padding:3px 10px; border-radius:999px; color:#fff; background:var(--strong); font-size:11px; font-weight:600; text-transform:uppercase; }
+  .dim-body { padding:4px 20px 18px; } .dim-body p { margin:0; }
+  .mechanical { padding:16px 20px; margin-top:24px; } .mechanical h3 { margin:0 0 10px; color:var(--muted); font-size:14px; text-transform:uppercase; }
+  footer { margin-top:40px; padding-top:16px; border-top:1px solid var(--border); display:flex; gap:24px; flex-wrap:wrap; }
+</style>
+</head>
+<body><div class="container">
+  <header class="report-header"><div><h1>FitnessAI — 验证报告</h1><div class="subtitle">/Users/seanlee/Documents/Code/FitnessAI/_bmad-output/planning-artifacts/prds/prd-FitnessAI-2026-07-19/prd.zh-CN.md</div></div><div class="grade grade-excellent">Excellent</div></header>
+  <div class="synthesis"><p>FitnessAI 是一份 strong、达到决策就绪状态的链路顶层 PRD。其产品主线、范围边界、证据门槛、恢复语义、建议型 AI 策略和中国区域数据控制已足够具体，可指导 UX、架构和故事创建，且没有遗留实质性或机械性发现。</p><p>下游安全与边界情况审查也在无发现的情况下通过，覆盖设备拓扑、恢复、同步、治理、评估泄漏、伤病安全和生成版本溯源。</p></div>
+  <div class="dimension-summary">
+    <div class="dim-card"><div class="dim-name">决策就绪度</div><div class="dim-verdict">strong</div></div>
+    <div class="dim-card"><div class="dim-name">内容实质而非形式</div><div class="dim-verdict">strong</div></div>
+    <div class="dim-card"><div class="dim-name">战略一致性</div><div class="dim-verdict">strong</div></div>
+    <div class="dim-card"><div class="dim-name">完成清晰度</div><div class="dim-verdict">strong</div></div>
+    <div class="dim-card"><div class="dim-name">范围诚实性</div><div class="dim-verdict">strong</div></div>
+    <div class="dim-card"><div class="dim-name">下游可用性</div><div class="dim-verdict">strong</div></div>
+    <div class="dim-card"><div class="dim-name">形态适配度</div><div class="dim-verdict">strong</div></div>
+  </div>
+  <section class="dimension"><details><summary><h2>决策就绪度</h2><span class="verdict-pill">strong</span></summary><div class="dim-body"><p>主要产品选择、后果、负责人、重访点和失败分支均已明确；可信记录与用户权威纠错始终是统领性决定。</p></div></details></section>
+  <section class="dimension"><details><summary><h2>内容实质而非形式</h2><span class="verdict-pill">strong</span></summary><div class="dim-body"><p>愿景、具名旅程、产品特定 NFR 和证据 addendum 都有保留价值，未出现通用化的形式填充。</p></div></details></section>
+  <section class="dimension"><details><summary><h2>战略一致性</h2><span class="verdict-pill">strong</span></summary><div class="dim-body"><p>可靠本地捕获和可恢复用户事实贯穿 MVP 范围、成功指标、证据 Gate、反向指标与 AI 建议定位。</p></div></details></section>
+  <section class="dimension"><details><summary><h2>完成清晰度</h2><span class="verdict-pill">strong</span></summary><div class="dim-body"><p>识别、运行资源、恢复、RPE、隐私、安全和同步需求均定义了可测量或可审批的完成 Gate。</p></div></details></section>
+  <section class="dimension"><details><summary><h2>范围诚实性</h2><span class="verdict-pill">strong</span></summary><div class="dim-body"><p>非目标、MVP 排除项、Post-MVP 标签和具名延后验证 Gate 明确暴露省略内容，没有静默缩减范围。</p></div></details></section>
+  <section class="dimension"><details><summary><h2>下游可用性</h2><span class="verdict-pill">strong</span></summary><div class="dim-body"><p>稳定 ID 连续且唯一，旅程均有具名主人公，内部引用可解析，术语表固定了规范状态和历史术语。</p></div></details></section>
+  <section class="dimension"><details><summary><h2>形态适配度</h2><span class="verdict-pill">strong</span></summary><div class="dim-body"><p>旅程导向、多端的发布级 PRD 适合继续输入 UX、架构、故事、数据治理与模型验证。</p></div></details></section>
+  <section class="reviewer-section"><details><summary><h2>下游安全与边界情况审查</h2><span class="reviewer-source">review-downstream.zh-CN.md</span></summary><div class="dim-body"><p>通过。Critical 0 · High 0 · Medium 0 · Low 0。此前设备、恢复、冲突、治理、评估、安全及溯源发现均已关闭。</p></div></details></section>
+  <div class="mechanical"><h3>机械性备注</h3><ul><li>FR-001–FR-070、UJ-1–UJ-5 和 DV-001–DV-005 连续且唯一；未发现重复 NFR ID。</li><li>没有假设、PM 备注、Open Question 或未解析交叉引用。</li><li>中英文 PRD 与 addendum 的行数、结构、稳定 ID 顺序、阈值和结论一致。</li></ul></div>
+  <footer><span>Rubric: /Users/seanlee/Documents/Code/FitnessAI/.agents/skills/bmad-prd/assets/prd-validation-checklist.md</span><span>Generated: 2026-07-20T09:09:16+08:00</span></footer>
+</div></body></html>

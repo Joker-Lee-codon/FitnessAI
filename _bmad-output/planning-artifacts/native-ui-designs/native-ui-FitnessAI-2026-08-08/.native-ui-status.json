@@ -1,0 +1,38 @@
+{
+  "schema_version": 1,
+  "workflow": "bmad-native-ui-design",
+  "current_stage": "complete",
+  "selected_direction": "Titanium Measure",
+  "updated": "2026-09-09T06:45:20+00:00",
+  "production_visual_policy": {
+    "recorded": "2026-09-09",
+    "system_authority": "DESIGN.md and design-system/fitnessai/MASTER.md confirm Titanium Measure 1.1.0.",
+    "layout_authority": "native-ui-spec.md and previews/iphone-core-alpha-final-v1.html are implementation-authoritative for hierarchy, containment, navigation, action placement, state grammar, and responsive behavior.",
+    "fixture_boundary": "Representative names, dates, measurements, and system-owned Share Sheet chrome are illustrative fixtures.",
+    "historical_exclusion": "Direction D and earlier ND discussion boards remain non-authoritative history."
+  },
+  "stages": {
+    "ND-01": {
+      "state": "completed",
+      "note": "Historical comparison selected Direction D in 2026-08-08; the 2026-09-08 authoritative DESIGN spine later confirmed Titanium Measure for private-Alpha implementation."
+    },
+    "ND-02": {
+      "state": "completed",
+      "note": "Titanium Measure 1.1.0 semantic system is frozen; the native run token mirror is 1.1.0-alpha-layout."
+    },
+    "ND-03": {
+      "state": "completed",
+      "note": "Product Owner accepted the Reviewer Gate on 2026-09-09; all configured MVP batches and the reconciled core-product private-Alpha additions are accepted.",
+      "completed_batches": [
+        "Watch core: Workout Entry, Active Session, Rest Resolution, Watch Finish Review, Watch Recovery",
+        "iPhone review: Today & Plans, Session Review, Training History",
+        "iPhone planning and analysis: Training Plans, Analysis, Exercise Catalog",
+        "System: Sync & Recovery, Account & Privacy, required exceptional states"
+      ]
+    },
+    "ND-04": {
+      "state": "completed",
+      "note": "2026-09-09: Mandatory native quality gates passed; bilingual Architecture handoff completed. Physical-device checks and operating-point decisions have explicit owners and do not block lean Architecture creation."
+    }
+  }
+}

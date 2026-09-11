@@ -1,0 +1,86 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1800" height="1800" viewBox="0 0 1800 1800" role="img" aria-labelledby="title desc">
+  <title id="title">FitnessAI Selected Direction D — Kinetic Type</title>
+  <desc id="desc">A distinct Apple Watch Active Session on the left and a portrait iPhone Today and Plans screen on the right.</desc>
+  <defs>
+    <filter id="shadow" x="-30%" y="-30%" width="160%" height="160%"><feDropShadow dx="0" dy="26" stdDeviation="28" flood-color="#000" flood-opacity=".42"/></filter>
+    <style>.sf{font-family:-apple-system,BlinkMacSystemFont,'PingFang SC','Helvetica Neue',sans-serif}.rounded{font-family:ui-rounded,-apple-system,BlinkMacSystemFont,'PingFang SC',sans-serif}.mono{font-variant-numeric:tabular-nums}.paper{fill:#F2EFE8}.muted{fill:#9A9A93}.red{fill:#FF5B3F}.peri{fill:#A7AEFF}.tiny{font-size:16px}.small{font-size:20px}.body{font-size:24px}.heading{font-size:44px;font-weight:760}.display{font-size:104px;font-weight:820}</style>
+  </defs>
+  <rect width="1800" height="1800" fill="#101010"/>
+  <text x="82" y="78" class="sf red tiny" letter-spacing="3">FITNESSAI · ND-01 · SELECTED DIRECTION D</text>
+  <text x="82" y="142" class="rounded paper" font-size="58" font-weight="820">动势字场 <tspan class="muted" font-size="24" font-weight="550">KINETIC TYPE</tspan></text>
+  <text x="82" y="188" class="sf muted body">左：Apple Watch Active Session　右：iPhone Today &amp; Plans</text>
+  <line x1="82" y1="228" x2="1718" y2="228" stroke="#343434" stroke-width="2"/>
+
+  <text x="242" y="284" class="sf muted tiny" letter-spacing="3">APPLE WATCH · ACTIVE SESSION</text>
+  <g filter="url(#shadow)">
+    <rect x="176" y="326" width="420" height="510" rx="112" fill="#3A3A3A"/>
+    <rect x="194" y="344" width="384" height="474" rx="94" fill="#090909"/>
+    <text x="226" y="406" class="sf paper tiny">杠铃卧推 · 第 3 / 4 组</text>
+    <text x="210" y="582" class="rounded" font-size="180" font-weight="850" fill="#1E1E1E">80</text>
+    <text x="238" y="556" class="rounded paper display mono">80<tspan font-size="28" class="red"> kg</tspan></text>
+    <text x="242" y="614" class="sf peri" font-size="34" font-weight="700">8 次</text>
+    <line x1="488" y1="432" x2="488" y2="648" stroke="#4B4B4B" stroke-width="5"/>
+    <circle cx="488" cy="458" r="8" fill="#FF5B3F"/><circle cx="488" cy="516" r="8" fill="#FF5B3F"/><circle cx="488" cy="574" r="8" fill="#FF5B3F"/><circle cx="488" cy="632" r="8" fill="#090909" stroke="#9A9A93" stroke-width="3"/>
+    <text x="238" y="676" class="sf muted tiny">● 已保存到本机 · 上一组负重</text>
+    <rect x="222" y="724" width="328" height="68" rx="22" fill="#FF5B3F"/>
+    <text x="386" y="767" class="sf" font-size="22" font-weight="760" fill="#111" text-anchor="middle">完成本组  →</text>
+  </g>
+
+  <text x="812" y="284" class="sf muted tiny" letter-spacing="3">IPHONE · TODAY &amp; PLANS</text>
+  <g filter="url(#shadow)">
+    <!-- Portrait iPhone hardware: 402 × 810, realistic tall silhouette -->
+    <rect x="782" y="306" width="430" height="822" rx="72" fill="#454545"/>
+    <rect x="792" y="316" width="410" height="802" rx="64" fill="#050505" stroke="#777" stroke-width="2"/>
+    <rect x="806" y="330" width="382" height="774" rx="52" fill="#0A0A0A"/>
+    <!-- iOS status bar and Dynamic Island -->
+    <text x="832" y="367" class="sf paper" font-size="14" font-weight="650">9:41</text>
+    <rect x="938" y="342" width="120" height="34" rx="17" fill="#000"/>
+    <circle cx="1134" cy="360" r="5" fill="#F2EFE8"/><rect x="1146" y="355" width="16" height="10" rx="3" fill="#F2EFE8"/><rect x="1166" y="354" width="16" height="12" rx="3" fill="none" stroke="#F2EFE8" stroke-width="2"/>
+
+    <text x="830" y="412" class="sf red" font-size="14" font-weight="700" letter-spacing="1">今天训练 · 7 月 21 日</text>
+    <text x="830" y="458" class="rounded paper" font-size="46" font-weight="820">上肢力量</text>
+    <text x="830" y="488" class="sf muted" font-size="17">5 个动作 · 18 组 · 约 68 分钟</text>
+    <rect x="830" y="514" width="334" height="66" rx="20" fill="#FF5B3F"/>
+    <text x="850" y="539" class="sf" font-size="13" fill="#2B100B">WATCH 已就绪</text>
+    <text x="850" y="566" class="sf" font-size="20" font-weight="760" fill="#111">在 Watch 上开始  →</text>
+
+    <line x1="830" y1="620" x2="1164" y2="620" stroke="#F2EFE8" stroke-width="4"/>
+    <text x="830" y="672" class="rounded red" font-size="48" font-weight="820">01</text>
+    <text x="902" y="662" class="sf paper" font-size="22" font-weight="720">杠铃卧推</text>
+    <text x="902" y="690" class="sf muted" font-size="14">4 组 × 8 次 · 80 kg · RPE 8</text>
+    <line x1="830" y1="718" x2="1164" y2="718" stroke="#363636" stroke-width="2"/>
+    <text x="830" y="770" class="rounded peri" font-size="48" font-weight="820">02</text>
+    <text x="902" y="760" class="sf paper" font-size="22" font-weight="720">上斜哑铃卧推</text>
+    <text x="902" y="788" class="sf muted" font-size="14">3 组 × 10 次 · 26 kg · RPE 8</text>
+    <line x1="830" y1="816" x2="1164" y2="816" stroke="#363636" stroke-width="2"/>
+    <rect x="830" y="838" width="5" height="66" fill="#FF5B3F"/>
+    <text x="852" y="880" class="rounded paper" font-size="38" font-weight="820">03</text>
+    <text x="920" y="870" class="sf paper" font-size="22" font-weight="720">坐姿推肩</text>
+    <text x="920" y="898" class="sf muted" font-size="14">3 × 8 · 42.5 kg · 器械待确认</text>
+
+    <!-- Native tab bar and Home Indicator -->
+    <rect x="806" y="970" width="382" height="134" fill="#0D0D0D"/>
+    <line x1="806" y1="970" x2="1188" y2="970" stroke="#343434" stroke-width="2"/>
+    <text x="858" y="1010" class="sf red" font-size="13" text-anchor="middle">calendar</text><text x="997" y="1010" class="sf muted" font-size="13" text-anchor="middle">clock</text><text x="1136" y="1010" class="sf muted" font-size="13" text-anchor="middle">chart</text>
+    <text x="858" y="1036" class="sf red" font-size="14" text-anchor="middle">今天</text><text x="997" y="1036" class="sf muted" font-size="14" text-anchor="middle">历史</text><text x="1136" y="1036" class="sf muted" font-size="14" text-anchor="middle">分析</text>
+    <rect x="925" y="1080" width="144" height="5" rx="3" fill="#F2EFE8"/>
+  </g>
+
+  <g transform="translate(1324 360)">
+    <text class="sf muted tiny" letter-spacing="3">TWO NATIVE SURFACES</text>
+    <text y="58" class="rounded paper heading">一表一机</text>
+    <text y="100" class="sf muted small">左：抬腕、扫视、完成本组</text>
+    <text y="134" class="sf muted small">右：计划、顺序、Watch 交接</text>
+    <line y1="178" x2="370" y2="178" stroke="#343434" stroke-width="2"/>
+    <text y="232" class="sf red tiny" letter-spacing="3">IPHONE CUES</text>
+    <text y="272" class="sf paper small" font-weight="650">竖向机身 · Dynamic Island</text>
+    <text y="306" class="sf paper small" font-weight="650">状态栏 · 原生 Tab Bar</text>
+    <text y="340" class="sf paper small" font-weight="650">Home Indicator</text>
+    <line y1="386" x2="370" y2="386" stroke="#343434" stroke-width="2"/>
+    <text y="440" class="sf muted tiny" letter-spacing="3">SELECTED THESIS</text>
+    <text y="482" class="sf paper small" font-weight="650">Typography 本身完成动作</text>
+    <text y="522" class="sf muted tiny">语义文字完整、可缩放；</text>
+    <text y="552" class="sf muted tiny">裁切字层仅作装饰。</text>
+  </g>
+  <text x="82" y="1170" class="sf muted tiny">Selected direction preview · Native behavior, Dynamic Type, accessibility and state contracts remain authoritative.</text>
+</svg>

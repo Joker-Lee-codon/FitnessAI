@@ -1,0 +1,75 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1800" height="1800" viewBox="0 0 1800 1800" role="img" aria-labelledby="title desc">
+  <title id="title">FitnessAI ND-02 Kinetic Type Semantic System</title>
+  <desc id="desc">Dark Apple Watch Active Session, light portrait iPhone Today and Plans, and semantic token/state samples.</desc>
+  <defs>
+    <filter id="shadow" x="-30%" y="-30%" width="160%" height="160%"><feDropShadow dx="0" dy="24" stdDeviation="26" flood-color="#000" flood-opacity=".32"/></filter>
+    <style>.sf{font-family:-apple-system,BlinkMacSystemFont,'PingFang SC','Helvetica Neue',sans-serif}.rounded{font-family:ui-rounded,-apple-system,BlinkMacSystemFont,'PingFang SC',sans-serif}.mono{font-variant-numeric:tabular-nums}.darkText{fill:#F5F1E8}.darkMuted{fill:#B8B4AC}.lightText{fill:#171719}.lightMuted{fill:#55545A}.tiny{font-size:16px}.small{font-size:20px}.body{font-size:24px}.heading{font-size:44px;font-weight:760}</style>
+  </defs>
+  <rect width="1800" height="1800" fill="#171719"/>
+  <text x="82" y="78" class="sf" font-size="16" fill="#FF5B3F" letter-spacing="3">FITNESSAI · ND-02 · SYSTEM CANDIDATE</text>
+  <text x="82" y="142" class="rounded darkText" font-size="58" font-weight="820">动势字场语义系统</text>
+  <text x="82" y="188" class="sf darkMuted body">暗色 Watch · 浅色 iPhone · 同一套 SwiftUI 语义 tokens</text>
+  <line x1="82" y1="228" x2="1718" y2="228" stroke="#3B3B43" stroke-width="2"/>
+
+  <text x="206" y="284" class="sf darkMuted tiny" letter-spacing="3">WATCH · DARK</text>
+  <g filter="url(#shadow)">
+    <rect x="154" y="318" width="410" height="500" rx="108" fill="#4A494F"/>
+    <rect x="172" y="336" width="374" height="464" rx="90" fill="#0B0B0D"/>
+    <text x="204" y="398" class="sf darkText tiny">杠铃卧推 · 第 3 / 4 组</text>
+    <text x="196" y="566" class="rounded" font-size="170" font-weight="850" fill="#1E1E24">80</text>
+    <text x="222" y="544" class="rounded darkText" font-size="96" font-weight="820">80<tspan font-size="27" fill="#FF5B3F"> kg</tspan></text>
+    <text x="226" y="600" class="sf" font-size="32" font-weight="700" fill="#A7AEFF">8 次</text>
+    <line x1="462" y1="426" x2="462" y2="632" stroke="#6A6870" stroke-width="5"/>
+    <circle cx="462" cy="452" r="8" fill="#FF5B3F"/><circle cx="462" cy="508" r="8" fill="#FF5B3F"/><circle cx="462" cy="564" r="8" fill="#FF5B3F"/><circle cx="462" cy="620" r="8" fill="#0B0B0D" stroke="#B8B4AC" stroke-width="3"/>
+    <text x="224" y="654" class="sf darkMuted tiny">✓ 已保存到本机 · 上一组负重</text>
+    <rect x="202" y="704" width="314" height="64" rx="20" fill="#FF5B3F"/>
+    <text x="359" y="744" class="sf" font-size="21" font-weight="760" fill="#170604" text-anchor="middle">完成本组  →</text>
+  </g>
+
+  <text x="728" y="284" class="sf darkMuted tiny" letter-spacing="3">IPHONE · LIGHT</text>
+  <g filter="url(#shadow)">
+    <rect x="680" y="298" width="420" height="830" rx="72" fill="#3D3C41"/>
+    <rect x="692" y="310" width="396" height="806" rx="62" fill="#F4F1EA"/>
+    <text x="718" y="354" class="sf lightText" font-size="14" font-weight="650">9:41</text>
+    <rect x="828" y="326" width="120" height="34" rx="17" fill="#171719"/>
+    <text x="718" y="408" class="sf" font-size="14" font-weight="700" fill="#C43B27">今天训练 · 7 月 21 日</text>
+    <text x="718" y="454" class="rounded lightText" font-size="46" font-weight="820">上肢力量</text>
+    <text x="718" y="484" class="sf lightMuted" font-size="17">5 个动作 · 18 组 · 约 68 分钟</text>
+    <rect x="718" y="512" width="344" height="66" rx="20" fill="#C43B27"/>
+    <text x="738" y="538" class="sf" font-size="13" fill="#FFFFFF">WATCH 已就绪</text>
+    <text x="738" y="565" class="sf" font-size="20" font-weight="760" fill="#FFFFFF">在 Watch 上开始  →</text>
+    <line x1="718" y1="618" x2="1062" y2="618" stroke="#171719" stroke-width="4"/>
+    <text x="718" y="670" class="rounded" font-size="48" font-weight="820" fill="#C43B27">01</text>
+    <text x="792" y="660" class="sf lightText" font-size="22" font-weight="720">杠铃卧推</text><text x="792" y="688" class="sf lightMuted" font-size="14">4 × 8 · 80 kg · RPE 8</text>
+    <line x1="718" y1="716" x2="1062" y2="716" stroke="#C8C5BE" stroke-width="2"/>
+    <text x="718" y="768" class="rounded" font-size="48" font-weight="820" fill="#5058B5">02</text>
+    <text x="792" y="758" class="sf lightText" font-size="22" font-weight="720">上斜哑铃卧推</text><text x="792" y="786" class="sf lightMuted" font-size="14">3 × 10 · 26 kg · RPE 8</text>
+    <line x1="718" y1="814" x2="1062" y2="814" stroke="#C8C5BE" stroke-width="2"/>
+    <rect x="718" y="836" width="5" height="66" fill="#6E4B00"/>
+    <text x="740" y="878" class="rounded lightText" font-size="38" font-weight="820">03</text>
+    <text x="808" y="868" class="sf lightText" font-size="22" font-weight="720">坐姿推肩</text><text x="808" y="896" class="sf lightMuted" font-size="14">3 × 8 · 42.5 kg · 器械待确认</text>
+    <rect x="692" y="970" width="396" height="146" fill="#FFFFFF"/>
+    <line x1="692" y1="970" x2="1088" y2="970" stroke="#C8C5BE"/>
+    <text x="754" y="1016" class="sf" font-size="14" fill="#C43B27" text-anchor="middle">今天</text><text x="890" y="1016" class="sf lightMuted" font-size="14" text-anchor="middle">历史</text><text x="1026" y="1016" class="sf lightMuted" font-size="14" text-anchor="middle">分析</text>
+    <rect x="818" y="1084" width="144" height="5" rx="3" fill="#171719"/>
+  </g>
+
+  <g transform="translate(1190 312)">
+    <text class="sf darkMuted tiny" letter-spacing="3">SEMANTIC COLORS</text>
+    <g transform="translate(0 34)"><rect width="78" height="78" rx="18" fill="#FF5B3F"/><text x="94" y="34" class="sf darkText small" font-weight="650">Action</text><text x="94" y="60" class="sf darkMuted tiny">用户权威操作</text></g>
+    <g transform="translate(0 132)"><rect width="78" height="78" rx="18" fill="#64C79B"/><text x="94" y="34" class="sf darkText small" font-weight="650">Durable</text><text x="94" y="60" class="sf darkMuted tiny">已保存到本机</text></g>
+    <g transform="translate(0 230)"><rect width="78" height="78" rx="18" fill="#F3BD4F"/><text x="94" y="34" class="sf darkText small" font-weight="650">Pending</text><text x="94" y="60" class="sf darkMuted tiny">待处理 / incomplete</text></g>
+    <g transform="translate(0 328)"><rect width="78" height="78" rx="18" fill="#A7AEFF"/><text x="94" y="34" class="sf darkText small" font-weight="650">Corrected</text><text x="94" y="60" class="sf darkMuted tiny">纠正 / revision</text></g>
+    <g transform="translate(0 426)"><rect width="78" height="78" rx="18" fill="#FF7773"/><text x="94" y="34" class="sf darkText small" font-weight="650">Error</text><text x="94" y="60" class="sf darkMuted tiny">完整性威胁 / conflict</text></g>
+    <line y1="548" x2="490" y2="548" stroke="#3B3B43" stroke-width="2"/>
+    <text y="600" class="sf" font-size="16" fill="#FF5B3F" letter-spacing="3">SYSTEM RULES</text>
+    <text y="644" class="sf darkText small" font-weight="650">原生字体 · SF Symbols</text>
+    <text y="680" class="sf darkText small" font-weight="650">44 pt 触控 · 4/8 pt 节奏</text>
+    <text y="716" class="sf darkText small" font-weight="650">本机提交 ≠ 云同步</text>
+    <text y="752" class="sf darkText small" font-weight="650">颜色 + 文字 + symbol</text>
+    <text y="802" class="sf darkMuted tiny">装饰字层 accessibilityHidden；</text>
+    <text y="832" class="sf darkMuted tiny">Reduce Motion 移除位移；</text>
+    <text y="862" class="sf darkMuted tiny">Always On 移除饱和色与操作。</text>
+  </g>
+  <text x="82" y="1180" class="sf darkMuted tiny">ND-02 candidate · Awaiting user acceptance before tokens freeze and ND-03 becomes ready.</text>
+</svg>

@@ -1,0 +1,261 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>FitnessAI — Activity-inspired Action Color Directions</title>
+  <style>
+    /*
+      Apple Activity Rings guardrail:
+      This comparison does not draw or modify Activity rings, use rings as branding,
+      or assign Apple's exact Move / Exercise / Stand colors to unrelated data.
+      It compares differentiated, accessibility-checked action tokens only.
+
+      Momentum Coral
+      action-light #C52E55 / on-action-light #FFFFFF
+      action-dark  #FF6B86 / on-action-dark  #26030D
+
+      Energy Lime
+      action-light #6A9300 / on-action-light #0A1400
+      action-dark  #B9E84A / on-action-dark  #101900
+
+      Pulse Aqua
+      action-light #007E8C / on-action-light #FFFFFF
+      action-dark  #50D6DF / on-action-dark  #001A1D
+    */
+    :root {
+      color-scheme: light;
+      --page: #F1F1F3;
+      --page-ink: #111111;
+      --page-muted: #5C5C63;
+      --card: #FFFFFF;
+      --card-border: #D1D1D6;
+      --light-base: #F7F7F8;
+      --light-raised: #FFFFFF;
+      --light-muted: #ECECEF;
+      --light-ink: #111111;
+      --light-secondary: #5C5C63;
+      --light-border: #D1D1D6;
+      --dark-base: #000000;
+      --dark-raised: #1C1C1E;
+      --dark-muted: #2C2C2E;
+      --dark-ink: #FFFFFF;
+      --dark-secondary: #C7C7CC;
+      --dark-border: #3A3A3C;
+      --r-sm: 8px;
+      --r-md: 12px;
+      --r-lg: 16px;
+      --r-full: 9999px;
+      --s1: 4px;
+      --s2: 8px;
+      --s3: 12px;
+      --s4: 16px;
+      --s5: 24px;
+      font-family: -apple-system, BlinkMacSystemFont, "SF Pro Text", "PingFang SC", "Helvetica Neue", sans-serif;
+    }
+    * { box-sizing: border-box; }
+    body { margin: 0; background: var(--page); color: var(--page-ink); }
+    main { width: min(1480px, 100%); margin: 0 auto; padding: 32px; }
+    .page-head { max-width: 860px; margin-bottom: var(--s5); }
+    h1 { margin: 0; font-size: clamp(28px, 4vw, 42px); line-height: 1.1; font-weight: 500; }
+    .lede { margin: var(--s2) 0 0; color: var(--page-muted); line-height: 1.55; }
+    .guardrail { margin-top: var(--s3); padding-left: var(--s3); border-left: 3px solid var(--card-border); color: var(--page-muted); line-height: 1.5; }
+    .themes { display: grid; grid-template-columns: repeat(3, minmax(280px, 1fr)); gap: var(--s4); align-items: start; }
+    .theme-card { min-width: 0; padding: var(--s4); border: 1px solid var(--card-border); border-radius: var(--r-lg); background: var(--card); }
+    .theme-card h2 { margin: 0; font-size: 22px; font-weight: 500; }
+    .register { margin: var(--s1) 0 var(--s4); color: var(--page-muted); line-height: 1.4; }
+    .modes { display: grid; grid-template-columns: 1fr 1fr; gap: var(--s3); }
+    .device { min-width: 0; padding: var(--s3); border-radius: var(--r-md); }
+    .device-label { display: flex; justify-content: space-between; gap: var(--s2); align-items: center; margin-bottom: var(--s3); font-size: 12px; font-weight: 500; }
+    .iphone { border: 1px solid var(--light-border); background: var(--light-base); color: var(--light-ink); }
+    .watch { border: 1px solid var(--dark-border); background: var(--dark-base); color: var(--dark-ink); }
+    .safe-label { padding: 3px 7px; border: 1px solid currentColor; border-radius: var(--r-full); font-size: 10px; }
+    .iphone .safe-label { color: var(--light-secondary); }
+    .watch .safe-label { color: var(--dark-secondary); }
+    .set-card { min-height: 122px; padding: var(--s3); border-radius: var(--r-md); }
+    .iphone .set-card { border: 1px solid var(--light-border); background: var(--light-raised); }
+    .watch .set-card { border: 1px solid var(--dark-border); background: var(--dark-raised); }
+    .set-title { margin: 0; font-size: 15px; font-weight: 500; }
+    .facts { margin-top: var(--s2); display: flex; flex-wrap: wrap; gap: var(--s3); font-variant-numeric: tabular-nums; }
+    .meta { margin-top: var(--s2); font-size: 11px; line-height: 1.4; }
+    .iphone .meta { color: var(--light-secondary); }
+    .watch .meta { color: var(--dark-secondary); }
+    .actions { margin-top: var(--s3); display: grid; gap: var(--s2); }
+    button { min-height: 44px; padding: 8px 12px; border-radius: var(--r-full); font: inherit; font-weight: 500; }
+    .primary { border: 0; }
+    .iphone .primary { background: var(--action-light); color: var(--on-action-light); }
+    .watch .primary { background: var(--action-dark); color: var(--on-action-dark); }
+    .secondary { background: transparent; }
+    .iphone .secondary { border: 1px solid var(--light-border); color: var(--light-ink); }
+    .watch .secondary { border: 1px solid var(--dark-border); color: var(--dark-ink); }
+    .tokens { margin-top: var(--s4); border-top: 1px solid var(--card-border); padding-top: var(--s3); }
+    .tokens h3 { margin: 0 0 var(--s2); font-size: 14px; font-weight: 500; }
+    .token-list { display: grid; gap: 6px; margin: 0; }
+    .token { display: grid; grid-template-columns: 18px minmax(0, 1fr) auto; gap: var(--s2); align-items: center; font-size: 11px; }
+    .swatch { width: 18px; height: 18px; border: 1px solid var(--card-border); border-radius: 5px; }
+    code { overflow-wrap: anywhere; color: var(--page-ink); }
+    .ratio { color: var(--page-muted); font-variant-numeric: tabular-nums; white-space: nowrap; }
+    .target { margin: var(--s2) 0 0; color: var(--page-muted); font-size: 11px; line-height: 1.4; }
+    .shared { margin-top: var(--s4); padding-top: var(--s3); border-top: 1px solid var(--card-border); color: var(--page-muted); font-size: 12px; line-height: 1.5; }
+
+    .theme-coral {
+      --action-light: #C52E55;
+      --on-action-light: #FFFFFF;
+      --action-dark: #FF6B86;
+      --on-action-dark: #26030D;
+    }
+    .theme-lime {
+      --action-light: #6A9300;
+      --on-action-light: #0A1400;
+      --action-dark: #B9E84A;
+      --on-action-dark: #101900;
+    }
+    .theme-aqua {
+      --action-light: #007E8C;
+      --on-action-light: #FFFFFF;
+      --action-dark: #50D6DF;
+      --on-action-dark: #001A1D;
+    }
+    .theme-card .light-action { background: var(--action-light); }
+    .theme-card .dark-action { background: var(--action-dark); }
+    .theme-card .light-on-action { background: var(--on-action-light); }
+    .theme-card .dark-on-action { background: var(--on-action-dark); }
+
+    @media (max-width: 1080px) {
+      .themes { grid-template-columns: 1fr; }
+      .modes { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    }
+    @media (max-width: 620px) {
+      main { padding: 18px; }
+      .modes { grid-template-columns: 1fr; }
+      .theme-card { padding: var(--s3); }
+    }
+    @media (max-width: 360px) {
+      main { padding: 12px; }
+      .token { grid-template-columns: 18px minmax(0, 1fr); }
+      .ratio { grid-column: 2; white-space: normal; }
+    }
+  </style>
+</head>
+<body>
+  <main>
+    <header class="page-head">
+      <h1>FitnessAI 主操作色方向</h1>
+      <p class="lede">同一组间安全纠正片段、同一中性 surface 与 typography，仅比较 action-color register。主操作色只表示用户可执行操作，不表示 success、error、识别置信度或 Activity data。</p>
+      <div class="guardrail">参考 Apple Fitness Activity rings 的高能量色彩感受，但不复制 ring element，不用于 branding，不使用 Move / Exercise / Stand 的 exact RGB，也不把三者语义分配给 FitnessAI 数据。</div>
+    </header>
+
+    <section class="themes" aria-label="三个主操作色方向">
+      <article class="theme-card theme-coral">
+        <h2>Momentum Coral</h2>
+        <p class="register">温暖、直接、带推进感；参考 Move 的动势，但更克制且明显不同。</p>
+        <div class="modes">
+          <section class="device iphone" aria-label="Momentum Coral iPhone light action snippet">
+            <div class="device-label"><span>iPhone · Light</span><span class="safe-label">待处理</span></div>
+            <div class="set-card">
+              <h3 class="set-title">第 1 组 · 动作不确定</h3>
+              <div class="facts"><span>12 次</span><span>8 kg</span></div>
+              <div class="meta">次数、Actual Load 与时间已保留。</div>
+            </div>
+            <div class="actions"><button class="primary" type="button">在 iPhone 纠正动作</button></div>
+          </section>
+          <section class="device watch" aria-label="Momentum Coral Watch dark action snippet">
+            <div class="device-label"><span>Watch · Dark</span><span class="safe-label">组间可处理</span></div>
+            <div class="set-card">
+              <h3 class="set-title">刚才是哑铃侧平举吗？</h3>
+              <div class="facts"><span>12 次</span><span>8 kg</span></div>
+              <div class="meta">只纠正动作，不改动已保留字段。</div>
+            </div>
+            <div class="actions">
+              <button class="primary" type="button">确认：哑铃侧平举</button>
+              <button class="secondary" type="button">稍后处理</button>
+            </div>
+          </section>
+        </div>
+        <section class="tokens" aria-label="Momentum Coral adapted tokens">
+          <h3>Adapted action tokens</h3>
+          <div class="token-list">
+            <div class="token"><span class="swatch light-action"></span><code>action-light #C52E55 / #FFFFFF</code><span class="ratio">5.39:1</span></div>
+            <div class="token"><span class="swatch dark-action"></span><code>action-dark #FF6B86 / #26030D</code><span class="ratio">6.99:1</span></div>
+          </div>
+          <p class="target">Action text ≥ 4.5:1；filled-control boundary ≥ 3:1。Light boundary 5.39:1，dark boundary against black 7.70:1。</p>
+        </section>
+      </article>
+
+      <article class="theme-card theme-lime">
+        <h2>Energy Lime</h2>
+        <p class="register">最明快、最有训练能量；参考 Exercise 的亮度张力，改为偏自然的黄绿色。</p>
+        <div class="modes">
+          <section class="device iphone" aria-label="Energy Lime iPhone light action snippet">
+            <div class="device-label"><span>iPhone · Light</span><span class="safe-label">待处理</span></div>
+            <div class="set-card">
+              <h3 class="set-title">第 1 组 · 动作不确定</h3>
+              <div class="facts"><span>12 次</span><span>8 kg</span></div>
+              <div class="meta">次数、Actual Load 与时间已保留。</div>
+            </div>
+            <div class="actions"><button class="primary" type="button">在 iPhone 纠正动作</button></div>
+          </section>
+          <section class="device watch" aria-label="Energy Lime Watch dark action snippet">
+            <div class="device-label"><span>Watch · Dark</span><span class="safe-label">组间可处理</span></div>
+            <div class="set-card">
+              <h3 class="set-title">刚才是哑铃侧平举吗？</h3>
+              <div class="facts"><span>12 次</span><span>8 kg</span></div>
+              <div class="meta">只纠正动作，不改动已保留字段。</div>
+            </div>
+            <div class="actions">
+              <button class="primary" type="button">确认：哑铃侧平举</button>
+              <button class="secondary" type="button">稍后处理</button>
+            </div>
+          </section>
+        </div>
+        <section class="tokens" aria-label="Energy Lime adapted tokens">
+          <h3>Adapted action tokens</h3>
+          <div class="token-list">
+            <div class="token"><span class="swatch light-action"></span><code>action-light #6A9300 / #0A1400</code><span class="ratio">5.20:1</span></div>
+            <div class="token"><span class="swatch dark-action"></span><code>action-dark #B9E84A / #101900</code><span class="ratio">12.66:1</span></div>
+          </div>
+          <p class="target">Action text ≥ 4.5:1；filled-control boundary ≥ 3:1。Light boundary against white 3.63:1，dark boundary against black 14.70:1。</p>
+        </section>
+      </article>
+
+      <article class="theme-card theme-aqua">
+        <h2>Pulse Aqua</h2>
+        <p class="register">清爽、精准、数字工具感最强；参考 Stand 的辨识度，但降低荧光感并偏向深青。</p>
+        <div class="modes">
+          <section class="device iphone" aria-label="Pulse Aqua iPhone light action snippet">
+            <div class="device-label"><span>iPhone · Light</span><span class="safe-label">待处理</span></div>
+            <div class="set-card">
+              <h3 class="set-title">第 1 组 · 动作不确定</h3>
+              <div class="facts"><span>12 次</span><span>8 kg</span></div>
+              <div class="meta">次数、Actual Load 与时间已保留。</div>
+            </div>
+            <div class="actions"><button class="primary" type="button">在 iPhone 纠正动作</button></div>
+          </section>
+          <section class="device watch" aria-label="Pulse Aqua Watch dark action snippet">
+            <div class="device-label"><span>Watch · Dark</span><span class="safe-label">组间可处理</span></div>
+            <div class="set-card">
+              <h3 class="set-title">刚才是哑铃侧平举吗？</h3>
+              <div class="facts"><span>12 次</span><span>8 kg</span></div>
+              <div class="meta">只纠正动作，不改动已保留字段。</div>
+            </div>
+            <div class="actions">
+              <button class="primary" type="button">确认：哑铃侧平举</button>
+              <button class="secondary" type="button">稍后处理</button>
+            </div>
+          </section>
+        </div>
+        <section class="tokens" aria-label="Pulse Aqua adapted tokens">
+          <h3>Adapted action tokens</h3>
+          <div class="token-list">
+            <div class="token"><span class="swatch light-action"></span><code>action-light #007E8C / #FFFFFF</code><span class="ratio">4.81:1</span></div>
+            <div class="token"><span class="swatch dark-action"></span><code>action-dark #50D6DF / #001A1D</code><span class="ratio">10.32:1</span></div>
+          </div>
+          <p class="target">Action text ≥ 4.5:1；filled-control boundary ≥ 3:1。Light boundary 4.81:1，dark boundary against black 12.03:1。</p>
+        </section>
+      </article>
+    </section>
+
+    <footer class="shared">Shared semantic tokens remain unchanged across all three directions: surface-base #F7F7F8 / #000000; surface-raised #FFFFFF / #1C1C1E; surface-muted #ECECEF / #2C2C2E; ink-primary #111111 / #FFFFFF; ink-secondary #5C5C63 / #C7C7CC; border #D1D1D6 / #3A3A3C; success #16794A / #5CCB8A; warning #8A5800 / #F3C969; error #B42318 / #FF8A80; pending #6B5A00 / #E7D16C. Status remains explicit text + symbol; none of the three action accents is success, error, pending, confidence, or Activity progress.</footer>
+  </main>
+</body>
+</html>

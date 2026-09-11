@@ -1,0 +1,10 @@
+# Minimum cross-machine tool baseline. For the exact verified Apple Silicon
+# package snapshot, use environment-osx-arm64.lock and then install uv below.
+name: BMAD
+channels:
+  - conda-forge
+dependencies:
+  - python=3.11
+  - pip
+  - pip:
+      - uv==0.11.29

@@ -1,0 +1,15 @@
+{
+  "defaultBranch": "main",
+  "runner": "macos-26",
+  "developerDirectory": "/Applications/Xcode_26.6.app/Contents/Developer",
+  "checks": [
+    "compile",
+    "domain",
+    "schema",
+    "safety",
+    "persistence",
+    "sync",
+    "ai-contract",
+    "secret"
+  ]
+}

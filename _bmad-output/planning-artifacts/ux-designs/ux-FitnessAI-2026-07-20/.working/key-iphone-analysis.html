@@ -1,0 +1,189 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>FitnessAI — iPhone Analysis</title>
+  <style>
+    /*
+      Governing spine sections:
+      DESIGN.md — Colors; Typography; Layout & Spacing; Components:
+      recognition-state-chip, sync-state-indicator, support-boundary-notice.
+      EXPERIENCE.md — Information Architecture / Analysis; State Patterns;
+      Trust, Provenance, and User Authority; UJ-2; Requirements-to-Flow FR-036–FR-041.
+      Canonical state: weekly Analysis is stale because one Incomplete Workout Session
+      and one unresolved synchronization revision are not included in aggregate claims.
+      No medical, recovery, recognition-accuracy, or invented diagnostic metric is shown.
+      Spines win on conflict.
+    */
+    :root {
+      color-scheme: light;
+      --surface-base: #F7F7F8;
+      --surface-raised: #FFFFFF;
+      --surface-muted: #ECECEF;
+      --ink-primary: #111111;
+      --ink-secondary: #5C5C63;
+      --border: #D1D1D6;
+      --action: #0A66C2;
+      --on-action: #FFFFFF;
+      --success: #16794A;
+      --warning: #8A5800;
+      --error: #B42318;
+      --pending: #6B5A00;
+      --r-sm: 8px;
+      --r-md: 12px;
+      --r-full: 9999px;
+      --s1: 4px;
+      --s2: 8px;
+      --s3: 12px;
+      --s4: 16px;
+      --s5: 24px;
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      min-height: 100vh;
+      display: grid;
+      place-items: center;
+      background: #E5E5E7;
+      color: var(--ink-primary);
+      font-family: -apple-system, BlinkMacSystemFont, "SF Pro Text", "PingFang SC", sans-serif;
+    }
+    .stage { padding: 28px; }
+    .phone {
+      width: 438px;
+      min-height: 900px;
+      padding: 10px;
+      border-radius: 58px;
+      background: #111111;
+      box-shadow: 0 28px 70px rgba(0,0,0,.24);
+    }
+    .screen { min-height: 880px; border-radius: 49px; overflow: hidden; background: var(--surface-base); }
+    .system { height: 42px; padding: 14px 24px 0; display: flex; justify-content: space-between; font-size: 12px; font-weight: 500; }
+    .island { width: 104px; height: 27px; margin: -10px auto 0; border-radius: var(--r-full); background: #111111; }
+    .content { padding: 10px 20px 28px; }
+    .nav { display: flex; align-items: center; justify-content: space-between; min-height: 44px; }
+    .back, .period { min-height: 44px; border: 0; background: transparent; color: var(--action); font: inherit; font-size: 16px; }
+    .back { min-width: 44px; text-align: left; }
+    .period { padding: 0 10px; }
+    h1 { margin: 2px 0 2px; font-size: 30px; line-height: 1.15; font-weight: 500; }
+    .subtitle { color: var(--ink-secondary); font-size: 14px; }
+    .notice {
+      margin-top: var(--s4);
+      padding: var(--s3);
+      border: 1px solid var(--warning);
+      border-radius: var(--r-md);
+      background: var(--surface-muted);
+    }
+    .notice-title { display: flex; gap: 7px; color: var(--pending); font-size: 14px; font-weight: 500; }
+    .notice p { margin: 5px 0 0; color: var(--ink-primary); font-size: 12px; line-height: 1.4; }
+    .stats { display: grid; grid-template-columns: repeat(3, 1fr); gap: var(--s2); margin-top: var(--s4); }
+    .stat { min-height: 88px; padding: var(--s3); border: 1px solid var(--border); border-radius: var(--r-md); background: var(--surface-raised); }
+    .stat-label { color: var(--ink-secondary); font-size: 11px; line-height: 1.25; }
+    .stat-value { margin-top: 7px; font-size: 23px; line-height: 1; font-weight: 500; font-variant-numeric: tabular-nums; }
+    .stat-unit { color: var(--ink-secondary); font-size: 11px; }
+    .section-head { display: flex; align-items: end; justify-content: space-between; gap: var(--s2); margin: var(--s5) 0 var(--s2); }
+    .section-head h2 { margin: 0; font-size: 18px; font-weight: 500; }
+    .chip { min-height: 26px; padding: 4px 8px; border-radius: var(--r-full); background: var(--surface-muted); color: var(--pending); font-size: 11px; font-weight: 500; }
+    .chart {
+      padding: var(--s3);
+      border: 1px solid var(--border);
+      border-radius: var(--r-md);
+      background: var(--surface-raised);
+    }
+    .chart-title { margin: 0; font-size: 15px; font-weight: 500; }
+    .chart-subtitle { margin: 3px 0 var(--s2); color: var(--ink-secondary); font-size: 11px; }
+    svg { display: block; width: 100%; height: auto; }
+    .grid-line { stroke: var(--border); stroke-width: 1; }
+    .trend-line { fill: none; stroke: var(--action); stroke-width: 3; }
+    .point { fill: var(--surface-raised); stroke: var(--action); stroke-width: 3; }
+    .pending-point { fill: var(--surface-raised); stroke: var(--warning); stroke-width: 2; stroke-dasharray: 3 3; }
+    .axis-text { fill: var(--ink-secondary); font-size: 10px; font-family: inherit; }
+    .value-text { fill: var(--ink-primary); font-size: 10px; font-family: inherit; font-weight: 500; }
+    .pending-label { fill: var(--pending); font-size: 9px; font-family: inherit; }
+    .sessions { margin-top: var(--s3); display: grid; gap: 0; }
+    .session-row { min-height: 48px; display: grid; grid-template-columns: 62px 1fr auto; align-items: center; gap: var(--s2); border-top: 1px solid var(--border); font-size: 12px; }
+    .session-row:first-child { border-top: 0; }
+    .session-row .meta { color: var(--ink-secondary); }
+    .state-text { font-weight: 500; }
+    .state-text.included { color: var(--success); }
+    .state-text.excluded { color: var(--pending); }
+    .footnote { margin-top: var(--s3); color: var(--ink-secondary); font-size: 11px; line-height: 1.4; }
+    @media (max-width: 470px) {
+      .stage { padding: 0; }
+      .phone { width: 100%; min-height: 100vh; padding: 0; border-radius: 0; }
+      .screen { min-height: 100vh; border-radius: 0; }
+    }
+  </style>
+</head>
+<body>
+  <main class="stage" aria-label="iPhone 本周训练 Analysis 示意">
+    <section class="phone" aria-label="iPhone 设备框">
+      <div class="screen">
+        <div class="system"><span>12:08</span><span>5G&nbsp;&nbsp;82%</span></div>
+        <div class="island" aria-hidden="true"></div>
+        <div class="content">
+          <nav class="nav" aria-label="分析周期导航">
+            <button class="back" type="button" aria-label="上一页">‹</button>
+            <button class="period" type="button">7 月 14–20 日⌄</button>
+          </nav>
+
+          <header>
+            <h1>本周训练</h1>
+            <div class="subtitle">依据 effective Actual Sets</div>
+          </header>
+
+          <section class="notice" aria-label="分析待更新">
+            <div class="notice-title"><span aria-hidden="true">!</span><span>分析待更新 · stale</span></div>
+            <p>1 次 Incomplete Workout Session 和 1 项同步冲突未纳入汇总。记录仍保留，解决后重新计算。</p>
+          </section>
+
+          <section class="stats" aria-label="本周训练汇总">
+            <div class="stat"><div class="stat-label">已记录</div><div class="stat-value">3</div><div class="stat-unit">次训练</div></div>
+            <div class="stat"><div class="stat-label">分析纳入</div><div class="stat-value">2</div><div class="stat-unit">次完整训练</div></div>
+            <div class="stat"><div class="stat-label">训练量</div><div class="stat-value">6,840</div><div class="stat-unit">kg · 已纳入数据</div></div>
+          </section>
+
+          <div class="section-head">
+            <h2>Primary Exercise 趋势</h2>
+            <span class="chip">部分数据未纳入</span>
+          </div>
+
+          <section class="chart" aria-labelledby="chart-heading">
+            <h3 class="chart-title" id="chart-heading">杠铃卧推 · 最高 Actual Load</h3>
+            <p class="chart-subtitle">仅显示 complete、effective Actual Sets；单位 kg</p>
+            <svg viewBox="0 0 350 170" role="img" aria-labelledby="trend-title trend-desc">
+              <title id="trend-title">杠铃卧推最高实际负重趋势</title>
+              <desc id="trend-desc">7 月 7 日为 57.5 千克，7 月 14 日为 60 千克。7 月 20 日记录存在同步冲突，未纳入趋势。</desc>
+              <line class="grid-line" x1="36" y1="32" x2="330" y2="32"></line>
+              <line class="grid-line" x1="36" y1="82" x2="330" y2="82"></line>
+              <line class="grid-line" x1="36" y1="132" x2="330" y2="132"></line>
+              <text class="axis-text" x="7" y="36">60</text>
+              <text class="axis-text" x="7" y="86">57.5</text>
+              <text class="axis-text" x="7" y="136">55</text>
+              <path class="trend-line" d="M74 82 L177 32"></path>
+              <circle class="point" cx="74" cy="82" r="5"></circle>
+              <circle class="point" cx="177" cy="32" r="5"></circle>
+              <circle class="pending-point" cx="286" cy="32" r="7"></circle>
+              <text class="value-text" x="58" y="69">57.5</text>
+              <text class="value-text" x="167" y="20">60</text>
+              <text class="pending-label" x="257" y="18">冲突 · 未纳入</text>
+              <text class="axis-text" x="58" y="154">7/7</text>
+              <text class="axis-text" x="160" y="154">7/14</text>
+              <text class="axis-text" x="273" y="154">7/20</text>
+            </svg>
+
+            <div class="sessions" aria-label="趋势数据状态">
+              <div class="session-row"><span>7 月 7 日</span><span class="meta">57.5 kg</span><span class="state-text included">已纳入</span></div>
+              <div class="session-row"><span>7 月 14 日</span><span class="meta">60 kg</span><span class="state-text included">已纳入</span></div>
+              <div class="session-row"><span>7 月 20 日</span><span class="meta">revision conflict</span><span class="state-text excluded">未纳入</span></div>
+            </div>
+          </section>
+
+          <p class="footnote">训练量与趋势来自用户权威 Actual Sets；不把 pending、Incomplete 或 conflicted 数据表述为已确认结果。</p>
+        </div>
+      </div>
+    </section>
+  </main>
+</body>
+</html>

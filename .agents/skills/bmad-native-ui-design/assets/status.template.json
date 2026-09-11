@@ -1,0 +1,13 @@
+{
+  "schema_version": 1,
+  "workflow": "bmad-native-ui-design",
+  "current_stage": "ND-01",
+  "selected_direction": null,
+  "updated": null,
+  "stages": {
+    "ND-01": {"state": "ready", "note": "Select one of two native visual directions."},
+    "ND-02": {"state": "pending", "note": "Freeze the SwiftUI design system."},
+    "ND-03": {"state": "pending", "note": "Expand and accept MVP screen batches.", "completed_batches": []},
+    "ND-04": {"state": "pending", "note": "Pass native gates and produce Architecture handoff."}
+  }
+}

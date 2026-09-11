@@ -1,0 +1,373 @@
+# generated: 2026-09-11T09:42:41+0800
+# last_updated: 2026-09-11T14:27:15+0800
+# project: FitnessAI
+# project_key: NOKEY
+# tracking_system: file-system
+# story_location: /Users/seanlee/Documents/Code/FitnessAI/_bmad-output/implementation-artifacts
+#
+# STATUS DEFINITIONS:
+# Epic: backlog -> in-progress -> done
+# Story: backlog -> ready-for-dev -> in-progress -> review -> done
+# Retrospective: optional <-> done
+# Action Item: open -> in-progress -> done
+#
+# WORKFLOW NOTES:
+# - Story completion does not imply gate evidence passed or feature enabled.
+# - Every gate is fail-closed; capability_gates is the authoritative enablement ledger.
+# - Oversized stories cannot be committed until decomposed without weakening their parent contract.
+# - Story 1.1 carries the AD-13 Apple Silicon/macOS CI acceptance overlay.
+#
+generated: 2026-09-11T09:42:41+0800
+last_updated: 2026-09-11T14:27:15+0800
+project: FitnessAI
+project_key: NOKEY
+tracking_system: file-system
+story_location: "/Users/seanlee/Documents/Code/FitnessAI/_bmad-output/implementation-artifacts"
+
+planning_baseline:
+  readiness: ready-for-sprint-planning-refinement-required-before-commitment
+  authority_order:
+    - current-prd
+    - experience
+    - design-and-titanium-measure
+    - native-ui-spec
+    - architecture-handoff
+  slice_order: [S0, S1, S2, S3, S4A, S4B, S5A, S5B, S6, S7]
+  deferred_requirements: [FR-042, FR-044, FR-045, FR-048, FR-051, FR-067, FR-068, FR-069, FR-070, FR-074, FR-075, FR-076, FR-077]
+  professional_safety_review: required-before-release-beyond-product-owner-testing
+
+slice_plan:
+  S0:
+    epic: 1
+    stories: ["1.1", "1.2", "1.3", "1.4", "1.5"]
+    exit: runnable-workspace-contracts-persistence-and-canonical-catalog
+  S1:
+    epic: 1
+    stories: ["1.6", "1.7", "1.8", "1.9", "1.10"]
+    exit: trustworthy-phone-only-manual-workout
+  S2:
+    epic: 1
+    stories: ["1.11", "1.12", "1.13", "1.14"]
+    exit: trustworthy-paired-watch-manual-workout
+  S3:
+    epic: 2
+    stories: ["2.1-2.14"]
+    exit: approved-ai-plan-revision-with-gates-1-3-fail-closed
+  S4A:
+    epic: 3
+    stories: ["3.1-3.3"]
+    exit: user-authoritative-in-workout-decisions
+  S4B:
+    epic: 4
+    stories: ["4.1-4.7"]
+    exit: truthful-history-analysis-and-future-plan-reconciliation
+  S5A:
+    epic: 5
+    stories: ["5.1-5.6"]
+    exit: bounded-plan-exchange-with-gate-7-fail-closed
+  S5B:
+    epic: 6
+    stories: ["6.1-6.6"]
+    exit: optional-apple-health-with-gate-3-fail-closed
+  S6:
+    epic: 7
+    stories: ["7.1-7.13"]
+    exit: evidence-gated-watch-assistance-with-manual-fallback
+  S7:
+    epic: 8
+    stories: ["8.1-8.6"]
+    exit: controlled-review-and-private-alpha-evidence
+
+next_executable_work_item:
+  story: 1-1-launch-the-runnable-iphone-watch-and-shared-contract-workspace
+  story_id: "1.1"
+  classification: Enabler
+  slice: S0
+  status: in-progress
+  story_context: 1-1-launch-the-runnable-iphone-watch-and-shared-contract-workspace.md
+  execution_note: run-dev-story-with-owner-authorized-repository-and-hosted-check-decisions
+
+ad_13_ci_acceptance_overlay:
+  owner_story: 1-1-launch-the-runnable-iphone-watch-and-shared-contract-workspace
+  platform: apple-silicon-macos
+  required_before: parallel-feature-implementation
+  required_checks:
+    - compile
+    - domain
+    - schema
+    - safety
+    - persistence
+    - sync
+    - ai-contract
+    - secret
+  acceptance:
+    - reproducible-ci-runner
+    - required-check-policy
+    - retained-test-artifacts
+    - secretless-pull-request-path
+    - iphone-and-watch-builds
+
+capability_gates:
+  GATE-1:
+    prerequisite_story: 2-1-freeze-the-safety-rule-pack-v1-numeric-contract-and-golden-fixtures
+    implementation_story: 2-2-implement-the-deterministic-fail-closed-safety-evaluator
+    evidence_story: 2-3-record-gate-1-evidence-and-enable-safety-eligible-proposal-work
+    enables: safety-eligible-ai-plan-proposal-and-commit
+    implemented: false
+    evidence_passed: false
+    feature_enabled: false
+    behavior_while_open: proposal-commit-disabled
+  GATE-2:
+    implementation_story: 2-5-establish-isolated-ai-provider-routes-with-built-in-traffic-disabled
+    evidence_story: 2-6-close-gate-2-with-an-auditable-built-in-route-evidence-record
+    enables: built-in-deepseek-traffic
+    implemented: false
+    evidence_passed: false
+    feature_enabled: false
+    behavior_while_open: built-in-traffic-technically-disabled
+  GATE-3:
+    preview_story: 2-8-preview-health-derived-ai-scope-while-gate-3-fails-closed
+    local_summary_story: 6-2-build-data-minimized-local-health-summaries
+    evidence_story: 6-3-close-gate-3-with-health-derived-remote-use-evidence
+    enabled_use_story: 6-4-send-one-authorized-health-summary-after-gate-3
+    enables: real-health-derived-remote-send
+    implemented: false
+    evidence_passed: false
+    feature_enabled: false
+    behavior_while_open: preview-only-and-send-fails-closed
+  GATE-4:
+    candidate_story: 7-1-capture-candidate-watch-signals-with-every-automation-disabled
+    prerequisite_story: 7-2-freeze-the-gate-4-recognition-preregistration
+    evidence_story: 7-3-prove-gate-4-on-physical-devices-and-enable-only-passing-rows
+    enabled_use_stories: ["7-4-recognize-and-correct-a-qualified-exercise", "7-5-recognize-qualified-set-boundaries-and-repetitions"]
+    enables: qualified-recognition-rows
+    implemented: false
+    evidence_passed: false
+    feature_enabled: false
+    behavior_while_open: manual-complete-set-only
+  GATE-5:
+    disabled_state_story: 7-6-keep-rpe-opt-in-and-every-rpe-state-distinct
+    prerequisite_story: 7-7-freeze-the-gate-5-rpe-preregistration
+    evidence_story: 7-8-prove-gate-5-and-enable-only-evidence-bound-rpe-use
+    verification_story: 7-9-complete-the-five-estimate-rpe-verification-window
+    enabled_use_story: 7-10-explicitly-enable-rpe-auto-use-with-abstention-and-drift-recovery
+    enables: evidence-bound-rpe-auto-use
+    implemented: false
+    evidence_passed: false
+    feature_enabled: false
+    behavior_while_open: rpe-off-or-approved-confirmation-only
+  GATE-6:
+    candidate_story: 7-11-keep-the-forgotten-finish-candidate-disabled
+    prerequisite_story: 7-12-freeze-the-gate-6-reminder-preregistration
+    evidence_story: 7-13-prove-gate-6-and-enable-a-conservative-finish-or-continue-prompt
+    enables: conservative-finish-or-continue-prompt
+    implemented: false
+    evidence_passed: false
+    feature_enabled: false
+    behavior_while_open: manual-finish-only
+  GATE-7:
+    prerequisite_story: 5-2-freeze-gate-7-parser-resource-budgets-and-failure-reporting
+    implementation_story: 5-3-parse-and-validate-an-untrusted-plan-file-with-import-disabled
+    preview_story: 5-4-review-import-findings-with-draft-creation-disabled
+    evidence_story: 5-5-prove-parser-budgets-and-enable-gate-7-import-acceptance
+    enabled_use_story: 5-6-create-one-independent-non-effective-imported-draft
+    enables: plan-import-acceptance
+    implemented: false
+    evidence_passed: false
+    feature_enabled: false
+    behavior_while_open: export-allowed-import-acceptance-disabled
+
+oversized_story_refinement:
+  commitment_policy: blocked-until-parent-contract-preserving-decomposition
+  priority_order: ["1.12", "1.13", "1.14", "1.8", "1.9", "1.10", "1.11", "1.6", "1.7", "2.1"]
+  stories:
+    "1.6": {scenario_count: 11, status: open}
+    "1.7": {scenario_count: 11, status: open}
+    "1.8": {scenario_count: 13, status: open}
+    "1.9": {scenario_count: 12, status: open}
+    "1.10": {scenario_count: 12, status: open}
+    "1.11": {scenario_count: 12, status: open}
+    "1.12": {scenario_count: 15, status: open}
+    "1.13": {scenario_count: 14, status: open}
+    "1.14": {scenario_count: 15, status: open}
+    "2.1": {scenario_count: 13, status: open}
+
+story_metadata:
+  1-1-launch-the-runnable-iphone-watch-and-shared-contract-workspace:
+    story_id: "1.1"
+    classification: Enabler
+  1-2-unify-cross-device-fact-identity-units-and-digest-contracts:
+    story_id: "1.2"
+    classification: Enabler
+  1-3-preserve-and-resolve-workout-truth-with-one-revision-dag:
+    story_id: "1.3"
+    classification: Enabler
+  1-4-establish-an-atomic-protected-and-recoverable-iphone-persistence-boundary:
+    story_id: "1.4"
+    classification: Enabler
+  2-1-freeze-the-safety-rule-pack-v1-numeric-contract-and-golden-fixtures:
+    story_id: "2.1"
+    classification: Compliance
+  2-2-implement-the-deterministic-fail-closed-safety-evaluator:
+    story_id: "2.2"
+    classification: Enabler
+  2-3-record-gate-1-evidence-and-enable-safety-eligible-proposal-work:
+    story_id: "2.3"
+    classification: Evidence
+  2-5-establish-isolated-ai-provider-routes-with-built-in-traffic-disabled:
+    story_id: "2.5"
+    classification: Enabler
+  2-6-close-gate-2-with-an-auditable-built-in-route-evidence-record:
+    story_id: "2.6"
+    classification: Evidence
+  5-2-freeze-gate-7-parser-resource-budgets-and-failure-reporting:
+    story_id: "5.2"
+    classification: Compliance
+  5-3-parse-and-validate-an-untrusted-plan-file-with-import-disabled:
+    story_id: "5.3"
+    classification: Enabler
+  5-5-prove-parser-budgets-and-enable-gate-7-import-acceptance:
+    story_id: "5.5"
+    classification: Evidence
+  6-3-close-gate-3-with-health-derived-remote-use-evidence:
+    story_id: "6.3"
+    classification: Evidence
+  7-1-capture-candidate-watch-signals-with-every-automation-disabled:
+    story_id: "7.1"
+    classification: Enabler
+  7-2-freeze-the-gate-4-recognition-preregistration:
+    story_id: "7.2"
+    classification: Compliance
+  7-3-prove-gate-4-on-physical-devices-and-enable-only-passing-rows:
+    story_id: "7.3"
+    classification: Evidence
+  7-7-freeze-the-gate-5-rpe-preregistration:
+    story_id: "7.7"
+    classification: Compliance
+  7-8-prove-gate-5-and-enable-only-evidence-bound-rpe-use:
+    story_id: "7.8"
+    classification: Evidence
+  7-11-keep-the-forgotten-finish-candidate-disabled:
+    story_id: "7.11"
+    classification: Enabler
+  7-12-freeze-the-gate-6-reminder-preregistration:
+    story_id: "7.12"
+    classification: Compliance
+  7-13-prove-gate-6-and-enable-a-conservative-finish-or-continue-prompt:
+    story_id: "7.13"
+    classification: Evidence
+  8-4-close-fault-compatibility-and-paired-device-evidence:
+    story_id: "8.4"
+    classification: Evidence
+  8-5-publish-size-privacy-security-and-release-control-evidence:
+    story_id: "8.5"
+    classification: Compliance
+
+development_status:
+  epic-1: in-progress
+  1-1-launch-the-runnable-iphone-watch-and-shared-contract-workspace: in-progress
+  1-2-unify-cross-device-fact-identity-units-and-digest-contracts: backlog
+  1-3-preserve-and-resolve-workout-truth-with-one-revision-dag: backlog
+  1-4-establish-an-atomic-protected-and-recoverable-iphone-persistence-boundary: backlog
+  1-5-browse-the-canonical-exercise-catalog-and-understand-support-boundaries: backlog
+  1-6-create-a-local-plan-and-start-an-iphone-workout-from-an-immutable-snapshot: backlog
+  1-7-reliably-record-every-actual-set-on-iphone: backlog
+  1-8-correct-an-active-workout-record-and-preserve-incomplete-information: backlog
+  1-9-manually-finish-an-iphone-workout-and-review-the-actual-result: backlog
+  1-10-recover-trustworthy-iphone-workout-state-offline-and-after-interruption: backlog
+  1-11-reliably-deliver-a-complete-compatible-plan-to-apple-watch: backlog
+  1-12-start-a-workout-and-manually-record-actual-sets-on-apple-watch: backlog
+  1-13-recover-correct-and-manually-finish-a-watch-workout-after-interruption: backlog
+  1-14-apply-watch-workout-facts-exactly-once-on-iphone: backlog
+  epic-1-retrospective: optional
+  epic-2: backlog
+  2-1-freeze-the-safety-rule-pack-v1-numeric-contract-and-golden-fixtures: backlog
+  2-2-implement-the-deterministic-fail-closed-safety-evaluator: backlog
+  2-3-record-gate-1-evidence-and-enable-safety-eligible-proposal-work: backlog
+  2-4-preserve-immutable-non-effective-ai-proposals: backlog
+  2-5-establish-isolated-ai-provider-routes-with-built-in-traffic-disabled: backlog
+  2-6-close-gate-2-with-an-auditable-built-in-route-evidence-record: backlog
+  2-7-authorize-one-exact-remote-ai-send: backlog
+  2-8-preview-health-derived-ai-scope-while-gate-3-fails-closed: backlog
+  2-9-conduct-a-bounded-text-conversation-for-plan-intent: backlog
+  2-10-request-an-evidence-bounded-plan-revision: backlog
+  2-11-validate-a-complete-structured-plan-draft-and-exercise-mappings: backlog
+  2-12-resolve-safety-clarifications-and-affected-scope-stops: backlog
+  2-13-review-and-explicitly-approve-one-complete-proposal: backlog
+  2-14-atomically-commit-exactly-one-approved-plan-revision: backlog
+  epic-2-retrospective: optional
+  epic-3: backlog
+  3-1-request-canonical-exercise-substitutes-for-available-equipment: backlog
+  3-2-explicitly-select-a-session-substitute-without-mutating-the-plan: backlog
+  3-3-accept-edit-or-reject-next-set-load-guidance: backlog
+  epic-3-retrospective: optional
+  epic-4: backlog
+  4-1-browse-complete-and-incomplete-training-history: backlog
+  4-2-inspect-the-complete-effective-session-record: backlog
+  4-3-calculate-weekly-and-monthly-analysis-from-effective-actual-sets: backlog
+  4-4-view-trends-for-one-explicitly-selected-primary-exercise: backlog
+  4-5-keep-analysis-truthful-through-invalidation-and-recovery: backlog
+  4-6-reconcile-plan-versus-actual-with-an-exact-future-scope-diff: backlog
+  4-7-reuse-a-historical-session-as-a-new-draft: backlog
+  epic-4-retrospective: optional
+  epic-5: backlog
+  5-1-export-one-bounded-fitnessai-plan-through-the-share-sheet: backlog
+  5-2-freeze-gate-7-parser-resource-budgets-and-failure-reporting: backlog
+  5-3-parse-and-validate-an-untrusted-plan-file-with-import-disabled: backlog
+  5-4-review-import-findings-with-draft-creation-disabled: backlog
+  5-5-prove-parser-budgets-and-enable-gate-7-import-acceptance: backlog
+  5-6-create-one-independent-non-effective-imported-draft: backlog
+  epic-5-retrospective: optional
+  epic-6: backlog
+  6-1-manage-least-privilege-apple-health-capabilities: backlog
+  6-2-build-data-minimized-local-health-summaries: backlog
+  6-3-close-gate-3-with-health-derived-remote-use-evidence: backlog
+  6-4-send-one-authorized-health-summary-after-gate-3: backlog
+  6-5-write-an-idempotent-workout-copy-to-apple-health: backlog
+  6-6-preserve-local-truth-when-a-health-copy-detaches: backlog
+  epic-6-retrospective: optional
+  epic-7: backlog
+  7-1-capture-candidate-watch-signals-with-every-automation-disabled: backlog
+  7-2-freeze-the-gate-4-recognition-preregistration: backlog
+  7-3-prove-gate-4-on-physical-devices-and-enable-only-passing-rows: backlog
+  7-4-recognize-and-correct-a-qualified-exercise: backlog
+  7-5-recognize-qualified-set-boundaries-and-repetitions: backlog
+  7-6-keep-rpe-opt-in-and-every-rpe-state-distinct: backlog
+  7-7-freeze-the-gate-5-rpe-preregistration: backlog
+  7-8-prove-gate-5-and-enable-only-evidence-bound-rpe-use: backlog
+  7-9-complete-the-five-estimate-rpe-verification-window: backlog
+  7-10-explicitly-enable-rpe-auto-use-with-abstention-and-drift-recovery: backlog
+  7-11-keep-the-forgotten-finish-candidate-disabled: backlog
+  7-12-freeze-the-gate-6-reminder-preregistration: backlog
+  7-13-prove-gate-6-and-enable-a-conservative-finish-or-continue-prompt: backlog
+  epic-7-retrospective: optional
+  epic-8: backlog
+  8-1-offer-review-later-or-disable-once-per-completed-session: backlog
+  8-2-route-accepted-review-through-existing-authorization-and-approval: backlog
+  8-3-prove-the-full-private-alpha-user-loop-without-manual-rebuilding: backlog
+  8-4-close-fault-compatibility-and-paired-device-evidence: backlog
+  8-5-publish-size-privacy-security-and-release-control-evidence: backlog
+  8-6-validate-the-complete-accessible-native-experience-and-alpha-feedback-loop: backlog
+  epic-8-retrospective: optional
+
+action_items:
+  GOV-01:
+    status: open
+    owner: product-owner-and-ux
+    due_before: story-2.8-or-story-6.4-implementation-acceptance
+    action: correct-native-ui-apple-health-wording-to-gate-3-and-one-shot-authorization-contract
+  GOV-02:
+    status: open
+    owner: product-owner
+    due_before: parallel-feature-sprint-commitment
+    action: normalize-authoritative-prd-ux-and-native-ui-status-frontmatter
+  GOV-03:
+    status: open
+    owner: product-owner-and-delivery-lead
+    due_before: every-story-refinement
+    action: enforce-authority-order-and-treat-historical-design-direction-wording-as-non-normative
+  REF-01:
+    status: open
+    owner: delivery-lead
+    due_before: affected-story-sprint-commitment
+    action: decompose-ten-oversized-stories-with-parent-acceptance-and-traceability-preserved
