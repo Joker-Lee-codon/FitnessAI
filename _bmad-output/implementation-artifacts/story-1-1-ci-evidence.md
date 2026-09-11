@@ -19,6 +19,7 @@ Verified on Apple Silicon `arm64` with Xcode 26.6 build `17F113` and Apple Swift
 - `scripts/verify-macos-environment.sh`: passed, including the pre-existing BMAD, Node, POC, simulator-runtime, cache, binary-architecture, secret-ignore, and historical bilingual checks.
 - `scripts/ci/run-check.sh domain`: passed; Swift Testing executed the package architecture seed test.
 - `scripts/ci/run-check.sh schema`, `safety`, `persistence`, `sync`, `ai-contract`, and `secret`: passed.
+- `scripts/ci/run-all.sh`: passed all eight checks in one invocation after the final implementation changes.
 - `FitnessAI-iPhone`: independent simulator build passed; two tests passed, including Plan-root truth and Dark Mode/accessibility Dynamic Type rendering.
 - `FitnessAI-Watch`: independent simulator build passed; two tests passed, including no-delivered-Plan truth and Dark Mode/accessibility Dynamic Type rendering.
 - Simulator launch: both bundles installed and launched successfully without signing.
@@ -32,6 +33,7 @@ Local screenshots are generated under `.artifacts/story-1-1/` and intentionally 
 - Domain boundaries contain no SwiftUI, GRDB, HealthKit, WatchConnectivity, Core Motion, AI-provider, or application-target import.
 - No database migration, table, product entity, Health/sensor/AI integration, workout fact, fake recognition result, secret, or signing material was introduced.
 - GATE-1 through GATE-7 remain fail closed; this Story does not change capability gate flags.
+- An isolated `--no-local` checkout at commit `fe30ded` re-resolved the workspace package graph to GRDB 7.11.1, passed the lock/boundary/no-speculative-content checks, and remained clean apart from ignored generated `DerivedData`.
 
 ## Hosted enforcement
 
