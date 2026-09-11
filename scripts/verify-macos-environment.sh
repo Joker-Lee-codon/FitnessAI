@@ -57,11 +57,12 @@ windows_matches="$(rg -n -P '(?i:[a-z]:\\[^\\\r\n]+)|\\\\[A-Za-z0-9._-]+\\|%(?i:
   --glob '!scripts/verify-macos-environment.sh' || true)"
 [[ -z "$windows_matches" ]] || fail "Windows absolute paths remain:\n$windows_matches"
 [[ -f .git/HEAD ]] || fail "Git repository is not initialized"
-[[ "$(git branch --show-current)" == "main" ]] || fail "default branch is not main"
+git show-ref --verify --quiet refs/heads/main || fail "local main branch is missing"
+git show-ref --verify --quiet refs/remotes/origin/main || fail "origin/main tracking branch is missing"
 [[ "$(git remote get-url origin)" == "https://github.com/Joker-Lee-codon/FitnessAI.git" ]] || fail "origin remote mismatch"
 [[ ! -d .uv-python/cpython-3.11.15-windows-x86_64-none ]] || fail "Windows uv Python runtime remains"
 [[ -z "$(find . -path './.git' -prune -o -path './.npm-cache' -prune -o -path './.uv-cache' -prune -o -path './.build' -prune -o -path './DerivedData' -prune -o -name '*.pyc' -print -quit)" ]] || fail "Python bytecode remains"
-pass "Windows paths/caches are absent and Git main/origin are configured"
+pass "Windows paths/caches are absent and Git main/origin remain configured from the current work branch"
 
 binary_failure=""
 while IFS= read -r -d '' artifact_path; do

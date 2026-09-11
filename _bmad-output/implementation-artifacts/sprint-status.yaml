@@ -1,5 +1,5 @@
 # generated: 2026-09-11T09:42:41+0800
-# last_updated: 2026-09-11T14:27:15+0800
+# last_updated: 2026-09-11T19:52:10+0800
 # project: FitnessAI
 # project_key: NOKEY
 # tracking_system: file-system
@@ -18,7 +18,7 @@
 # - Story 1.1 carries the AD-13 Apple Silicon/macOS CI acceptance overlay.
 #
 generated: 2026-09-11T09:42:41+0800
-last_updated: 2026-09-11T14:27:15+0800
+last_updated: 2026-09-11T19:52:10+0800
 project: FitnessAI
 project_key: NOKEY
 tracking_system: file-system
@@ -265,7 +265,7 @@ story_metadata:
 
 development_status:
   epic-1: in-progress
-  1-1-launch-the-runnable-iphone-watch-and-shared-contract-workspace: in-progress
+  1-1-launch-the-runnable-iphone-watch-and-shared-contract-workspace: review
   1-2-unify-cross-device-fact-identity-units-and-digest-contracts: backlog
   1-3-preserve-and-resolve-workout-truth-with-one-revision-dag: backlog
   1-4-establish-an-atomic-protected-and-recoverable-iphone-persistence-boundary: backlog
