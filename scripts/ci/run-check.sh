@@ -39,7 +39,7 @@ case "$CHECK" in
     swift build --disable-sandbox --package-path "$PACKAGE" --scratch-path "$SWIFT_SCRATCH" --target SyncContracts
     ;;
   ai-contract)
-    ! rg -n '^(import|@testable import) (OpenAI|Anthropic|GoogleGenerativeAI)|URLSession|https?://' "$PACKAGE/Sources"
+    ! grep -ERn '^(import|@testable import) (OpenAI|Anthropic|GoogleGenerativeAI)|URLSession|https?://' "$PACKAGE/Sources"
     swift build --disable-sandbox --package-path "$PACKAGE" --scratch-path "$SWIFT_SCRATCH" --target Contracts
     ;;
   secret)
