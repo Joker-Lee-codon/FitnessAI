@@ -2,7 +2,7 @@
 
 ## Authorized repository contract
 
-- Repository: private `Joker-Lee-codon/FitnessAI`
+- Repository: public [`Joker-Lee-codon/FitnessAI`](https://github.com/Joker-Lee-codon/FitnessAI), changed from private with explicit Product Owner authorization so GitHub Free can enforce branch protection
 - Default branch: `main`
 - CI: GitHub Actions on Apple Silicon `macos-26`
 - Xcode selection: `/Applications/Xcode_26.6.app/Contents/Developer`
@@ -37,4 +37,9 @@ Local screenshots are generated under `.artifacts/story-1-1/` and intentionally 
 
 ## Hosted enforcement
 
-Pending the first pushed workflow run and repository rule configuration. This section must be updated with the observed GitHub evidence before the Story moves to `review`.
+- Commit [`7acf21e`](https://github.com/Joker-Lee-codon/FitnessAI/commit/7acf21eeff45a875454d9e40d7eeee02ea00ee02) passed all eight independently named jobs in GitHub Actions run [`34580092908`](https://github.com/Joker-Lee-codon/FitnessAI/actions/runs/34580092908): `compile`, `domain`, `schema`, `safety`, `persistence`, `sync`, `ai-contract`, and `secret`.
+- The successful `compile` job selected `/Applications/Xcode_26.6.app/Contents/Developer`, asserted Apple Silicon and the bound toolchain, built both schemes, and executed the iPhone and Watch simulator test targets without signing.
+- At `2026-09-11 19:52:10 CST`, a GitHub API read-back of `main` branch protection reported `strict: true` with exactly the eight required contexts above.
+- `required_pull_request_reviews` is `null`, matching the Product Owner decision that no human approval is required; failing or absent required checks still block merge.
+- Administrator enforcement and conversation resolution are enabled. Force pushes and branch deletion are disabled.
+- The workflow uses `pull_request`, repository `contents: read`, and simulator-only commands. It does not use `pull_request_target`, signing material, deployment credentials, provider secrets, or application secrets.

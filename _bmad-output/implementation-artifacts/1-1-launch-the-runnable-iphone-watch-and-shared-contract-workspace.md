@@ -4,7 +4,7 @@ baseline_commit: NO_VCS
 
 # Story 1.1: Launch the Runnable iPhone, Watch, and Shared-Contract Workspace
 
-Status: in-progress
+Status: review
 
 Classification: Enabler  
 Implementation slice: S0  
@@ -93,50 +93,50 @@ so that every later workout capability is built on one runnable native product w
 
 ## Tasks / Subtasks
 
-- [ ] Resolve implementation authorities that cannot be inferred locally (AC: 1, 7, 8)
-  - [ ] Obtain Product Owner decisions for permanent bundle identifiers, Apple development-team/signing ownership, Git initialization, repository host, default branch, and CI provider.
-  - [ ] Do not create a remote repository, configure hosted branch protection, upload signing material, or initialize Git without the required user authorization.
-  - [ ] Record the chosen CI runner image/label, immutable Xcode selection method, required check names, and evidence location.
-- [ ] Create the single native workspace with independent iPhone and Watch targets (AC: 1, 3, 4, 5)
-  - [ ] Create one workspace/project carrier, shared schemes, iPhone app target, Watch app target, unit-test targets, and the minimum launch configuration.
-  - [ ] Set deployment baselines to iOS 18+ and watchOS 11+; compile with Swift 6 language mode where supported by the bound toolchain.
-  - [ ] Keep simulator build/test free of signing credentials; isolate device signing from the untrusted PR path.
-  - [ ] Verify the iPhone and Watch schemes separately. An iPhone build is not evidence that the Watch target builds.
-- [ ] Create the local Swift Package boundary (AC: 1, 2, 6)
-  - [ ] Add explicit targets/products for contracts, domain, application use cases, persistence ports, synchronization contracts, safety rules, and analysis; use clear capability names rather than a generic `Utils`.
-  - [ ] Keep domain targets framework-free and make dependency direction visible in `Package.swift`.
-  - [ ] Add only seed types required to prove module wiring; do not define future business entities, tables, schemas, provider routes, Health types, sensor models, or workout facts.
-  - [ ] Add dependency-direction tests or a deterministic source check for every forbidden import in AC2.
-- [ ] Pin GRDB without leaking it into the domain (AC: 1, 2, 6)
-  - [ ] Use the official `https://github.com/groue/GRDB.swift.git` package at exact version `7.11.1` because the Architecture Spine chooses reproducibility over a version range.
-  - [ ] Link the `GRDB` product only from an adapter/infrastructure boundary that needs it; never import GRDB from a domain target.
-  - [ ] Commit the workspace-level `Package.resolved` and add a check that fails if the resolved GRDB version differs from 7.11.1.
-  - [ ] Do not use `swift-tools-version` as proof that Apple Swift patch version 6.3.3 is pinned.
-- [ ] Implement the truthful iPhone shell (AC: 3, 5, 6)
-  - [ ] Use native SwiftUI `TabView`/navigation with Plan, History, Analysis, and More; Plan is the selected root.
-  - [ ] Use typed `NavigationStack` destinations without inventing nonfunctional routes.
-  - [ ] Render truthful empty states using semantic Titanium Measure assets/tokens and SF Symbols; do not parse HTML/CSS prototypes at runtime.
-  - [ ] Do not copy the older design-system “Today” navigation wording; Story 1.1, the current Native UI spec, and AD-14 govern.
-- [ ] Implement the truthful Watch shell (AC: 4, 5, 6)
-  - [ ] Show only the no-compatible-delivered-Plan state and a valid native recovery/help boundary if required.
-  - [ ] Do not show simulated Plan content, recognition, RPE, sensor, synchronization success, or future controls.
-  - [ ] Keep Digital Crown optional and ensure VoiceOver and touch expose all required meaning.
-- [ ] Establish the AD-13 local and hosted check contract (AC: 2, 5, 7)
-  - [ ] Create stable local entrypoints for compile, domain, schema, safety, persistence, sync, AI-contract, and secret checks.
-  - [ ] At this seed stage, each check must perform a meaningful module/build/boundary assertion; an empty or unconditional-success job is not acceptable.
-  - [ ] Build both platforms and run package/unit/UI launch smoke tests on Apple Silicon macOS.
-  - [ ] If GitHub is selected, use an explicit Apple Silicon macOS 26 runner and explicit Xcode 26.6 selection; use `pull_request` with minimum read permissions and do not execute untrusted code through `pull_request_target`.
-  - [ ] Configure the selected repository host so the unique check names are actually required, then retain privacy-safe evidence.
-- [ ] Reconcile environment verification and developer setup (AC: 1, 7, 8)
-  - [ ] Update `scripts/verify-macos-environment.sh` so repository initialization no longer makes the project verifier fail, while preserving every unrelated existing assertion.
-  - [ ] Update `docs/development-setup.md` from “no Xcode project / Git uninitialized” to the verified current state and add exact local build/test commands.
-  - [ ] Preserve `.gitignore` secret patterns and generated-state exclusions; add `*.xcresult`, `*.xcarchive`, or other new generated outputs only if the implementation produces them.
-  - [ ] Do not modify the historical Vivo POC or include it in Apple app targets.
-- [ ] Validate the complete seed and collect evidence (AC: 1–8)
-  - [ ] Run the environment verifier, local package tests, dependency-boundary checks, iPhone build/launch smoke test, Watch build/launch smoke test, and every AD-13 check.
-  - [ ] Verify a clean checkout resolves GRDB 7.11.1 and produces no untracked generated or secret material.
-  - [ ] Exercise Light/Dark, Dynamic Type, VoiceOver, Reduce Motion, and Differentiate Without Color on both empty-state shells; retain privacy-safe evidence.
-  - [ ] Prove that no database table, Health/sensor/AI integration, workout fact, fake recognition result, or GATE-1–7 enablement was introduced.
+- [x] Resolve implementation authorities that cannot be inferred locally (AC: 1, 7, 8)
+  - [x] Obtain Product Owner decisions for permanent bundle identifiers, Apple development-team/signing ownership, Git initialization, repository host, default branch, and CI provider.
+  - [x] Do not create a remote repository, configure hosted branch protection, upload signing material, or initialize Git without the required user authorization.
+  - [x] Record the chosen CI runner image/label, immutable Xcode selection method, required check names, and evidence location.
+- [x] Create the single native workspace with independent iPhone and Watch targets (AC: 1, 3, 4, 5)
+  - [x] Create one workspace/project carrier, shared schemes, iPhone app target, Watch app target, unit-test targets, and the minimum launch configuration.
+  - [x] Set deployment baselines to iOS 18+ and watchOS 11+; compile with Swift 6 language mode where supported by the bound toolchain.
+  - [x] Keep simulator build/test free of signing credentials; isolate device signing from the untrusted PR path.
+  - [x] Verify the iPhone and Watch schemes separately. An iPhone build is not evidence that the Watch target builds.
+- [x] Create the local Swift Package boundary (AC: 1, 2, 6)
+  - [x] Add explicit targets/products for contracts, domain, application use cases, persistence ports, synchronization contracts, safety rules, and analysis; use clear capability names rather than a generic `Utils`.
+  - [x] Keep domain targets framework-free and make dependency direction visible in `Package.swift`.
+  - [x] Add only seed types required to prove module wiring; do not define future business entities, tables, schemas, provider routes, Health types, sensor models, or workout facts.
+  - [x] Add dependency-direction tests or a deterministic source check for every forbidden import in AC2.
+- [x] Pin GRDB without leaking it into the domain (AC: 1, 2, 6)
+  - [x] Use the official `https://github.com/groue/GRDB.swift.git` package at exact version `7.11.1` because the Architecture Spine chooses reproducibility over a version range.
+  - [x] Link the `GRDB` product only from an adapter/infrastructure boundary that needs it; never import GRDB from a domain target.
+  - [x] Commit the workspace-level `Package.resolved` and add a check that fails if the resolved GRDB version differs from 7.11.1.
+  - [x] Do not use `swift-tools-version` as proof that Apple Swift patch version 6.3.3 is pinned.
+- [x] Implement the truthful iPhone shell (AC: 3, 5, 6)
+  - [x] Use native SwiftUI `TabView`/navigation with Plan, History, Analysis, and More; Plan is the selected root.
+  - [x] Use typed `NavigationStack` destinations without inventing nonfunctional routes.
+  - [x] Render truthful empty states using semantic Titanium Measure assets/tokens and SF Symbols; do not parse HTML/CSS prototypes at runtime.
+  - [x] Do not copy the older design-system “Today” navigation wording; Story 1.1, the current Native UI spec, and AD-14 govern.
+- [x] Implement the truthful Watch shell (AC: 4, 5, 6)
+  - [x] Show only the no-compatible-delivered-Plan state and a valid native recovery/help boundary if required.
+  - [x] Do not show simulated Plan content, recognition, RPE, sensor, synchronization success, or future controls.
+  - [x] Keep Digital Crown optional and ensure VoiceOver and touch expose all required meaning.
+- [x] Establish the AD-13 local and hosted check contract (AC: 2, 5, 7)
+  - [x] Create stable local entrypoints for compile, domain, schema, safety, persistence, sync, AI-contract, and secret checks.
+  - [x] At this seed stage, each check must perform a meaningful module/build/boundary assertion; an empty or unconditional-success job is not acceptable.
+  - [x] Build both platforms and run package/unit/UI launch smoke tests on Apple Silicon macOS.
+  - [x] If GitHub is selected, use an explicit Apple Silicon macOS 26 runner and explicit Xcode 26.6 selection; use `pull_request` with minimum read permissions and do not execute untrusted code through `pull_request_target`.
+  - [x] Configure the selected repository host so the unique check names are actually required, then retain privacy-safe evidence.
+- [x] Reconcile environment verification and developer setup (AC: 1, 7, 8)
+  - [x] Update `scripts/verify-macos-environment.sh` so repository initialization no longer makes the project verifier fail, while preserving every unrelated existing assertion.
+  - [x] Update `docs/development-setup.md` from “no Xcode project / Git uninitialized” to the verified current state and add exact local build/test commands.
+  - [x] Preserve `.gitignore` secret patterns and generated-state exclusions; add `*.xcresult`, `*.xcarchive`, or other new generated outputs only if the implementation produces them.
+  - [x] Do not modify the historical Vivo POC or include it in Apple app targets.
+- [x] Validate the complete seed and collect evidence (AC: 1–8)
+  - [x] Run the environment verifier, local package tests, dependency-boundary checks, iPhone build/launch smoke test, Watch build/launch smoke test, and every AD-13 check.
+  - [x] Verify a clean checkout resolves GRDB 7.11.1 and produces no untracked generated or secret material.
+  - [x] Exercise Light/Dark, Dynamic Type, VoiceOver, Reduce Motion, and Differentiate Without Color on both empty-state shells; retain privacy-safe evidence.
+  - [x] Prove that no database table, Health/sensor/AI integration, workout fact, fake recognition result, or GATE-1–7 enablement was introduced.
 
 ## Dev Notes
 
@@ -322,6 +322,77 @@ OpenAI Codex (GPT-5)
 
 ### Debug Log References
 
+- `scripts/verify-macos-environment.sh` — passed the preserved BMAD/macOS/POC checks plus Git, workspace, schemes, package boundaries, toolchain, accessibility shell, and GRDB lock verification.
+- `scripts/ci/run-all.sh` — passed all eight local entrypoints.
+- Independent `xcodebuild` runs — iPhone and Watch simulator builds passed; two iPhone and two Watch tests passed; both app bundles installed and launched without signing.
+- Isolated `--no-local` checkout — resolved GRDB 7.11.1 from the committed lock and passed boundary/no-speculative-content validation.
+- GitHub Actions run `34580092908` — all eight hosted checks passed on Apple Silicon `macos-26` with Xcode 26.6 build `17F113` and Apple Swift 6.3.3.
+- GitHub branch-protection API read-back at `2026-09-11 19:52:10 CST` — strict required contexts matched the eight-check manifest; administrators enforced; reviews not required; force pushes and deletion disabled.
+
 ### Completion Notes List
 
+- Created one native Xcode workspace with independent iPhone and Watch app/test targets and shared schemes.
+- Added a single local Swift Package with explicit inward-facing Contracts, Domain, Application, PersistencePorts, SyncContracts, SafetyRules, Analysis, and PersistenceGRDB boundaries.
+- Pinned official GRDB exactly to 7.11.1 and confined its import to the persistence adapter seed without adding schema, tables, migrations, or business entities.
+- Implemented truthful native SwiftUI launch shells: Plan-first four-tab iPhone navigation and a no-delivered-Plan Watch state, using semantic Light/Dark assets and accessibility identifiers.
+- Added meaningful local and hosted checks for compile, domain, schema, safety, persistence, sync, AI contract, and secrets. GitHub now requires all eight checks on `main` without human approval.
+- Verified clean resolution, simulator launch, appearance/Dynamic Type rendering, secret absence, and strict seed scope. GATE-1 through GATE-7 remain fail closed.
+- Repository visibility was changed to public only after explicit Product Owner authorization because the current GitHub plan could not enforce required checks on a private repository.
+
 ### File List
+
+- `.github/required-checks.json`
+- `.github/workflows/ci.yml`
+- `.gitignore`
+- `Apps/Watch/Assets.xcassets/ActionPrimary.colorset/Contents.json`
+- `Apps/Watch/Assets.xcassets/BackgroundCanvas.colorset/Contents.json`
+- `Apps/Watch/Assets.xcassets/Contents.json`
+- `Apps/Watch/Assets.xcassets/TextPrimary.colorset/Contents.json`
+- `Apps/Watch/Assets.xcassets/TextSecondary.colorset/Contents.json`
+- `Apps/Watch/FitnessAIWatchApp.swift`
+- `Apps/Watch/WatchAppState.swift`
+- `Apps/Watch/WatchRootView.swift`
+- `Apps/iPhone/Assets.xcassets/AccentColor.colorset/Contents.json`
+- `Apps/iPhone/Assets.xcassets/ActionPrimary.colorset/Contents.json`
+- `Apps/iPhone/Assets.xcassets/BackgroundCanvas.colorset/Contents.json`
+- `Apps/iPhone/Assets.xcassets/Contents.json`
+- `Apps/iPhone/Assets.xcassets/TextPrimary.colorset/Contents.json`
+- `Apps/iPhone/Assets.xcassets/TextSecondary.colorset/Contents.json`
+- `Apps/iPhone/FitnessAIApp.swift`
+- `Apps/iPhone/IPhoneAppState.swift`
+- `Apps/iPhone/IPhoneRootView.swift`
+- `FitnessAI.xcodeproj/project.pbxproj`
+- `FitnessAI.xcodeproj/xcshareddata/xcschemes/FitnessAI-Watch.xcscheme`
+- `FitnessAI.xcodeproj/xcshareddata/xcschemes/FitnessAI-iPhone.xcscheme`
+- `FitnessAI.xcworkspace/contents.xcworkspacedata`
+- `FitnessAI.xcworkspace/xcshareddata/swiftpm/Package.resolved`
+- `Packages/FitnessAICore/Package.resolved`
+- `Packages/FitnessAICore/Package.swift`
+- `Packages/FitnessAICore/Sources/Analysis/AnalysisSeed.swift`
+- `Packages/FitnessAICore/Sources/Application/ApplicationSeed.swift`
+- `Packages/FitnessAICore/Sources/Contracts/ContractsSeed.swift`
+- `Packages/FitnessAICore/Sources/Domain/DomainSeed.swift`
+- `Packages/FitnessAICore/Sources/PersistenceGRDB/GRDBAdapterSeed.swift`
+- `Packages/FitnessAICore/Sources/PersistencePorts/PersistencePortSeed.swift`
+- `Packages/FitnessAICore/Sources/SafetyRules/SafetyRuleSeed.swift`
+- `Packages/FitnessAICore/Sources/SyncContracts/SyncContractSeed.swift`
+- `Packages/FitnessAICore/Tests/ArchitectureTests/ArchitectureTests.swift`
+- `Tests/Watch/WatchAppStateTests.swift`
+- `Tests/iPhone/IPhoneAppStateTests.swift`
+- `docs/development-setup.md`
+- `scripts/ci/check-accessibility-shells.sh`
+- `scripts/ci/check-dependency-boundaries.sh`
+- `scripts/ci/check-no-speculative-content.sh`
+- `scripts/ci/check-resolved-dependencies.sh`
+- `scripts/ci/check-secrets.sh`
+- `scripts/ci/check-toolchain.sh`
+- `scripts/ci/run-all.sh`
+- `scripts/ci/run-check.sh`
+- `scripts/verify-macos-environment.sh`
+- `_bmad-output/implementation-artifacts/1-1-launch-the-runnable-iphone-watch-and-shared-contract-workspace.md`
+- `_bmad-output/implementation-artifacts/sprint-status.yaml`
+- `_bmad-output/implementation-artifacts/story-1-1-ci-evidence.md`
+
+### Change Log
+
+- 2026-09-11: Implemented and verified the complete Story 1.1 runnable native seed, hosted CI contract, and required-check enforcement; moved the Story to `review`.
