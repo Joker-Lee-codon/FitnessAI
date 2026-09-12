@@ -25,27 +25,38 @@ private struct WorkoutEntryView: View {
     @Binding var state: WatchAppState
 
     var body: some View {
-        WatchAdaptiveScroll {
-            VStack(alignment: .leading, spacing: 8) {
+        WatchPagedSurface {
+            WatchPage {
                 PreviewPill()
                 Text("力量周期 · 修订版 8")
                     .font(.caption2.weight(.semibold))
                     .foregroundStyle(Color("PlanText"))
                 Text("下肢力量")
-                    .font(.headline.weight(.semibold))
-                HStack(alignment: .center, spacing: 10) {
+                    .font(.title3.bold())
+                Label("计划已送达", systemImage: "checkmark.circle.fill")
+                    .font(.caption)
+                    .foregroundStyle(Color("ConfirmedText"))
+                CrownPageHint()
+            }
+
+            WatchPage {
+                Text("下一动作")
+                    .font(.caption2.weight(.semibold))
+                    .foregroundStyle(Color("PlanText"))
+                HStack(alignment: .center, spacing: 12) {
                     WatchRail(saved: 0, current: 1, total: 5)
-                    VStack(alignment: .leading, spacing: 4) {
-                        Label("计划已送达 · 示例", systemImage: "checkmark.circle.fill")
-                            .font(.caption2)
-                            .foregroundStyle(Color("ConfirmedText"))
-                        Text("杠铃深蹲")
-                            .font(.caption.weight(.semibold))
+                    VStack(alignment: .leading, spacing: 5) {
+                        Text("杠铃深蹲").font(.headline)
                         Text("5 × 5 · 80 kg")
-                            .font(.caption2)
+                            .font(.caption)
                             .foregroundStyle(Color("TextSecondary"))
                     }
                 }
+                CrownPageHint()
+            }
+
+            WatchPage {
+                Text("准备训练").font(.headline)
                 Button("开始计划训练") { state.startWorkout() }
                     .buttonStyle(WatchPrimaryButtonStyle())
                 Button("预览训练恢复") { state.showRecovery() }
@@ -61,8 +72,8 @@ private struct ActiveWorkoutView: View {
     @Binding var state: WatchAppState
 
     var body: some View {
-        WatchAdaptiveScroll {
-            VStack(alignment: .leading, spacing: 8) {
+        WatchPagedSurface {
+            WatchPage {
                 HStack {
                     Text("18:42").font(.caption2).foregroundStyle(Color("TextSecondary"))
                     Spacer()
@@ -85,13 +96,24 @@ private struct ActiveWorkoutView: View {
                             .foregroundStyle(Color("PlanText"))
                     }
                 }
+                CrownPageHint()
+            }
+
+            WatchPage {
                 Text("预览：\(state.savedSets) 组处于已保存状态")
                     .font(.caption2.weight(.medium))
                     .foregroundStyle(Color("ConfirmedText"))
                 Button("完成第 \(state.currentSet) 组") { state.simulateSetCommit() }
                     .buttonStyle(WatchPrimaryButtonStyle(actual: true))
                     .accessibilityHint("仅模拟保存后的界面状态，不会保存训练数据")
+                CrownPageHint()
+            }
+
+            WatchPage {
+                Text("训练操作").font(.headline)
                 Button("处理休息提示") { state.showRestResolution() }
+                    .buttonStyle(WatchPrimaryButtonStyle())
+                Button("结束训练") { state.showFinishReview() }
                     .font(.caption)
                     .foregroundStyle(Color("PendingText"))
             }
@@ -104,8 +126,8 @@ private struct RestResolutionView: View {
     @Binding var state: WatchAppState
 
     var body: some View {
-        WatchAdaptiveScroll {
-            VStack(alignment: .leading, spacing: 10) {
+        WatchPagedSurface {
+            WatchPage {
                 PreviewPill()
                 Text("休息 · 示例提示")
                     .font(.caption2.weight(.semibold))
@@ -115,6 +137,11 @@ private struct RestResolutionView: View {
                 Text("刚才是杠铃深蹲吗？")
                     .font(.body)
                     .foregroundStyle(Color("TextSecondary"))
+                CrownPageHint()
+            }
+
+            WatchPage {
+                Text("确认本组").font(.headline)
                 Button("确认") { state.resolveRest() }
                     .buttonStyle(WatchPrimaryButtonStyle())
                 Button("稍后处理") { state.resolveRest() }
@@ -129,8 +156,8 @@ private struct FinishReviewView: View {
     @Binding var state: WatchAppState
 
     var body: some View {
-        WatchAdaptiveScroll {
-            VStack(alignment: .leading, spacing: 10) {
+        WatchPagedSurface {
+            WatchPage {
                 PreviewPill()
                 Text("结束前检查")
                     .font(.caption2.weight(.semibold))
@@ -143,6 +170,11 @@ private struct FinishReviewView: View {
                 Text("这里仅预览未完整结束的状态，不会保存或发送到手机。")
                     .font(.caption2)
                     .foregroundStyle(Color("TextSecondary"))
+                CrownPageHint()
+            }
+
+            WatchPage {
+                Text("结束训练").font(.headline)
                 Button("预览：以未完成状态结束") { state.phase = .entry }
                     .buttonStyle(WatchPrimaryButtonStyle())
                 Button("继续训练") { state.resumeWorkout() }
@@ -157,8 +189,8 @@ private struct RecoveryView: View {
     @Binding var state: WatchAppState
 
     var body: some View {
-        WatchAdaptiveScroll {
-            VStack(alignment: .leading, spacing: 10) {
+        WatchPagedSurface {
+            WatchPage {
                 PreviewPill()
                 Label("已恢复训练", systemImage: "arrow.clockwise.circle.fill")
                     .font(.headline)
@@ -168,6 +200,11 @@ private struct RecoveryView: View {
                 Text("仍有一段待处理数据，未与已保存记录合并。")
                     .font(.caption2)
                     .foregroundStyle(Color("PendingText"))
+                CrownPageHint()
+            }
+
+            WatchPage {
+                Text("恢复选项").font(.headline)
                 Button("恢复训练") { state.resumeWorkout() }
                     .buttonStyle(WatchPrimaryButtonStyle(actual: true))
                 Button("以未完成状态结束") { state.showFinishReview() }
@@ -213,20 +250,38 @@ private struct PreviewPill: View {
     }
 }
 
-private struct WatchAdaptiveScroll<Content: View>: View {
+private struct WatchPagedSurface<Content: View>: View {
+    @ViewBuilder let content: Content
+
+    var body: some View {
+        TabView { content }
+            .tabViewStyle(.verticalPage(transitionStyle: .blur))
+            .accessibilityHint("转动数码表冠可逐页浏览")
+    }
+}
+
+private struct WatchPage<Content: View>: View {
     @Environment(\.dynamicTypeSize) private var dynamicTypeSize
     @ViewBuilder let content: Content
 
     var body: some View {
         GeometryReader { geometry in
-            ScrollView {
+            VStack(alignment: .leading, spacing: dynamicTypeSize.isAccessibilitySize ? 5 : 8) {
                 content
-                    .frame(maxWidth: .infinity, alignment: .leading)
-                    .padding(.horizontal, geometry.size.width < 190 ? 6 : 10)
-                    .padding(.vertical, dynamicTypeSize.isAccessibilitySize ? 8 : 4)
             }
-            .scrollIndicators(.automatic)
+            .frame(width: geometry.size.width, height: geometry.size.height, alignment: .center)
+            .padding(.horizontal, geometry.size.width < 190 ? 8 : 12)
         }
+        .containerBackground(Color("BackgroundCanvas"), for: .tabView)
+    }
+}
+
+private struct CrownPageHint: View {
+    var body: some View {
+        Label("转动表冠继续", systemImage: "digitalcrown.horizontal.arrow.clockwise")
+            .font(.caption2)
+            .foregroundStyle(Color("TextSecondary"))
+            .accessibilityHidden(true)
     }
 }
 

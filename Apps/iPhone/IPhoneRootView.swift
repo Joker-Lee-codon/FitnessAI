@@ -115,6 +115,7 @@ private struct TodayLedgerView: View {
         }
         .foregroundStyle(Color("TextPrimary"))
         .navigationTitle("今日")
+        .navigationBarTitleDisplayMode(.inline)
         .accessibilityIdentifier("iphone.today-ledger")
     }
 }

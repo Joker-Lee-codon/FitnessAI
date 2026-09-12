@@ -26,6 +26,12 @@ grep -Eq '不会保存或同步任何内容' "$IPHONE/IPhoneRootView.swift"
 grep -Eq '界面预览 · 不保存数据' "$WATCH/WatchRootView.swift"
 grep -Eq 'maxWidth: 680' "$IPHONE/IPhoneRootView.swift"
 grep -Eq 'GeometryReader' "$WATCH/WatchRootView.swift"
+grep -Eq 'navigationBarTitleDisplayMode\(\.inline\)' "$IPHONE/IPhoneRootView.swift"
+grep -Eq 'tabViewStyle\(\.verticalPage' "$WATCH/WatchRootView.swift"
+if grep -Eq 'ScrollView' "$WATCH/WatchRootView.swift"; then
+  print -u2 "Watch preview must use crown-driven full-screen paging, not continuous scrolling"
+  exit 1
+fi
 grep -Eq 'zh-Hans-CN' "$IPHONE/FitnessAIApp.swift"
 grep -Eq 'zh-Hans-CN' "$WATCH/FitnessAIWatchApp.swift"
 [[ "$(grep -Ec 'INFOPLIST_KEY_UILaunchScreen_Generation = YES' "$PROJECT")" -ge 2 ]] || {
