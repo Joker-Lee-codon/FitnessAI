@@ -3,15 +3,17 @@ import XCTest
 @testable import FitnessAI
 
 final class IPhoneAppStateTests: XCTestCase {
-    func testPlanIsTheTruthfulDefaultRoot() {
+    func testTodayIsThePreviewDefaultRoot() {
         let state = IPhoneAppState()
-        XCTAssertEqual(state.selectedTab, .plan)
-        XCTAssertTrue(state.planDestinations.isEmpty)
-        XCTAssertEqual(RootTab.allCases.map(\.rawValue), ["Plan", "History", "Analysis", "More"])
+        XCTAssertEqual(state.selectedTab, .today)
+        XCTAssertTrue(state.todayDestinations.isEmpty)
+        XCTAssertEqual(RootTab.allCases.map(\.rawValue), ["Today", "History", "Analysis", "More"])
+        XCTAssertEqual(state.exercises.count, 3)
+        XCTAssertEqual(state.sessions.count, 3)
     }
 
     @MainActor
-    func testShellRendersUnderAccessibilityAndAppearanceSettings() {
+    func testPreviewRendersUnderAccessibilityAndAppearanceSettings() {
         let view = IPhoneRootView()
             .environment(\.colorScheme, .dark)
             .environment(\.dynamicTypeSize, .accessibility3)
