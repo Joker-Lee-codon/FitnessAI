@@ -25,24 +25,30 @@ private struct WorkoutEntryView: View {
     @Binding var state: WatchAppState
 
     var body: some View {
-        ScrollView {
-            VStack(alignment: .leading, spacing: 10) {
+        WatchAdaptiveScroll {
+            VStack(alignment: .leading, spacing: 8) {
                 PreviewPill()
-                Text("STRENGTH BLOCK · R8")
+                Text("力量周期 · 修订版 8")
                     .font(.caption2.weight(.semibold))
                     .foregroundStyle(Color("PlanText"))
-                Text("Lower Strength")
+                Text("下肢力量")
                     .font(.headline.weight(.semibold))
-                Label("Delivered plan · sample", systemImage: "checkmark.circle.fill")
-                    .font(.caption2)
-                    .foregroundStyle(Color("ConfirmedText"))
-                WatchRail(saved: 0, current: 1, total: 5)
-                Text("Back Squat · 5 × 5 · 80 kg")
-                    .font(.caption)
-                    .foregroundStyle(Color("TextSecondary"))
-                Button("Start planned workout") { state.startWorkout() }
+                HStack(alignment: .center, spacing: 10) {
+                    WatchRail(saved: 0, current: 1, total: 5)
+                    VStack(alignment: .leading, spacing: 4) {
+                        Label("计划已送达 · 示例", systemImage: "checkmark.circle.fill")
+                            .font(.caption2)
+                            .foregroundStyle(Color("ConfirmedText"))
+                        Text("杠铃深蹲")
+                            .font(.caption.weight(.semibold))
+                        Text("5 × 5 · 80 kg")
+                            .font(.caption2)
+                            .foregroundStyle(Color("TextSecondary"))
+                    }
+                }
+                Button("开始计划训练") { state.startWorkout() }
                     .buttonStyle(WatchPrimaryButtonStyle())
-                Button("Preview recovery") { state.showRecovery() }
+                Button("预览训练恢复") { state.showRecovery() }
                     .font(.caption)
                     .foregroundStyle(Color("PendingText"))
             }
@@ -55,17 +61,17 @@ private struct ActiveWorkoutView: View {
     @Binding var state: WatchAppState
 
     var body: some View {
-        ScrollView {
+        WatchAdaptiveScroll {
             VStack(alignment: .leading, spacing: 8) {
                 HStack {
                     Text("18:42").font(.caption2).foregroundStyle(Color("TextSecondary"))
                     Spacer()
-                    Button("Finish") { state.showFinishReview() }
+                    Button("结束") { state.showFinishReview() }
                         .font(.caption)
                         .foregroundStyle(Color("PendingText"))
                 }
                 PreviewPill()
-                Text("Back Squat")
+                Text("杠铃深蹲")
                     .font(.headline.weight(.semibold))
                 HStack(alignment: .center, spacing: 10) {
                     WatchRail(saved: state.savedSets, current: state.currentSet, total: state.totalSets)
@@ -74,18 +80,18 @@ private struct ActiveWorkoutView: View {
                             Text("77.5").font(.largeTitle.bold()).fontWidth(.condensed)
                             Text("kg").font(.caption.weight(.semibold))
                         }
-                        Text("Plan 80 kg · 5 reps · RPE 8")
+                        Text("计划 80 kg · 5 次 · RPE 8")
                             .font(.caption2)
                             .foregroundStyle(Color("PlanText"))
                     }
                 }
-                Text("Preview: \(state.savedSets) sets in saved state")
+                Text("预览：\(state.savedSets) 组处于已保存状态")
                     .font(.caption2.weight(.medium))
                     .foregroundStyle(Color("ConfirmedText"))
-                Button("Complete set \(state.currentSet)") { state.simulateSetCommit() }
+                Button("完成第 \(state.currentSet) 组") { state.simulateSetCommit() }
                     .buttonStyle(WatchPrimaryButtonStyle(actual: true))
-                    .accessibilityHint("Simulates the saved visual state; no workout data is stored")
-                Button("Resolve rest prompt") { state.showRestResolution() }
+                    .accessibilityHint("仅模拟保存后的界面状态，不会保存训练数据")
+                Button("处理休息提示") { state.showRestResolution() }
                     .font(.caption)
                     .foregroundStyle(Color("PendingText"))
             }
@@ -98,20 +104,20 @@ private struct RestResolutionView: View {
     @Binding var state: WatchAppState
 
     var body: some View {
-        ScrollView {
+        WatchAdaptiveScroll {
             VStack(alignment: .leading, spacing: 10) {
                 PreviewPill()
-                Text("REST · SAMPLE PROMPT")
+                Text("休息 · 示例提示")
                     .font(.caption2.weight(.semibold))
                     .foregroundStyle(Color("PendingText"))
-                Text("5 reps and 77.5 kg preserved")
+                Text("已保留 5 次和 77.5 kg")
                     .font(.headline)
-                Text("Was that Back Squat?")
+                Text("刚才是杠铃深蹲吗？")
                     .font(.body)
                     .foregroundStyle(Color("TextSecondary"))
-                Button("Confirm") { state.resolveRest() }
+                Button("确认") { state.resolveRest() }
                     .buttonStyle(WatchPrimaryButtonStyle())
-                Button("Later") { state.resolveRest() }
+                Button("稍后处理") { state.resolveRest() }
                     .font(.caption)
             }
         }
@@ -123,23 +129,23 @@ private struct FinishReviewView: View {
     @Binding var state: WatchAppState
 
     var body: some View {
-        ScrollView {
+        WatchAdaptiveScroll {
             VStack(alignment: .leading, spacing: 10) {
                 PreviewPill()
-                Text("FINISH REVIEW")
+                Text("结束前检查")
                     .font(.caption2.weight(.semibold))
                     .foregroundStyle(Color("ActualMark"))
-                Text("\(state.savedSets) sets in preview")
+                Text("预览中有 \(state.savedSets) 组")
                     .font(.title3.bold())
-                Label("1 sample item unresolved", systemImage: "exclamationmark.circle.fill")
+                Label("有 1 项示例内容未确认", systemImage: "exclamationmark.circle.fill")
                     .font(.caption)
                     .foregroundStyle(Color("PendingText"))
-                Text("This previews an incomplete finish. Nothing will be saved or returned to iPhone.")
+                Text("这里仅预览未完整结束的状态，不会保存或发送到手机。")
                     .font(.caption2)
                     .foregroundStyle(Color("TextSecondary"))
-                Button("Preview finish as incomplete") { state.phase = .entry }
+                Button("预览：以未完成状态结束") { state.phase = .entry }
                     .buttonStyle(WatchPrimaryButtonStyle())
-                Button("Continue workout") { state.resumeWorkout() }
+                Button("继续训练") { state.resumeWorkout() }
                     .font(.caption)
             }
         }
@@ -151,20 +157,20 @@ private struct RecoveryView: View {
     @Binding var state: WatchAppState
 
     var body: some View {
-        ScrollView {
+        WatchAdaptiveScroll {
             VStack(alignment: .leading, spacing: 10) {
                 PreviewPill()
-                Label("Workout recovered", systemImage: "arrow.clockwise.circle.fill")
+                Label("已恢复训练", systemImage: "arrow.clockwise.circle.fill")
                     .font(.headline)
                     .foregroundStyle(Color("ConfirmedText"))
-                Text("Sample durable state: Back Squat · 3 sets")
+                Text("示例持久状态：杠铃深蹲 · 3 组")
                     .font(.caption)
-                Text("One pending fragment remains separate and unresolved.")
+                Text("仍有一段待处理数据，未与已保存记录合并。")
                     .font(.caption2)
                     .foregroundStyle(Color("PendingText"))
-                Button("Resume workout") { state.resumeWorkout() }
+                Button("恢复训练") { state.resumeWorkout() }
                     .buttonStyle(WatchPrimaryButtonStyle(actual: true))
-                Button("Finish as incomplete") { state.showFinishReview() }
+                Button("以未完成状态结束") { state.showFinishReview() }
                     .font(.caption)
                     .foregroundStyle(Color("PendingText"))
             }
@@ -191,19 +197,36 @@ private struct WatchRail: View {
             }
         }
         .accessibilityElement(children: .ignore)
-        .accessibilityLabel("Training sequence")
-        .accessibilityValue("\(saved) of \(total) sets in saved preview state, set \(current) current")
+        .accessibilityLabel("训练顺序")
+        .accessibilityValue("共 \(total) 组，预览中已保存 \(saved) 组，当前为第 \(current) 组")
     }
 }
 
 private struct PreviewPill: View {
     var body: some View {
-        Text("UI PREVIEW · NO DATA SAVED")
+        Text("界面预览 · 不保存数据")
             .font(.system(.caption2, design: .rounded).weight(.bold))
             .foregroundStyle(Color("ActualMark"))
             .padding(.horizontal, 7)
             .padding(.vertical, 4)
             .background(Color("Surface"), in: RoundedRectangle(cornerRadius: 7))
+    }
+}
+
+private struct WatchAdaptiveScroll<Content: View>: View {
+    @Environment(\.dynamicTypeSize) private var dynamicTypeSize
+    @ViewBuilder let content: Content
+
+    var body: some View {
+        GeometryReader { geometry in
+            ScrollView {
+                content
+                    .frame(maxWidth: .infinity, alignment: .leading)
+                    .padding(.horizontal, geometry.size.width < 190 ? 6 : 10)
+                    .padding(.vertical, dynamicTypeSize.isAccessibilitySize ? 8 : 4)
+            }
+            .scrollIndicators(.automatic)
+        }
     }
 }
 

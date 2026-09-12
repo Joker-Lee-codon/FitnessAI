@@ -1,10 +1,10 @@
 import Foundation
 
 enum RootTab: String, CaseIterable, Identifiable {
-    case today = "Today"
-    case history = "History"
-    case analysis = "Analysis"
-    case more = "More"
+    case today = "今日"
+    case history = "记录"
+    case analysis = "分析"
+    case more = "更多"
 
     var id: Self { self }
 
@@ -43,14 +43,14 @@ struct IPhoneAppState: Equatable {
     var todayDestinations: [AppDestination] = []
 
     let exercises = [
-        PreviewExercise(id: 1, name: "Back Squat", plan: "5 × 5 · 80 kg · RPE 8", actual: "5 × 5 · 77.5 kg"),
-        PreviewExercise(id: 2, name: "Bench Press", plan: "4 × 6 · 55 kg · RPE 8", actual: "4 × 6 · 55 kg"),
-        PreviewExercise(id: 3, name: "Romanian Deadlift", plan: "3 × 8 · 70 kg · RPE 7", actual: nil)
+        PreviewExercise(id: 1, name: "杠铃深蹲", plan: "5 × 5 · 80 kg · RPE 8", actual: "5 × 5 · 77.5 kg"),
+        PreviewExercise(id: 2, name: "卧推", plan: "4 × 6 · 55 kg · RPE 8", actual: "4 × 6 · 55 kg"),
+        PreviewExercise(id: 3, name: "罗马尼亚硬拉", plan: "3 × 8 · 70 kg · RPE 7", actual: nil)
     ]
 
     let sessions = [
-        PreviewSession(id: 1, date: "SEP 11", name: "Lower Strength", summary: "5 exercises · 18 sets · 6,240 kg", state: "Needs review · 1 item"),
-        PreviewSession(id: 2, date: "SEP 09", name: "Upper Strength", summary: "6 exercises · 21 sets · 5,860 kg", state: "Complete"),
-        PreviewSession(id: 3, date: "SEP 06", name: "Full Body", summary: "7 exercises · 23 sets · 7,105 kg", state: "Corrected")
+        PreviewSession(id: 1, date: "9 月 11 日", name: "下肢力量", summary: "5 个动作 · 18 组 · 6,240 kg", state: "待复核 · 1 项"),
+        PreviewSession(id: 2, date: "9 月 9 日", name: "上肢力量", summary: "6 个动作 · 21 组 · 5,860 kg", state: "已完成"),
+        PreviewSession(id: 3, date: "9 月 6 日", name: "全身训练", summary: "7 个动作 · 23 组 · 7,105 kg", state: "已修正")
     ]
 }

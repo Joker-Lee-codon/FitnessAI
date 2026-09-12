@@ -4,6 +4,7 @@ set -eu
 readonly ROOT="${0:A:h:h:h}"
 readonly IPHONE="$ROOT/Apps/iPhone"
 readonly WATCH="$ROOT/Apps/Watch"
+readonly PROJECT="$ROOT/FitnessAI.xcodeproj/project.pbxproj"
 
 for catalog in "$IPHONE/Assets.xcassets" "$WATCH/Assets.xcassets"; do
   for token in BackgroundCanvas Surface TextPrimary TextSecondary ActionPrimary PlanMark PlanText ActualMark ConfirmedText PendingText OnFilled; do
@@ -21,8 +22,16 @@ for surface in workout-entry active-workout rest-resolution finish-review recove
   grep -Eq "watch\.$surface" "$WATCH/WatchRootView.swift"
 done
 
-grep -Eq 'Nothing is saved or synchronized' "$IPHONE/IPhoneRootView.swift"
-grep -Eq 'UI PREVIEW · NO DATA SAVED' "$WATCH/WatchRootView.swift"
+grep -Eq '不会保存或同步任何内容' "$IPHONE/IPhoneRootView.swift"
+grep -Eq '界面预览 · 不保存数据' "$WATCH/WatchRootView.swift"
+grep -Eq 'maxWidth: 680' "$IPHONE/IPhoneRootView.swift"
+grep -Eq 'GeometryReader' "$WATCH/WatchRootView.swift"
+grep -Eq 'zh-Hans-CN' "$IPHONE/FitnessAIApp.swift"
+grep -Eq 'zh-Hans-CN' "$WATCH/FitnessAIWatchApp.swift"
+[[ "$(grep -Ec 'INFOPLIST_KEY_UILaunchScreen_Generation = YES' "$PROJECT")" -ge 2 ]] || {
+  print -u2 "iPhone target must generate a modern launch screen for full-screen adaptive presentation"
+  exit 1
+}
 grep -Eq 'minHeight: 52' "$IPHONE/IPhoneRootView.swift"
 grep -Eq 'minHeight: 48' "$WATCH/WatchRootView.swift"
 

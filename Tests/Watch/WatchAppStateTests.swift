@@ -21,13 +21,29 @@ final class WatchAppStateTests: XCTestCase {
     }
 
     @MainActor
-    func testPreviewRendersUnderAccessibilityAndAppearanceSettings() {
+    func testPreviewRendersAcrossWatchScreenClasses() {
+        let sizes = [
+            CGSize(width: 176, height: 215),
+            CGSize(width: 198, height: 242),
+            CGSize(width: 205, height: 251)
+        ]
+
+        for size in sizes {
+            assertRenders(size: size, dynamicTypeSize: .large)
+        }
+
+        assertRenders(size: CGSize(width: 176, height: 215), dynamicTypeSize: .accessibility2)
+    }
+
+    @MainActor
+    private func assertRenders(size: CGSize, dynamicTypeSize: DynamicTypeSize) {
         let view = WatchRootView()
+            .environment(\.locale, Locale(identifier: "zh-Hans-CN"))
             .environment(\.colorScheme, .dark)
-            .environment(\.dynamicTypeSize, .accessibility1)
-            .frame(width: 198, height: 242)
+            .environment(\.dynamicTypeSize, dynamicTypeSize)
+            .frame(width: size.width, height: size.height)
         let renderer = ImageRenderer(content: view)
-        renderer.proposedSize = ProposedViewSize(width: 198, height: 242)
-        XCTAssertNotNil(renderer.cgImage)
+        renderer.proposedSize = ProposedViewSize(size)
+        XCTAssertNotNil(renderer.cgImage, "Watch preview failed at \(size)")
     }
 }

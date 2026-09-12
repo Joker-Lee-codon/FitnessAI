@@ -25,9 +25,9 @@ struct IPhoneRootView: View {
 
             NavigationStack {
                 PlaceholderLedgerView(
-                    title: "Analysis",
+                    title: "训练分析",
                     symbol: "chart.xyaxis.line",
-                    message: "Analysis arrives after the local workout loop is functional."
+                    message: "完成本地训练闭环后，这里将展示训练趋势和分析。"
                 )
             }
             .tabItem { Label(RootTab.analysis.rawValue, systemImage: RootTab.analysis.symbol) }
@@ -35,9 +35,9 @@ struct IPhoneRootView: View {
 
             NavigationStack {
                 PlaceholderLedgerView(
-                    title: "More",
+                    title: "更多",
                     symbol: "ellipsis.circle",
-                    message: "Account, privacy, and recovery settings are outside this preview milestone."
+                    message: "账户、隐私和恢复设置将在后续版本中开放。"
                 )
             }
             .tabItem { Label(RootTab.more.rawValue, systemImage: RootTab.more.symbol) }
@@ -50,28 +50,31 @@ struct IPhoneRootView: View {
 
 private struct TodayLedgerView: View {
     let state: IPhoneAppState
+    @Environment(\.horizontalSizeClass) private var horizontalSizeClass
 
     var body: some View {
-        ScrollView {
-            VStack(alignment: .leading, spacing: 20) {
+        ZStack {
+            Color("BackgroundCanvas").ignoresSafeArea()
+            ScrollView {
+                VStack(alignment: .leading, spacing: 20) {
                 PreviewNotice()
 
                 VStack(alignment: .leading, spacing: 6) {
-                    Text("STRENGTH BLOCK · REVISION 8")
+                    Text("力量周期 · 修订版 8")
                         .font(.caption.weight(.semibold))
                         .foregroundStyle(Color("PlanText"))
-                    Text("Week 3 of 6")
+                    Text("第 3 周，共 6 周")
                         .font(.title2.bold())
                         .foregroundStyle(Color("TextPrimary"))
-                    Label("Delivered to Watch", systemImage: "checkmark.circle.fill")
+                    Label("已发送至手表", systemImage: "checkmark.circle.fill")
                         .font(.subheadline.weight(.medium))
                         .foregroundStyle(Color("ConfirmedText"))
                 }
 
-                LedgerSection(title: "NEXT SESSION", railColor: Color("PlanMark")) {
+                LedgerSection(title: "下一次训练", railColor: Color("PlanMark")) {
                     VStack(alignment: .leading, spacing: 12) {
-                        Text("Lower Strength").font(.title3.bold())
-                        Text("3 exercises · about 48 min")
+                        Text("下肢力量").font(.title3.bold())
+                        Text("3 个动作 · 预计 48 分钟")
                             .font(.subheadline)
                             .foregroundStyle(Color("TextSecondary"))
                         ForEach(state.exercises) { exercise in
@@ -87,57 +90,63 @@ private struct TodayLedgerView: View {
                     }
                 }
 
-                LedgerSection(title: "RETURNED FROM WATCH", railColor: Color("PendingText")) {
+                LedgerSection(title: "手表训练记录", railColor: Color("PendingText")) {
                     VStack(alignment: .leading, spacing: 10) {
-                        Text("Lower Strength · Sep 11").font(.headline)
-                        Label("1 incomplete item needs resolution", systemImage: "exclamationmark.circle.fill")
+                        Text("下肢力量 · 9 月 11 日").font(.headline)
+                        Label("有 1 项未完成内容需要确认", systemImage: "exclamationmark.circle.fill")
                             .font(.subheadline)
                             .foregroundStyle(Color("PendingText"))
                         NavigationLink(value: AppDestination.sessionReview) {
-                            Label("Review returned session", systemImage: "doc.text.magnifyingglass")
+                            Label("复核训练记录", systemImage: "doc.text.magnifyingglass")
                                 .frame(maxWidth: .infinity)
                         }
                         .buttonStyle(LedgerPrimaryButtonStyle())
                     }
                 }
 
-                NavigationLink("View training history", value: AppDestination.historyPreview)
+                NavigationLink("查看训练历史", value: AppDestination.historyPreview)
                     .font(.body.weight(.semibold))
+                }
+                .frame(maxWidth: 680, alignment: .leading)
+                .frame(maxWidth: .infinity, alignment: .center)
+                .padding(.horizontal, horizontalSizeClass == .regular ? 32 : 16)
+                .padding(.vertical, 12)
             }
-            .padding(16)
         }
-        .background(Color("BackgroundCanvas").ignoresSafeArea())
         .foregroundStyle(Color("TextPrimary"))
-        .navigationTitle("Today")
+        .navigationTitle("今日")
         .accessibilityIdentifier("iphone.today-ledger")
     }
 }
 
 private struct SessionReviewView: View {
     let exercises: [PreviewExercise]
+    @Environment(\.horizontalSizeClass) private var horizontalSizeClass
 
     var body: some View {
-        ScrollView {
-            VStack(alignment: .leading, spacing: 20) {
+        ZStack {
+            Color("BackgroundCanvas").ignoresSafeArea()
+            ScrollView {
+                VStack(alignment: .leading, spacing: 20) {
                 PreviewNotice()
-                Label("Incomplete · 1 item", systemImage: "exclamationmark.circle.fill")
+                Label("未完成 · 1 项", systemImage: "exclamationmark.circle.fill")
                     .font(.headline)
                     .foregroundStyle(Color("PendingText"))
 
                 VStack(alignment: .leading, spacing: 4) {
-                    Text("Lower Strength").font(.title2.bold())
-                    Text("Recorded on Watch · sample receipt state")
+                    Text("下肢力量").font(.title2.bold())
+                    Text("由手表记录 · 示例接收状态")
                         .font(.subheadline)
                         .foregroundStyle(Color("TextSecondary"))
                 }
 
-                LedgerSection(title: "PLAN  ↔  ACTUAL", railColor: Color("ActualMark")) {
+                LedgerSection(title: "计划  ↔  实际", railColor: Color("ActualMark")) {
                     ForEach(exercises) { exercise in
                         VStack(alignment: .leading, spacing: 7) {
                             Text(exercise.name).font(.headline)
-                            LabeledContent("Plan", value: exercise.plan)
+                            LabeledContent("计划", value: exercise.plan)
                                 .foregroundStyle(Color("PlanText"))
-                            LabeledContent("Actual", value: exercise.actual ?? "Needs confirmation")
+                            LabeledContent("实际", value: exercise.actual ?? "需要确认")
                                 .foregroundStyle(exercise.actual == nil ? Color("PendingText") : Color("ActualMark"))
                         }
                         .padding(.vertical, 8)
@@ -145,15 +154,18 @@ private struct SessionReviewView: View {
                     }
                 }
 
-                Button("Resolve 1 incomplete item") {}
+                Button("处理 1 项未完成内容") {}
                     .buttonStyle(LedgerPrimaryButtonStyle())
-                    .accessibilityHint("Preview control; no workout data is changed")
+                    .accessibilityHint("预览控件，不会修改训练数据")
+                }
+                .frame(maxWidth: 680, alignment: .leading)
+                .frame(maxWidth: .infinity, alignment: .center)
+                .padding(.horizontal, horizontalSizeClass == .regular ? 32 : 16)
+                .padding(.vertical, 12)
             }
-            .padding(16)
         }
-        .background(Color("BackgroundCanvas").ignoresSafeArea())
         .foregroundStyle(Color("TextPrimary"))
-        .navigationTitle("Session Review")
+        .navigationTitle("训练复核")
         .navigationBarTitleDisplayMode(.inline)
         .accessibilityIdentifier("iphone.session-review")
     }
@@ -161,50 +173,59 @@ private struct SessionReviewView: View {
 
 private struct HistoryLedgerView: View {
     let sessions: [PreviewSession]
+    @Environment(\.horizontalSizeClass) private var horizontalSizeClass
 
     var body: some View {
-        List {
-            PreviewNotice().listRowBackground(Color("BackgroundCanvas"))
-            ForEach(sessions) { session in
-                HStack(alignment: .top, spacing: 12) {
-                    RoundedRectangle(cornerRadius: 2)
-                        .fill(session.state.hasPrefix("Needs") ? Color("PendingText") : Color("ConfirmedText"))
-                        .frame(width: 3)
-                        .accessibilityHidden(true)
-                    VStack(alignment: .leading, spacing: 5) {
-                        Text(session.date)
-                            .font(.caption.weight(.semibold))
-                            .foregroundStyle(Color("TextSecondary"))
-                        Text(session.name).font(.headline)
-                        Text(session.summary)
-                            .font(.subheadline)
-                            .foregroundStyle(Color("TextSecondary"))
-                        Text(session.state)
-                            .font(.caption.weight(.semibold))
-                            .foregroundStyle(session.state.hasPrefix("Needs") ? Color("PendingText") : Color("ConfirmedText"))
+        ZStack {
+            Color("BackgroundCanvas").ignoresSafeArea()
+            ScrollView {
+                LazyVStack(alignment: .leading, spacing: 12) {
+                    PreviewNotice()
+                    ForEach(sessions) { session in
+                        HStack(alignment: .top, spacing: 12) {
+                            RoundedRectangle(cornerRadius: 2)
+                                .fill(session.state.hasPrefix("待") ? Color("PendingText") : Color("ConfirmedText"))
+                                .frame(width: 3)
+                                .accessibilityHidden(true)
+                            VStack(alignment: .leading, spacing: 5) {
+                                Text(session.date)
+                                    .font(.caption.weight(.semibold))
+                                    .foregroundStyle(Color("TextSecondary"))
+                                Text(session.name).font(.headline)
+                                Text(session.summary)
+                                    .font(.subheadline)
+                                    .foregroundStyle(Color("TextSecondary"))
+                                Text(session.state)
+                                    .font(.caption.weight(.semibold))
+                                    .foregroundStyle(session.state.hasPrefix("待") ? Color("PendingText") : Color("ConfirmedText"))
+                            }
+                            .frame(maxWidth: .infinity, alignment: .leading)
+                        }
+                        .padding(16)
+                        .background(Color("Surface"), in: RoundedRectangle(cornerRadius: 12))
+                        .accessibilityElement(children: .combine)
                     }
                 }
-                .padding(.vertical, 6)
-                .listRowBackground(Color("Surface"))
-                .accessibilityElement(children: .combine)
+                .frame(maxWidth: 680, alignment: .leading)
+                .frame(maxWidth: .infinity, alignment: .center)
+                .padding(.horizontal, horizontalSizeClass == .regular ? 32 : 16)
+                .padding(.vertical, 12)
             }
         }
-        .scrollContentBackground(.hidden)
-        .background(Color("BackgroundCanvas"))
-        .navigationTitle("History")
+        .navigationTitle("训练记录")
         .accessibilityIdentifier("iphone.history-ledger")
     }
 }
 
 private struct PreviewNotice: View {
     var body: some View {
-        Label("Interactive UI preview · sample data only", systemImage: "hammer.fill")
+        Label("交互界面预览 · 仅使用示例数据", systemImage: "hammer.fill")
             .font(.caption.weight(.semibold))
             .foregroundStyle(Color("ActualMark"))
             .padding(.vertical, 7)
             .padding(.horizontal, 10)
             .background(Color("Surface"), in: RoundedRectangle(cornerRadius: 7))
-            .accessibilityLabel("Interactive user interface preview. Sample data only. Nothing is saved or synchronized.")
+            .accessibilityLabel("交互界面预览，仅使用示例数据，不会保存或同步任何内容")
     }
 }
 
