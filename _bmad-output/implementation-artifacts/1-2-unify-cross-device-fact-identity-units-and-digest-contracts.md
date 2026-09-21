@@ -4,7 +4,7 @@ baseline_commit: 6bfc287
 
 # Story 1.2: Unify Cross-Device Fact Identity, Units, and Digest Contracts
 
-Status: in-progress
+Status: done
 
 Classification: Enabler  
 Implementation slice: S0  
@@ -116,11 +116,11 @@ so that workout facts are never duplicated, mistranslated, or interpreted as dif
   - [x] Cover key insertion order, UUID case normalization, NFC composed/decomposed text, emoji/non-BMP keys, decimal zero/boundaries/rejections, exact lb conversion, time-zone/instant semantics, optional extensions, unknown critical fields, missing/unsupported versions, malformed UTF-8, duplicate normalized keys, and each load kind/basis.
   - [x] Add a covered-field mutation vector and explicit failures for exponent numbers, `NaN`, infinity, partial decoding, and automatic substitution.
 
-- [ ] Task 7 — Run the same contract evidence in package, iPhone, and Watch targets (AC: 1–6)
-  - [ ] Add Swift Testing package suites for Contracts and SyncContracts.
-  - [ ] Add iPhone XCTest and Watch XCTest adapters that load the same corpus and assert identical bytes, digest, IDs, units, versions, and errors on their real target runtimes.
-  - [ ] Give both app test targets a direct `FitnessAIContracts` dependency; do not rely on host-app transitive linkage.
-  - [ ] Update `schema` and `sync` CI entrypoints to execute the new suites while preserving the existing eight required check names.
+- [x] Task 7 — Run the same contract evidence in package, iPhone, and Watch targets (AC: 1–6)
+  - [x] Add Swift Testing package suites for Contracts and SyncContracts.
+  - [x] Add iPhone XCTest and Watch XCTest adapters that load the same corpus and assert identical bytes, digest, IDs, units, versions, and errors on their real target runtimes.
+  - [x] Give both app test targets a direct `FitnessAIContracts` dependency; do not rely on host-app transitive linkage.
+  - [x] Update `schema` and `sync` CI entrypoints to execute the new suites while preserving the existing eight required check names.
 
 - [x] Task 8 — Preserve architecture and strict scope (AC: 2, 7)
   - [x] Keep the existing seed wiring, package products, dependency direction, GRDB 7.11.1 pin, UI behavior, and required-check manifest intact.
@@ -214,9 +214,10 @@ Tests belong in `Packages/FitnessAICore/Tests/ContractTests`, `Packages/FitnessA
 
 ## Story Completion Status
 
-- Status set to `ready-for-dev`.
-- Ultimate context engine analysis completed — comprehensive, implementation-ready developer guide created.
-- Story 1.1 is complete; Story 1.2 may proceed without a manual review checkpoint.
+- Status set to `done` after merge to `main`.
+- All stable identity, load, provenance, canonicalization, digest, fixture, and cross-target evidence requirements are implemented.
+- GitHub PR #3 passed all eight required automated checks without human approval and merged as commit `753cdec`.
+- No persistence, network, reducer, transport, AI, Health, or user-visible capability was enabled.
 
 ## Dev Agent Record
 
@@ -231,6 +232,7 @@ OpenAI Codex (GPT-5)
 - RED/GREEN: load, version, canonicalization, digest, golden-corpus, and sync identity suites each failed before their contract implementation and passed afterward.
 - REGRESSION: the full package run passed 28 tests; seven locally runnable required checks passed.
 - ENVIRONMENT: local Xcode 27 cannot load the host's older CoreSimulator framework; the pinned Xcode 26.6 hosted `compile` check remains the authoritative cross-runtime result.
+- HOSTED: GitHub Actions run `35557676483` passed all eight required checks, including iPhone and Watch target builds and shared-corpus runtime tests.
 
 ### Implementation Plan
 
@@ -242,6 +244,7 @@ OpenAI Codex (GPT-5)
 - Added one resource-backed golden corpus consumed by package, iPhone XCTest, and Watch XCTest adapters.
 - Preserved the eight check names; `schema` now runs contract suites and `sync` runs replay identity tests.
 - No persistence, network, UI, provider, reducer, or transport capability was added.
+- Fixed the cross-target load-vector assertion to verify semantic kind coverage instead of incorrectly equating vector count with enum-case count.
 
 ### File List
 
@@ -260,3 +263,4 @@ OpenAI Codex (GPT-5)
 
 - 2026-09-21: Created the complete Story 1.2 implementation contract and moved the Story to `ready-for-dev`.
 - 2026-09-21: Implemented the Story 1.2 contract stack and prepared hosted cross-runtime verification.
+- 2026-09-21: PR #3 passed all eight required automated checks and merged to `main` as `753cdec`; moved Story 1.2 to `done` and selected Story 1.3 as the next executable work item.

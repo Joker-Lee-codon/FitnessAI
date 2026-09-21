@@ -1,5 +1,5 @@
 # generated: 2026-09-11T09:42:41+0800
-# last_updated: 2026-09-21T10:24:28+0800
+# last_updated: 2026-09-21T11:37:50+0800
 # project: FitnessAI
 # project_key: NOKEY
 # tracking_system: file-system
@@ -18,7 +18,7 @@
 # - Story 1.1 carries the AD-13 Apple Silicon/macOS CI acceptance overlay.
 #
 generated: 2026-09-11T09:42:41+0800
-last_updated: 2026-09-21T10:24:28+0800
+last_updated: 2026-09-21T11:37:50+0800
 project: FitnessAI
 project_key: NOKEY
 tracking_system: file-system
@@ -79,12 +79,12 @@ slice_plan:
     exit: controlled-review-and-private-alpha-evidence
 
 next_executable_work_item:
-  story: 1-2-unify-cross-device-fact-identity-units-and-digest-contracts
-  story_id: "1.2"
+  story: 1-3-preserve-and-resolve-workout-truth-with-one-revision-dag
+  story_id: "1.3"
   classification: Enabler
   slice: S0
-  status: in-progress
-  story_context: 1-2-unify-cross-device-fact-identity-units-and-digest-contracts.md
+  status: backlog
+  story_context: 1-3-preserve-and-resolve-workout-truth-with-one-revision-dag.md
   execution_note: create-story-context-then-run-dev-story
 
 ad_13_ci_acceptance_overlay:
@@ -266,7 +266,7 @@ story_metadata:
 development_status:
   epic-1: in-progress
   1-1-launch-the-runnable-iphone-watch-and-shared-contract-workspace: done
-  1-2-unify-cross-device-fact-identity-units-and-digest-contracts: in-progress
+  1-2-unify-cross-device-fact-identity-units-and-digest-contracts: done
   1-3-preserve-and-resolve-workout-truth-with-one-revision-dag: backlog
   1-4-establish-an-atomic-protected-and-recoverable-iphone-persistence-boundary: backlog
   1-5-browse-the-canonical-exercise-catalog-and-understand-support-boundaries: backlog
