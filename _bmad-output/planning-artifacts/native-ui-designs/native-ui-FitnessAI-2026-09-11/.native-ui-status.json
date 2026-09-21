@@ -1,0 +1,33 @@
+{
+  "schema_version": 1,
+  "workflow": "bmad-native-ui-design",
+  "current_stage": "complete",
+  "selected_direction": "Training Ledger",
+  "updated": "2026-09-12T03:21:26+00:00",
+  "stages": {
+    "ND-01": {
+      "state": "completed",
+      "note": "Product Owner selected Direction A — Training Ledger on 2026-09-12; sequence-first Watch grammar is authoritative."
+    },
+    "ND-02": {
+      "state": "completed",
+      "note": "Product Owner accepted the Claude color mapping, training rail, typography, controls, state grammar, motion/haptics, and representative Watch surfaces on 2026-09-12."
+    },
+    "ND-03": {
+      "state": "completed",
+      "note": "Product Owner accepted and froze all four configured MVP batches on 2026-09-12.",
+      "active_batch": null,
+      "next_batch": null,
+      "completed_batches": [
+        "Watch core: Workout Entry, Active Session, Rest Resolution, Watch Finish Review, Watch Recovery",
+        "iPhone review: Today & Plans, Session Review, Training History",
+        "iPhone planning and analysis: Training Plans, Analysis, Exercise Catalog",
+        "System: Sync & Recovery, Account & Privacy, required exceptional states"
+      ]
+    },
+    "ND-04": {
+      "state": "completed",
+      "note": "Product Owner accepted and froze the bilingual Architecture handoff on 2026-09-12; native UI workflow complete and ready for bmad-architecture."
+    }
+  }
+}
