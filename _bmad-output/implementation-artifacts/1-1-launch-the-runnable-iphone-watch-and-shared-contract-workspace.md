@@ -4,7 +4,7 @@ baseline_commit: NO_VCS
 
 # Story 1.1: Launch the Runnable iPhone, Watch, and Shared-Contract Workspace
 
-Status: review
+Status: done
 
 Classification: Enabler  
 Implementation slice: S0  
@@ -309,10 +309,10 @@ No `project-context.md` exists. This is non-blocking. The Story's authorities ar
 
 ## Story Completion Status
 
-- Status set to `ready-for-dev`.
-- The complete Epic 1 boundary, greenfield repository state, AD-13 CI overlay, dependency constraints, UX/accessibility floor, test evidence, and external repository-host decision boundary are included.
-- Completion note: Ultimate context engine analysis completed — comprehensive developer guide created.
-- No implementation work, repository initialization, hosted CI configuration, Gate enablement, or external state mutation has been performed.
+- Status set to `done` after merge to `main`.
+- The runnable iPhone and Watch workspace, shared-package boundaries, adaptive Simplified-Chinese-first UI, and AD-13 hosted CI overlay are implemented.
+- GitHub PR #2 passed all eight required automated checks without human approval and merged as commit `6bfc287`.
+- GATE-1 through GATE-7 remain fail closed; Story completion does not enable deferred capabilities.
 
 ## Dev Agent Record
 
@@ -327,6 +327,7 @@ OpenAI Codex (GPT-5)
 - Independent `xcodebuild` runs — iPhone and Watch simulator builds passed; two iPhone and two Watch tests passed; both app bundles installed and launched without signing.
 - Isolated `--no-local` checkout — resolved GRDB 7.11.1 from the committed lock and passed boundary/no-speculative-content validation.
 - GitHub Actions run `34580092908` — all eight hosted checks passed on Apple Silicon `macos-26` with Xcode 26.6 build `17F113` and Apple Swift 6.3.3.
+- GitHub Actions run `35552114045` for PR #2 — all eight required checks passed, including launch-and-test coverage for the adaptive Chinese iPhone and crown-paged Watch UI.
 - GitHub branch-protection API read-back at `2026-09-11 19:52:10 CST` — strict required contexts matched the eight-check manifest; administrators enforced; reviews not required; force pushes and deletion disabled.
 
 ### Completion Notes List
@@ -396,3 +397,4 @@ OpenAI Codex (GPT-5)
 ### Change Log
 
 - 2026-09-11: Implemented and verified the complete Story 1.1 runnable native seed, hosted CI contract, and required-check enforcement; moved the Story to `review`.
+- 2026-09-21: PR #2 passed all eight required automated checks and merged to `main` as `6bfc287`; moved Story 1.1 to `done` and selected Story 1.2 as the next executable work item.

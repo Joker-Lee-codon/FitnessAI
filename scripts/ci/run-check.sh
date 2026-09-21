@@ -55,6 +55,7 @@ case "$CHECK" in
   schema)
     "$ROOT/scripts/ci/check-no-speculative-content.sh"
     "$ROOT/scripts/ci/check-resolved-dependencies.sh"
+    swift test --disable-sandbox --package-path "$PACKAGE" --scratch-path "$SWIFT_SCRATCH" --filter ContractTests
     ;;
   safety)
     "$ROOT/scripts/ci/check-accessibility-shells.sh"
@@ -65,7 +66,7 @@ case "$CHECK" in
     swift build --disable-sandbox --package-path "$PACKAGE" --scratch-path "$SWIFT_SCRATCH" --target PersistenceGRDB
     ;;
   sync)
-    swift build --disable-sandbox --package-path "$PACKAGE" --scratch-path "$SWIFT_SCRATCH" --target SyncContracts
+    swift test --disable-sandbox --package-path "$PACKAGE" --scratch-path "$SWIFT_SCRATCH" --filter SyncContractTests
     ;;
   ai-contract)
     ! grep -ERn '^(import|@testable import) (OpenAI|Anthropic|GoogleGenerativeAI)|URLSession|https?://' "$PACKAGE/Sources"

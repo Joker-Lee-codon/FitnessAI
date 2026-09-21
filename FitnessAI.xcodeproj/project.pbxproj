@@ -18,6 +18,12 @@
 		C1000000000000000000000A /* WatchAppStateTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1000000000000000000000A; };
 		C1000000000000000000000B /* FitnessAIContracts in Frameworks */ = {isa = PBXBuildFile; productRef = C10000000000000000000011; };
 		C1000000000000000000000C /* FitnessAIContracts in Frameworks */ = {isa = PBXBuildFile; productRef = C10000000000000000000012; };
+		C1000000000000000000000D /* ContractGoldenAdapterTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1000000000000000000000B; };
+		C1000000000000000000000E /* ContractGoldenAdapterTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1000000000000000000000C; };
+		C1000000000000000000000F /* FitnessAIContracts in Frameworks */ = {isa = PBXBuildFile; productRef = C10000000000000000000013; };
+		C40000000000000000000001 /* FitnessAIContracts in Frameworks */ = {isa = PBXBuildFile; productRef = C10000000000000000000014; };
+		C40000000000000000000002 /* FitnessAIContractFixtureSupport in Frameworks */ = {isa = PBXBuildFile; productRef = C10000000000000000000015; };
+		C40000000000000000000003 /* FitnessAIContractFixtureSupport in Frameworks */ = {isa = PBXBuildFile; productRef = C10000000000000000000016; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -36,6 +42,8 @@
 		D10000000000000000000008 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		D10000000000000000000009 /* IPhoneAppStateTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IPhoneAppStateTests.swift; sourceTree = "<group>"; };
 		D1000000000000000000000A /* WatchAppStateTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WatchAppStateTests.swift; sourceTree = "<group>"; };
+		D1000000000000000000000B /* ContractGoldenAdapterTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContractGoldenAdapterTests.swift; sourceTree = "<group>"; };
+		D1000000000000000000000C /* ContractGoldenAdapterTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContractGoldenAdapterTests.swift; sourceTree = "<group>"; };
 		D10000000000000000000011 /* FitnessAI.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FitnessAI.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D10000000000000000000012 /* FitnessAI Watch.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "FitnessAI Watch.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		D10000000000000000000013 /* FitnessAIiPhoneTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = FitnessAIiPhoneTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -45,8 +53,8 @@
 /* Begin PBXFrameworksBuildPhase section */
 		E10000000000000000000001 = {isa = PBXFrameworksBuildPhase; buildActionMask = 2147483647; files = (C1000000000000000000000B,); runOnlyForDeploymentPostprocessing = 0; };
 		E10000000000000000000002 = {isa = PBXFrameworksBuildPhase; buildActionMask = 2147483647; files = (C1000000000000000000000C,); runOnlyForDeploymentPostprocessing = 0; };
-		E10000000000000000000003 = {isa = PBXFrameworksBuildPhase; buildActionMask = 2147483647; files = (); runOnlyForDeploymentPostprocessing = 0; };
-		E10000000000000000000004 = {isa = PBXFrameworksBuildPhase; buildActionMask = 2147483647; files = (); runOnlyForDeploymentPostprocessing = 0; };
+		E10000000000000000000003 = {isa = PBXFrameworksBuildPhase; buildActionMask = 2147483647; files = (C1000000000000000000000F, C40000000000000000000002,); runOnlyForDeploymentPostprocessing = 0; };
+		E10000000000000000000004 = {isa = PBXFrameworksBuildPhase; buildActionMask = 2147483647; files = (C40000000000000000000001, C40000000000000000000003,); runOnlyForDeploymentPostprocessing = 0; };
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
@@ -55,16 +63,16 @@
 		F10000000000000000000003 /* iPhone */ = {isa = PBXGroup; children = (D10000000000000000000001, D10000000000000000000002, D10000000000000000000003, D10000000000000000000004,); path = iPhone; sourceTree = "<group>"; };
 		F10000000000000000000004 /* Watch */ = {isa = PBXGroup; children = (D10000000000000000000005, D10000000000000000000006, D10000000000000000000007, D10000000000000000000008,); path = Watch; sourceTree = "<group>"; };
 		F10000000000000000000005 /* Tests */ = {isa = PBXGroup; children = (F10000000000000000000006, F10000000000000000000007,); path = Tests; sourceTree = "<group>"; };
-		F10000000000000000000006 /* iPhone */ = {isa = PBXGroup; children = (D10000000000000000000009,); path = iPhone; sourceTree = "<group>"; };
-		F10000000000000000000007 /* Watch */ = {isa = PBXGroup; children = (D1000000000000000000000A,); path = Watch; sourceTree = "<group>"; };
+		F10000000000000000000006 /* iPhone */ = {isa = PBXGroup; children = (D10000000000000000000009, D1000000000000000000000B,); path = iPhone; sourceTree = "<group>"; };
+		F10000000000000000000007 /* Watch */ = {isa = PBXGroup; children = (D1000000000000000000000A, D1000000000000000000000C,); path = Watch; sourceTree = "<group>"; };
 		F10000000000000000000008 /* Products */ = {isa = PBXGroup; children = (D10000000000000000000011, D10000000000000000000012, D10000000000000000000013, D10000000000000000000014,); name = Products; sourceTree = "<group>"; };
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
 		B10000000000000000000001 /* FitnessAI-iPhone */ = {isa = PBXNativeTarget; buildConfigurationList = F20000000000000000000001; buildPhases = (E20000000000000000000001, E10000000000000000000001, E30000000000000000000001,); buildRules = (); dependencies = (); name = "FitnessAI-iPhone"; packageProductDependencies = (C10000000000000000000011,); productName = FitnessAI; productReference = D10000000000000000000011; productType = "com.apple.product-type.application"; };
 		B10000000000000000000002 /* FitnessAI-Watch */ = {isa = PBXNativeTarget; buildConfigurationList = F20000000000000000000002; buildPhases = (E20000000000000000000002, E10000000000000000000002, E30000000000000000000002,); buildRules = (); dependencies = (); name = "FitnessAI-Watch"; packageProductDependencies = (C10000000000000000000012,); productName = "FitnessAI Watch"; productReference = D10000000000000000000012; productType = "com.apple.product-type.application"; };
-		B10000000000000000000003 /* FitnessAIiPhoneTests */ = {isa = PBXNativeTarget; buildConfigurationList = F20000000000000000000003; buildPhases = (E20000000000000000000003, E10000000000000000000003, E30000000000000000000003,); buildRules = (); dependencies = (C30000000000000000000001,); name = FitnessAIiPhoneTests; packageProductDependencies = (); productName = FitnessAIiPhoneTests; productReference = D10000000000000000000013; productType = "com.apple.product-type.bundle.unit-test"; };
-		B10000000000000000000004 /* FitnessAIWatchTests */ = {isa = PBXNativeTarget; buildConfigurationList = F20000000000000000000004; buildPhases = (E20000000000000000000004, E10000000000000000000004, E30000000000000000000004,); buildRules = (); dependencies = (C30000000000000000000002,); name = FitnessAIWatchTests; packageProductDependencies = (); productName = FitnessAIWatchTests; productReference = D10000000000000000000014; productType = "com.apple.product-type.bundle.unit-test"; };
+		B10000000000000000000003 /* FitnessAIiPhoneTests */ = {isa = PBXNativeTarget; buildConfigurationList = F20000000000000000000003; buildPhases = (E20000000000000000000003, E10000000000000000000003, E30000000000000000000003,); buildRules = (); dependencies = (C30000000000000000000001,); name = FitnessAIiPhoneTests; packageProductDependencies = (C10000000000000000000013, C10000000000000000000015,); productName = FitnessAIiPhoneTests; productReference = D10000000000000000000013; productType = "com.apple.product-type.bundle.unit-test"; };
+		B10000000000000000000004 /* FitnessAIWatchTests */ = {isa = PBXNativeTarget; buildConfigurationList = F20000000000000000000004; buildPhases = (E20000000000000000000004, E10000000000000000000004, E30000000000000000000004,); buildRules = (); dependencies = (C30000000000000000000002,); name = FitnessAIWatchTests; packageProductDependencies = (C10000000000000000000014, C10000000000000000000016,); productName = FitnessAIWatchTests; productReference = D10000000000000000000014; productType = "com.apple.product-type.bundle.unit-test"; };
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -81,8 +89,8 @@
 /* Begin PBXSourcesBuildPhase section */
 		E20000000000000000000001 = {isa = PBXSourcesBuildPhase; buildActionMask = 2147483647; files = (C10000000000000000000001, C10000000000000000000002, C10000000000000000000003,); runOnlyForDeploymentPostprocessing = 0; };
 		E20000000000000000000002 = {isa = PBXSourcesBuildPhase; buildActionMask = 2147483647; files = (C10000000000000000000005, C10000000000000000000006, C10000000000000000000007,); runOnlyForDeploymentPostprocessing = 0; };
-		E20000000000000000000003 = {isa = PBXSourcesBuildPhase; buildActionMask = 2147483647; files = (C10000000000000000000009,); runOnlyForDeploymentPostprocessing = 0; };
-		E20000000000000000000004 = {isa = PBXSourcesBuildPhase; buildActionMask = 2147483647; files = (C1000000000000000000000A,); runOnlyForDeploymentPostprocessing = 0; };
+		E20000000000000000000003 = {isa = PBXSourcesBuildPhase; buildActionMask = 2147483647; files = (C10000000000000000000009, C1000000000000000000000D,); runOnlyForDeploymentPostprocessing = 0; };
+		E20000000000000000000004 = {isa = PBXSourcesBuildPhase; buildActionMask = 2147483647; files = (C1000000000000000000000A, C1000000000000000000000E,); runOnlyForDeploymentPostprocessing = 0; };
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
@@ -118,6 +126,10 @@
 /* Begin XCSwiftPackageProductDependency section */
 		C10000000000000000000011 /* FitnessAIContracts */ = {isa = XCSwiftPackageProductDependency; package = C10000000000000000000010; productName = FitnessAIContracts; };
 		C10000000000000000000012 /* FitnessAIContracts */ = {isa = XCSwiftPackageProductDependency; package = C10000000000000000000010; productName = FitnessAIContracts; };
+		C10000000000000000000013 /* FitnessAIContracts */ = {isa = XCSwiftPackageProductDependency; package = C10000000000000000000010; productName = FitnessAIContracts; };
+		C10000000000000000000014 /* FitnessAIContracts */ = {isa = XCSwiftPackageProductDependency; package = C10000000000000000000010; productName = FitnessAIContracts; };
+		C10000000000000000000015 /* FitnessAIContractFixtureSupport */ = {isa = XCSwiftPackageProductDependency; package = C10000000000000000000010; productName = FitnessAIContractFixtureSupport; };
+		C10000000000000000000016 /* FitnessAIContractFixtureSupport */ = {isa = XCSwiftPackageProductDependency; package = C10000000000000000000010; productName = FitnessAIContractFixtureSupport; };
 /* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = A10000000000000000000001 /* Project object */;
