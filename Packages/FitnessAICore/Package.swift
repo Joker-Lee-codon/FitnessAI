@@ -14,6 +14,7 @@ let package = Package(
         .library(name: "FitnessAISafetyRules", targets: ["SafetyRules"]),
         .library(name: "FitnessAIAnalysis", targets: ["Analysis"]),
         .library(name: "FitnessAIPersistenceGRDB", targets: ["PersistenceGRDB"]),
+        .library(name: "FitnessAIContractFixtureSupport", targets: ["ContractFixtureSupport"]),
     ],
     dependencies: [
         .package(url: "https://github.com/groue/GRDB.swift.git", exact: "7.11.1"),
@@ -33,9 +34,16 @@ let package = Package(
             name: "PersistenceGRDB",
             dependencies: ["PersistencePorts", .product(name: "GRDB", package: "GRDB.swift")]
         ),
+        .target(
+            name: "ContractFixtureSupport",
+            dependencies: ["Contracts"],
+            resources: [.process("Resources")]
+        ),
         .testTarget(name: "ArchitectureTests", dependencies: [
             "Contracts", "Domain", "Application", "PersistencePorts",
             "SyncContracts", "SafetyRules", "Analysis", "PersistenceGRDB",
         ]),
+        .testTarget(name: "ContractTests", dependencies: ["Contracts", "ContractFixtureSupport"]),
+        .testTarget(name: "SyncContractTests", dependencies: ["Contracts", "SyncContracts"]),
     ]
 )

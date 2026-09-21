@@ -1,0 +1,45 @@
+{
+  "profile": "fitnessai-canonical-v1",
+  "digestAlgorithm": "sha256-v1",
+  "canonical": [
+    {
+      "name": "fact-envelope-key-order-optional-extension-baseline",
+      "canonicalUTF8Hex": "7b22636f6e74656e74223a2266616374222c226f7074696f6e616c457874656e73696f6e73223a7b7d2c2270726f66696c65223a226669746e65737361692d63616e6f6e6963616c2d7631222c2272657175697265644361706162696c6974696573223a5b5d7d",
+      "digest": "6bf10bd8090860d85ac9e6313f97668cfc15fc62b508a0f5e0dafb58e17354ff"
+    },
+    {
+      "name": "unicode-nfc-emoji-key-decimal-boundary",
+      "canonicalUTF8Hex": "7b2261223a312e322c22c3a9223a22636166c3a9222c22f09f8f8befb88f223a22e58a9b227d",
+      "digest": "cdd58eb09d1aa4ebebe89065becf0fc3d23d8df6b2b7c1d9b22a5431610c0eeb"
+    },
+    {
+      "name": "signed-epoch-milliseconds-iana-time-zone",
+      "canonicalUTF8Hex": "7b2265706f63684d696c6c697365636f6e6473223a2d313233342c2274696d655a6f6e654964656e746966696572223a22417369612f5368616e67686169227d",
+      "digest": "e25af4bb89de7f516ae5b975a8832df5eef6c98d98afeca04c16673810f213d9"
+    }
+  ],
+  "rejections": [
+    { "name": "decimal-exponent", "expectedError": "invalid_decimal" },
+    { "name": "decimal-nan", "expectedError": "invalid_decimal" },
+    { "name": "decimal-infinity", "expectedError": "invalid_decimal" },
+    { "name": "decimal-over-28-significant-digits", "expectedError": "invalid_decimal" },
+    { "name": "malformed-utf8", "expectedError": "malformed_envelope" },
+    { "name": "duplicate-nfc-key", "expectedError": "duplicate_normalized_key" },
+    { "name": "unknown-required-capability", "expectedError": "unknown_critical_capability" },
+    { "name": "missing-recoverable-version", "expectedError": "pending" },
+    { "name": "unsupported-version", "expectedError": "unsupported" },
+    { "name": "partial-decoding", "expectedError": "malformed_envelope" },
+    { "name": "automatic-substitution", "expectedError": "rejected" },
+    { "name": "uuid-uppercase-normalizes", "expectedError": "none" },
+    { "name": "pounds-exact-conversion", "expectedError": "none" }
+  ],
+  "loads": [
+    { "kind": "external", "basis": "total", "expectedOutcome": "mass" },
+    { "kind": "external", "basis": "perSide", "expectedOutcome": "mass" },
+    { "kind": "bodyweight", "basis": "total", "expectedOutcome": "mass" },
+    { "kind": "assisted", "basis": "total", "expectedOutcome": "mass" },
+    { "kind": "unloaded", "basis": "notApplicable", "expectedOutcome": "nonMass" },
+    { "kind": "timed", "basis": "notApplicable", "expectedOutcome": "nonMass" },
+    { "kind": "nonComparable", "basis": "notApplicable", "expectedOutcome": "nonMass" }
+  ]
+}

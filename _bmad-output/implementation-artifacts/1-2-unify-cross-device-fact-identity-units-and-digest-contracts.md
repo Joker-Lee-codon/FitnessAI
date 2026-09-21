@@ -4,7 +4,7 @@ baseline_commit: 6bfc287
 
 # Story 1.2: Unify Cross-Device Fact Identity, Units, and Digest Contracts
 
-Status: ready-for-dev
+Status: in-progress
 
 Classification: Enabler  
 Implementation slice: S0  
@@ -78,43 +78,43 @@ so that workout facts are never duplicated, mistranslated, or interpreted as dif
 
 ## Tasks / Subtasks
 
-- [ ] Task 1 — Add nominal stable identity contracts (AC: 1, 2)
-  - [ ] Add non-interchangeable public ID value types for Plan, Plan Revision, Workout Session, Actual Set, revision event, device message, approval, proposal, and source device.
-  - [ ] Generate RFC 9562 UUIDv4 only at an explicit creation boundary; decode/retry/replay must reuse the supplied ID and never call a generator.
-  - [ ] Canonical wire text is lowercase 36-character hyphenated UUID; parsing may accept RFC-valid hexadecimal case but canonical output is always lowercase.
-  - [ ] Ensure IDs are identity only: no ordering, conflict choice, or chronology may use UUID value, device time, arrival order, `hashValue`, or `Hasher`.
+- [x] Task 1 — Add nominal stable identity contracts (AC: 1, 2)
+  - [x] Add non-interchangeable public ID value types for Plan, Plan Revision, Workout Session, Actual Set, revision event, device message, approval, proposal, and source device.
+  - [x] Generate RFC 9562 UUIDv4 only at an explicit creation boundary; decode/retry/replay must reuse the supplied ID and never call a generator.
+  - [x] Canonical wire text is lowercase 36-character hyphenated UUID; parsing may accept RFC-valid hexadecimal case but canonical output is always lowercase.
+  - [x] Ensure IDs are identity only: no ordering, conflict choice, or chronology may use UUID value, device time, arrival order, `hashValue`, or `Hasher`.
 
-- [ ] Task 2 — Define precise load and decimal value contracts (AC: 2, 3, 6)
-  - [ ] Add a strict `CanonicalDecimal` parsed from ASCII decimal text, never `Double`, locale formatting, or `Measurement<UnitMass>`.
-  - [ ] Freeze v1 grammar: no exponent, sign only where explicitly allowed, no leading zeros, no negative zero, maximum 28 significant digits and 12 entered fractional digits; canonical output removes redundant trailing fractional zeros.
-  - [ ] Preserve entered value and `kg|lb`; represent `external|bodyweight|assisted|unloaded|timed|nonComparable` and `total|perSide|notApplicable` as closed wire enums with validated combinations.
-  - [ ] Derive canonical kilograms without replacing the entered fact, using the exact relationship `1 lb = 0.45359237 kg`; allow up to 20 canonical fractional digits so supported lb inputs convert without rounding.
-  - [ ] Return a typed error for invalid decimal, unsupported unit, invalid kind/basis combination, overflow, or an attempted comparison of semantically incomparable load kinds.
+- [x] Task 2 — Define precise load and decimal value contracts (AC: 2, 3, 6)
+  - [x] Add a strict `CanonicalDecimal` parsed from ASCII decimal text, never `Double`, locale formatting, or `Measurement<UnitMass>`.
+  - [x] Freeze v1 grammar: no exponent, sign only where explicitly allowed, no leading zeros, no negative zero, maximum 28 significant digits and 12 entered fractional digits; canonical output removes redundant trailing fractional zeros.
+  - [x] Preserve entered value and `kg|lb`; represent `external|bodyweight|assisted|unloaded|timed|nonComparable` and `total|perSide|notApplicable` as closed wire enums with validated combinations.
+  - [x] Derive canonical kilograms without replacing the entered fact, using the exact relationship `1 lb = 0.45359237 kg`; allow up to 20 canonical fractional digits so supported lb inputs convert without rounding.
+  - [x] Return a typed error for invalid decimal, unsupported unit, invalid kind/basis combination, overflow, or an attempted comparison of semantically incomparable load kinds.
 
-- [ ] Task 3 — Add version provenance and compatibility contracts (AC: 2, 4, 6)
-  - [ ] Define platform-neutral version values for app, schema, Exercise catalog, model, support matrix, Safety Rule Pack, algorithm, and canonical profile.
-  - [ ] Make applicable required versions explicit; never default a missing historical version to the current version.
-  - [ ] Freeze compatibility outcomes: missing-but-recoverable dependency → `pending`; known incompatible/unknown critical capability → `unsupported`; malformed, contradictory, or digest-invalid envelope → `rejected`.
-  - [ ] Add stable error codes, field paths, expected/actual versions, and recoverability without embedding user content.
+- [x] Task 3 — Add version provenance and compatibility contracts (AC: 2, 4, 6)
+  - [x] Define platform-neutral version values for app, schema, Exercise catalog, model, support matrix, Safety Rule Pack, algorithm, and canonical profile.
+  - [x] Make applicable required versions explicit; never default a missing historical version to the current version.
+  - [x] Freeze compatibility outcomes: missing-but-recoverable dependency → `pending`; known incompatible/unknown critical capability → `unsupported`; malformed, contradictory, or digest-invalid envelope → `rejected`.
+  - [x] Add stable error codes, field paths, expected/actual versions, and recoverability without embedding user content.
 
-- [ ] Task 4 — Implement FitnessAI Canonical Profile v1 (AC: 2, 5, 6)
-  - [ ] Implement a small canonical value tree and serializer rather than hashing ordinary `Codable`, `JSONEncoder(.sortedKeys)`, `Hashable`, or localized display output.
-  - [ ] Profile identifier: `fitnessai-canonical-v1`; bytes are UTF-8 without BOM or insignificant whitespace.
-  - [ ] Normalize every string and object key to Unicode NFC, reject post-normalization duplicate keys, sort object keys by normalized UTF-8 bytes, preserve array order, and use fixed RFC 8259 escaping for quotes, reverse solidus, and control characters without escaping `/` or valid non-ASCII scalars.
-  - [ ] Encode decimals, UUIDs, units, kinds, bases, and versions using their canonical contract strings.
-  - [ ] Encode instants as signed base-10 Unix epoch milliseconds; preserve a separate IANA time-zone identifier only when local-calendar meaning is part of the fact. Never use default `Date`/locale encoding.
-  - [ ] Reject unknown required capabilities. Preserve declared optional extension values as inert canonical fields so round-trip and digest coverage are explicit; never silently omit an unknown field.
-  - [ ] The digest envelope covers profile/version plus the declared content and excludes the digest field itself.
+- [x] Task 4 — Implement FitnessAI Canonical Profile v1 (AC: 2, 5, 6)
+  - [x] Implement a small canonical value tree and serializer rather than hashing ordinary `Codable`, `JSONEncoder(.sortedKeys)`, `Hashable`, or localized display output.
+  - [x] Profile identifier: `fitnessai-canonical-v1`; bytes are UTF-8 without BOM or insignificant whitespace.
+  - [x] Normalize every string and object key to Unicode NFC, reject post-normalization duplicate keys, sort object keys by normalized UTF-8 bytes, preserve array order, and use fixed RFC 8259 escaping for quotes, reverse solidus, and control characters without escaping `/` or valid non-ASCII scalars.
+  - [x] Encode decimals, UUIDs, units, kinds, bases, and versions using their canonical contract strings.
+  - [x] Encode instants as signed base-10 Unix epoch milliseconds; preserve a separate IANA time-zone identifier only when local-calendar meaning is part of the fact. Never use default `Date`/locale encoding.
+  - [x] Reject unknown required capabilities. Preserve declared optional extension values as inert canonical fields so round-trip and digest coverage are explicit; never silently omit an unknown field.
+  - [x] The digest envelope covers profile/version plus the declared content and excludes the digest field itself.
 
-- [ ] Task 5 — Add the versioned digest contract (AC: 5, 6)
-  - [ ] Hash exact canonical bytes with SHA-256 and emit exactly 64 lowercase hexadecimal characters under algorithm identifier `sha256-v1`.
-  - [ ] Make canonical bytes inspectable in tests and keep digest construction fallible so serialization errors cannot produce a partial digest.
-  - [ ] Prove equivalent semantic inputs create byte-identical output and every covered-field mutation changes the digest.
+- [x] Task 5 — Add the versioned digest contract (AC: 5, 6)
+  - [x] Hash exact canonical bytes with SHA-256 and emit exactly 64 lowercase hexadecimal characters under algorithm identifier `sha256-v1`.
+  - [x] Make canonical bytes inspectable in tests and keep digest construction fallible so serialization errors cannot produce a partial digest.
+  - [x] Prove equivalent semantic inputs create byte-identical output and every covered-field mutation changes the digest.
 
-- [ ] Task 6 — Add one authoritative golden-vector corpus (AC: 2, 5, 6)
-  - [ ] Store one shared fixture corpus with input, expected canonical UTF-8 bytes/hex, expected digest, and expected typed outcome; do not duplicate expected values for different targets.
-  - [ ] Cover key insertion order, UUID case normalization, NFC composed/decomposed text, emoji/non-BMP keys, decimal zero/boundaries/rejections, exact lb conversion, time-zone/instant semantics, optional extensions, unknown critical fields, missing/unsupported versions, malformed UTF-8, duplicate normalized keys, and each load kind/basis.
-  - [ ] Add a covered-field mutation vector and explicit failures for exponent numbers, `NaN`, infinity, partial decoding, and automatic substitution.
+- [x] Task 6 — Add one authoritative golden-vector corpus (AC: 2, 5, 6)
+  - [x] Store one shared fixture corpus with input, expected canonical UTF-8 bytes/hex, expected digest, and expected typed outcome; do not duplicate expected values for different targets.
+  - [x] Cover key insertion order, UUID case normalization, NFC composed/decomposed text, emoji/non-BMP keys, decimal zero/boundaries/rejections, exact lb conversion, time-zone/instant semantics, optional extensions, unknown critical fields, missing/unsupported versions, malformed UTF-8, duplicate normalized keys, and each load kind/basis.
+  - [x] Add a covered-field mutation vector and explicit failures for exponent numbers, `NaN`, infinity, partial decoding, and automatic substitution.
 
 - [ ] Task 7 — Run the same contract evidence in package, iPhone, and Watch targets (AC: 1–6)
   - [ ] Add Swift Testing package suites for Contracts and SyncContracts.
@@ -122,10 +122,10 @@ so that workout facts are never duplicated, mistranslated, or interpreted as dif
   - [ ] Give both app test targets a direct `FitnessAIContracts` dependency; do not rely on host-app transitive linkage.
   - [ ] Update `schema` and `sync` CI entrypoints to execute the new suites while preserving the existing eight required check names.
 
-- [ ] Task 8 — Preserve architecture and strict scope (AC: 2, 7)
-  - [ ] Keep the existing seed wiring, package products, dependency direction, GRDB 7.11.1 pin, UI behavior, and required-check manifest intact.
-  - [ ] Add no database schema, GRDB row, persistence adapter behavior, revision DAG/reducer, outbox/ack transport, WatchConnectivity type, AI/Health/provider DTO, network call, or user-visible capability.
-  - [ ] Keep the user's untracked `prototypes/iphone-trust-ledger/` content untouched.
+- [x] Task 8 — Preserve architecture and strict scope (AC: 2, 7)
+  - [x] Keep the existing seed wiring, package products, dependency direction, GRDB 7.11.1 pin, UI behavior, and required-check manifest intact.
+  - [x] Add no database schema, GRDB row, persistence adapter behavior, revision DAG/reducer, outbox/ack transport, WatchConnectivity type, AI/Health/provider DTO, network call, or user-visible capability.
+  - [x] Keep the user's untracked `prototypes/iphone-trust-ledger/` content untouched.
 
 ## Dev Notes
 
@@ -226,10 +226,37 @@ OpenAI Codex (GPT-5)
 
 ### Debug Log References
 
+- RED: `swift test ... --filter StableIdentifiersTests` failed because nominal ID contracts did not exist.
+- GREEN: the same filtered suite passed 4/4 tests after adding `StableIdentifiers.swift`.
+- RED/GREEN: load, version, canonicalization, digest, golden-corpus, and sync identity suites each failed before their contract implementation and passed afterward.
+- REGRESSION: the full package run passed 28 tests; seven locally runnable required checks passed.
+- ENVIRONMENT: local Xcode 27 cannot load the host's older CoreSimulator framework; the pinned Xcode 26.6 hosted `compile` check remains the authoritative cross-runtime result.
+
+### Implementation Plan
+
+- Implement each contract area test-first in task order; keep schemas platform-neutral and defer persistence, reducers, transport, and UI.
+
 ### Completion Notes List
 
+- Added nominal UUID identities, exact decimal/load semantics, explicit provenance compatibility, canonical UTF-8 serialization, SHA-256 binding, and replay-safe message identity.
+- Added one resource-backed golden corpus consumed by package, iPhone XCTest, and Watch XCTest adapters.
+- Preserved the eight check names; `schema` now runs contract suites and `sync` runs replay identity tests.
+- No persistence, network, UI, provider, reducer, or transport capability was added.
+
 ### File List
+
+- `FitnessAI.xcodeproj/project.pbxproj`
+- `Packages/FitnessAICore/Package.swift`
+- `Packages/FitnessAICore/Sources/Contracts/*.swift`
+- `Packages/FitnessAICore/Sources/SyncContracts/MessageIdentity.swift`
+- `Packages/FitnessAICore/Sources/ContractFixtureSupport/**`
+- `Packages/FitnessAICore/Tests/ContractTests/*.swift`
+- `Packages/FitnessAICore/Tests/SyncContractTests/MessageIdentityTests.swift`
+- `Tests/iPhone/ContractGoldenAdapterTests.swift`
+- `Tests/Watch/ContractGoldenAdapterTests.swift`
+- `scripts/ci/run-check.sh`
 
 ### Change Log
 
 - 2026-09-21: Created the complete Story 1.2 implementation contract and moved the Story to `ready-for-dev`.
+- 2026-09-21: Implemented the Story 1.2 contract stack and prepared hosted cross-runtime verification.
