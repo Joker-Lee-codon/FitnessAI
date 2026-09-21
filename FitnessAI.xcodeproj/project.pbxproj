@@ -21,9 +21,9 @@
 		C1000000000000000000000D /* ContractGoldenAdapterTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1000000000000000000000B; };
 		C1000000000000000000000E /* ContractGoldenAdapterTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1000000000000000000000C; };
 		C1000000000000000000000F /* FitnessAIContracts in Frameworks */ = {isa = PBXBuildFile; productRef = C10000000000000000000013; };
-		C10000000000000000000010 /* FitnessAIContracts in Frameworks */ = {isa = PBXBuildFile; productRef = C10000000000000000000014; };
-		C10000000000000000000011 /* FitnessAIContractFixtureSupport in Frameworks */ = {isa = PBXBuildFile; productRef = C10000000000000000000015; };
-		C10000000000000000000012 /* FitnessAIContractFixtureSupport in Frameworks */ = {isa = PBXBuildFile; productRef = C10000000000000000000016; };
+		C40000000000000000000001 /* FitnessAIContracts in Frameworks */ = {isa = PBXBuildFile; productRef = C10000000000000000000014; };
+		C40000000000000000000002 /* FitnessAIContractFixtureSupport in Frameworks */ = {isa = PBXBuildFile; productRef = C10000000000000000000015; };
+		C40000000000000000000003 /* FitnessAIContractFixtureSupport in Frameworks */ = {isa = PBXBuildFile; productRef = C10000000000000000000016; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -53,8 +53,8 @@
 /* Begin PBXFrameworksBuildPhase section */
 		E10000000000000000000001 = {isa = PBXFrameworksBuildPhase; buildActionMask = 2147483647; files = (C1000000000000000000000B,); runOnlyForDeploymentPostprocessing = 0; };
 		E10000000000000000000002 = {isa = PBXFrameworksBuildPhase; buildActionMask = 2147483647; files = (C1000000000000000000000C,); runOnlyForDeploymentPostprocessing = 0; };
-		E10000000000000000000003 = {isa = PBXFrameworksBuildPhase; buildActionMask = 2147483647; files = (C1000000000000000000000F, C10000000000000000000011,); runOnlyForDeploymentPostprocessing = 0; };
-		E10000000000000000000004 = {isa = PBXFrameworksBuildPhase; buildActionMask = 2147483647; files = (C10000000000000000000010, C10000000000000000000012,); runOnlyForDeploymentPostprocessing = 0; };
+		E10000000000000000000003 = {isa = PBXFrameworksBuildPhase; buildActionMask = 2147483647; files = (C1000000000000000000000F, C40000000000000000000002,); runOnlyForDeploymentPostprocessing = 0; };
+		E10000000000000000000004 = {isa = PBXFrameworksBuildPhase; buildActionMask = 2147483647; files = (C40000000000000000000001, C40000000000000000000003,); runOnlyForDeploymentPostprocessing = 0; };
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
